@@ -3,11 +3,10 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { CheckCircle2, Download, FileText, Home, Phone, Mail, Building2 } from "lucide-react"
-import { useTranslations } from "next-intl"
+import { useTranslations, useLocale } from "next-intl"
 import type { FormData } from "@/app/documents/page"
-import { generatePDF } from "@/lib/pdf-generator"
+import { generatePDF } from "@/lib/pdf-generator-pdfmake"
 
 type Props = {
   formData: FormData
@@ -16,6 +15,8 @@ type Props = {
 
 export function DocumentResult({ formData, onReset }: Props) {
   const t = useTranslations("documents.result")
+  const tPdf = useTranslations("documents.pdf")
+  const locale = useLocale()
   const [isGenerating, setIsGenerating] = useState(false)
 
   const isApartment = formData.propertyType === "apartment"
@@ -24,7 +25,19 @@ export function DocumentResult({ formData, onReset }: Props) {
   const handleDownload = async () => {
     setIsGenerating(true)
     try {
-      await generatePDF(formData)
+      // Create a translation function that can access all PDF translations
+      const translateFn = (key: string, values?: Record<string, any>) => {
+        // Remove 'pdf.' prefix if it exists
+        const cleanKey = key.startsWith('pdf.') ? key.substring(4) : key
+
+        // Handle the values parameter properly for next-intl
+        if (values) {
+          return tPdf(cleanKey as any, values)
+        }
+        return tPdf(cleanKey as any)
+      }
+
+      await generatePDF(formData, translateFn, locale)
     } catch (error) {
       console.error("Error generating PDF:", error)
       alert(t("downloadError"))
