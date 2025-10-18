@@ -633,7 +633,7 @@
       "personal": {
         "title": "Asmeninė informacija",
         "description": "Pateikite savo kontaktinius duomenis ir identifikacijos informaciją",
-        "fullName": "Vardas ir Pavardė",
+        "fullName": "Vardas ir pavardė",
         "fullNamePlaceholder": "Jonas Jonaitis",
         "personalCode": "Asmens kodas",
         "personalCodePlaceholder": "39001010000",
