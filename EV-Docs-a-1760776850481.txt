@@ -1,0 +1,75 @@
+═══════════════════════════════════════════════════════════════
+                    EV DOCS LT - SUGENERUOTI DOKUMENTAI
+═══════════════════════════════════════════════════════════════
+
+DOKUMENTAS #1: PAREIŠKIMAS DĖL EV ĮKROVIMO STOTELĖS ĮRENGIMO
+
+2025-10-18
+
+Daugiabučio namo Gelvonu g. 20
+Butų ir kitų patalpų savininkams
+
+Pareiškėjas: a
+Gyvenamoji vieta: Gelvonu g. 20
+Asmens kodas: 21231231231
+Tel.: +37000000011
+El. paštas: a@a.a
+
+PRAŠAU LEISTI ĮRENGTI ELEKTROMOBILIO ĮKROVIMO STOTELĘ
+
+1. Aš, a, esu buto Nr. 1 
+   savininkas(-ė) adresu Gelvonu g. 20.
+
+2. Prašau Jūsų sutikimo įrengti elektromobilio įkrovimo stotelę 
+   man priklausančioje parkavimo vietoje Nr. 1, 
+   esančioje Kieme.
+
+3. Įrengiamos stotelės parametrai:
+   - Tipas: Ant žemės
+   - Galia: 11 kW
+   - Prieigų skaičius: 1
+   - Gamintojo modelis: bus nurodyta vėliau
+
+Įsipareigoju laikytis visų teisės aktų reikalavimų ir užtikrinti saugų eksploatavimą.
+
+Pareiškėjas: _________________ (a)
+
+2025-10-18
+
+
+═══════════════════════════════════════════════════════════════
+
+DOKUMENTAS #2: BENDRASAVININKŲ SUTIKIMO ŠABLONAS
+
+Daugiabučio namo Gelvonu g. 20
+
+BENDRASAVININKŲ SUTIKIMAS
+DĖL ELEKTROMOBILIO ĮKROVIMO STOTELĖS ĮRENGIMO
+
+Mes, žemiau pasirašę butų savininkai, SUTINKAME, 
+kad a, buto Nr. 1 
+savininkas(-ė), įrengtų elektromobilio įkrovimo stotelę 
+parkavimo vietoje Nr. 1.
+
+Bendrasavininkų sąrašas:
+
+Nr. | Buto Nr. | Savininkas | Asmens kodas | Parašas | Data
+----|----------|------------|--------------|---------|------
+1.  |          |            |              |         |
+2.  |          |            |              |         |
+3.  |          |            |              |         |
+
+
+═══════════════════════════════════════════════════════════════
+TOLIMESNI ŽINGSNIAI:
+
+1. ✓ Surinkti bendrasavininkų parašus
+2. ☐ Gauti NT registro išrašą (www.registrucentras.lt)
+3. ☐ Kreiptis į ESO dėl prijungimo sąlygų (www.eso.lt, tel. 1852)
+4. ☐ Pateikti paraišką ENA (www.ena.lt)
+
+PARAMA: 60% įrengimo išlaidų (maks. 1,500 EUR)
+
+Sugeneruota: 2025-10-18 11:40:50
+Sistema: EV Docs LT v1.0 MVP
+═══════════════════════════════════════════════════════════════

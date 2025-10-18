@@ -1,0 +1,425 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "address": "Vydūno g. 2, Vilnius",
+        "display_name": "2, Vydūno g., Pilaitė, Pilaitės seniūnija, Vilnius, Vilniaus miesto savivaldybė, Vilniaus apskritis, 06204, Lietuva"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.1896787,
+          54.7072909
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "address": "Žalgirio g. 92, Vilnius",
+        "display_name": "92, Žalgirio g., Šnipiškės, Šnipiškių seniūnija, Vilnius, Vilniaus miesto savivaldybė, Vilniaus apskritis, 09300, Lietuva"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.2766774,
+          54.7034689
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "address": "Ozo g. 25, Vilnius",
+        "display_name": "Monton, 25, Ozo g., Šeškinė, Šeškinės seniūnija, Vilnius, Vilniaus miesto savivaldybė, Vilniaus apskritis, 07150, Lietuva"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.2621813,
+          54.7106296
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "address": "Ukmergės g. 221, Vilnius",
+        "display_name": "Ukmergės g., Fabijoniškės, Pašilaičių seniūnija, Vilnius, Vilniaus miesto savivaldybė, Vilniaus apskritis, 06306, Lietuva"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.2345505,
+          54.7339652
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "address": "Naugarduko g. 55a, Vilnius",
+        "display_name": "Skraja, 55A, Naugarduko g., Naujamiestis, Naujamiesčio seniūnija, Vilnius, Vilniaus miesto savivaldybė, Vilniaus apskritis, 03204, Lietuva"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.2592542,
+          54.6707849
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "address": "Vienuolio g. 4, Vilnius",
+        "display_name": "Grand Casino World, 4, A. Vienuolio g., Lukiškės, Naujamiesčio seniūnija, Vilnius, Vilniaus miesto savivaldybė, Vilniaus apskritis, 01104, Lietuva"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.2765882,
+          54.688362
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "address": "Konstitucijos pr. 7A, Vilnius",
+        "display_name": "Iki, 7A, Konstitucijos pr., Piromontas, Šnipiškių seniūnija, Vilnius, Vilniaus miesto savivaldybė, Vilniaus apskritis, 09307, Lietuva"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.2767679,
+          54.6964118
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "address": "P. Lukšio g. 34, Vilnius",
+        "display_name": "Senukai, 34, P. Lukšio g., Šiaurės miestelis, Žirmūnų seniūnija, Vilnius, Vilniaus miesto savivaldybė, Vilniaus apskritis, 09023, Lietuva"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.3007111,
+          54.7095649
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "address": "Antakalnio g. 37, Vilnius",
+        "display_name": "37, Antakalnio g., Antakalnis, Antakalnio seniūnija, Vilnius, Vilniaus miesto savivaldybė, Vilniaus apskritis, 10312, Lietuva"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.3107638,
+          54.7037412
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "address": "Ateities g. 31b, Vilnius",
+        "display_name": "Ateities Trio, 31B, Ateities g., Fabijoniškės, Fabijoniškių seniūnija, Vilnius, Vilniaus miesto savivaldybė, Vilniaus apskritis, 06326, Lietuva"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.2530222,
+          54.7344485
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "address": "Perkūnkiemio g. 4, Vilnius",
+        "display_name": "4, Perkūnkiemio g., Perkūnkiemis, Pašilaičių seniūnija, Vilnius, Vilniaus miesto savivaldybė, Vilniaus apskritis, 12128, Lietuva"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.2233383,
+          54.7414184
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "address": "Kareivių g. 14, Vilnius",
+        "display_name": "Impuls Plius, 14, Kareivių g., Žirmūnai, Žirmūnų seniūnija, Vilnius, Vilniaus miesto savivaldybė, Vilniaus apskritis, 09117, Lietuva"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.2995548,
+          54.7197387
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "address": "Savanorių pr. 28, Vilnius",
+        "display_name": "UAB LJB property, 28, Savanorių pr., Naujamiestis, Naujamiesčio seniūnija, Vilnius, Vilniaus miesto savivaldybė, Vilniaus apskritis, 03501, Lietuva"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.2527363,
+          54.6752528
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "address": "Fabijoniškių g. 97a, Vilnius",
+        "display_name": "Impuls, 97A, Fabijoniškių g., Fabijoniškės, Fabijoniškių seniūnija, Vilnius, Vilniaus miesto savivaldybė, Vilniaus apskritis, 07108, Lietuva"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.2463149,
+          54.730044
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "address": "Verkių g. 31C, Vilnius",
+        "display_name": "Candy POP, 31C, Verkių g., Šiaurės miestelis, Žirmūnų seniūnija, Vilnius, Vilniaus miesto savivaldybė, Vilniaus apskritis, 08351, Lietuva"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.2964039,
+          54.7145819
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "address": "Mindaugo g. 14b, Vilnius",
+        "display_name": "14B, Mindaugo g., Naujamiestis, Senamiesčio seniūnija, Vilnius, Vilniaus miesto savivaldybė, Vilniaus apskritis, 03011, Lietuva"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.2742253,
+          54.6781678
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "address": "S. Stanevičiaus g. 23, Vilnius",
+        "display_name": "Iki, 23, S. Stanevičiaus g., Fabijoniškės, Fabijoniškių seniūnija, Vilnius, Vilniaus miesto savivaldybė, Vilniaus apskritis, 07133, Lietuva"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.2551018,
+          54.7239287
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "address": "Dangeručio g. 1, Vilnius",
+        "display_name": "1, Dangeručio g., Verkių seniūnija, Vilnius, Vilniaus miesto savivaldybė, Vilniaus apskritis, 14332, Lietuva"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.2771752,
+          54.7788818
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "address": "Ozo g. 18, Vilnius",
+        "display_name": "PPC „Ozas“, 18, Ozo g., Verkių seniūnija, Vilnius, Vilniaus miesto savivaldybė, Vilniaus apskritis, 08243, Lietuva"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.2737592,
+          54.714444
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "address": "Savanorių pr. 1, Vilnius",
+        "display_name": "1, Savanorių pr., Naujamiestis, Naujamiesčio seniūnija, Vilnius, Vilniaus miesto savivaldybė, Vilniaus apskritis, 03103, Lietuva"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.2573276,
+          54.6793418
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "address": "Pavilnionių g. 55, Vilnius",
+        "display_name": "PC Pašilaičiai, 55, Pavilnionių g., Perkūnkiemis, Pašilaičių seniūnija, Vilnius, Vilniaus miesto savivaldybė, Vilniaus apskritis, 06142, Lietuva"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.210763,
+          54.7364582
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "address": "Gedimino pr. 9, Vilnius",
+        "display_name": "GO9, 9, Gedimino pr., Senamiestis, Senamiesčio seniūnija, Vilnius, Vilniaus miesto savivaldybė, Vilniaus apskritis, 01103, Lietuva"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.2817067,
+          54.6873532
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "address": "Saltoniškių g. 9, Vilnius",
+        "display_name": "Apranga, 9, Saltoniškių g., Saltoniškės, Žvėryno seniūnija, Vilnius, Vilniaus miesto savivaldybė, Vilniaus apskritis, 08105, Lietuva"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.2568922,
+          54.7002556
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "address": "Kalvarijų g. 88, Vilnius",
+        "display_name": "88, Kalvarijų g., Šnipiškės, Šnipiškių seniūnija, Vilnius, Vilniaus miesto savivaldybė, Vilniaus apskritis, 09303, Lietuva"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.282434,
+          54.7032122
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "address": "Ukmergės g. 256, Vilnius",
+        "display_name": "256, Ukmergės g., Fabijoniškės, Pašilaičių seniūnija, Vilnius, Vilniaus miesto savivaldybė, Vilniaus apskritis, 06120, Lietuva"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.2397731,
+          54.7268256
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "address": "Viršuliškių g. 40, Vilnius",
+        "display_name": "Mada, 40, Viršuliškių g., Viršuliškės, Viršuliškių seniūnija, Vilnius, Vilniaus miesto savivaldybė, Vilniaus apskritis, 05112, Lietuva"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.2278871,
+          54.707765
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "address": "Priegliaus g. 1, Vilnius",
+        "display_name": "PC „Pupa“, 1, Priegliaus g., Pilaitė, Pilaitės seniūnija, Vilnius, Vilniaus miesto savivaldybė, Vilniaus apskritis, 06269, Lietuva"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.187429,
+          54.7099447
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "address": "Vytauto Pociūno g. 8, Vilnius",
+        "display_name": "Vilnius Outlet, 8, Vytauto Pociūno g., Senoji Pilaitė, Pilaitės seniūnija, Vilnius, Vilniaus miesto savivaldybė, Vilniaus apskritis, 06264, Lietuva"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.2064706,
+          54.7035238
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "address": "Žemaitės g. 22, Vilnius",
+        "display_name": "Medžioklės centras, 22, Žemaitės g., Naujamiestis, Naujamiesčio seniūnija, Vilnius, Vilniaus miesto savivaldybė, Vilniaus apskritis, 03201, Lietuva"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.2577145,
+          54.6722673
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "address": "Žirmūnų g. 68A, Vilnius",
+        "display_name": "68A, Žirmūnų g., Žirmūnai, Žirmūnų seniūnija, Vilnius, Vilniaus miesto savivaldybė, Vilniaus apskritis, 09124, Lietuva"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.3032219,
+          54.7178692
+        ]
+      }
+    }
+  ]
+}
