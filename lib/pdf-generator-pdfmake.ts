@@ -677,6 +677,4 @@ export async function generatePDF(formData: FormData, t: TranslationFunction, lo
 
   // Generate and download PDF
   const pdfDocGenerator = pdfMake.createPdf(docDefinition)
-  pdfDocGenerator.download(`ev-docs-${formData.fullName.replace(/\s+/g, '-')}.pdf`)
-}
 
