@@ -264,27 +264,27 @@ export default function AIConsultantPage() {
               <CardContent className="space-y-2">
                 <Button
                   variant="outline"
-                  className="w-full justify-start text-left h-auto py-2 px-3"
+                  className="w-full justify-start text-left h-auto py-2 px-3 whitespace-normal"
                   onClick={() => setInput(t("exampleQuestions.q1"))}
                   disabled={isLoading}
                 >
-                  <span className="text-sm">{t("exampleQuestions.q1")}</span>
+                  <span className="text-sm break-words">{t("exampleQuestions.q1")}</span>
                 </Button>
                 <Button
                   variant="outline"
-                  className="w-full justify-start text-left h-auto py-2 px-3"
+                  className="w-full justify-start text-left h-auto py-2 px-3 whitespace-normal"
                   onClick={() => setInput(t("exampleQuestions.q2"))}
                   disabled={isLoading}
                 >
-                  <span className="text-sm">{t("exampleQuestions.q2")}</span>
+                  <span className="text-sm break-words">{t("exampleQuestions.q2")}</span>
                 </Button>
                 <Button
                   variant="outline"
-                  className="w-full justify-start text-left h-auto py-2 px-3"
+                  className="w-full justify-start text-left h-auto py-2 px-3 whitespace-normal"
                   onClick={() => setInput(t("exampleQuestions.q3"))}
                   disabled={isLoading}
                 >
-                  <span className="text-sm">{t("exampleQuestions.q3")}</span>
+                  <span className="text-sm break-words">{t("exampleQuestions.q3")}</span>
                 </Button>
               </CardContent>
             </Card>
@@ -316,4 +316,3 @@ export default function AIConsultantPage() {
     </div>
   )
 }
-
