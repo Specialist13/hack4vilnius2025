@@ -6,6 +6,7 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { forumAPI, APIError } from "@/lib/api"
 
 interface ReplyFormProps {
   postId: string
@@ -21,19 +22,20 @@ export function ReplyForm({ postId, onReplySubmit }: ReplyFormProps) {
     setIsSubmitting(true)
 
     try {
-      // TODO: Submit reply to backend
-      // POST /api/posts/{postId}/replies with { content }
-      // Expected response: { success: boolean, reply: Reply }
+      // Submit reply to backend
+      const response = await forumAPI.createReply(postId, { content })
 
-      console.log("[v0] Submitting reply to post:", postId, { content })
-
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000))
+      console.log("[Reply Form] Reply submitted:", response)
 
       setContent("")
       onReplySubmit()
     } catch (error) {
-      console.error("[v0] Error submitting reply:", error)
+      console.error("[Reply Form] Error submitting reply:", error)
+      if (error instanceof APIError) {
+        alert(`Failed to submit reply: ${error.data?.error || error.statusText}`)
+      } else {
+        alert("Failed to submit reply. Please try again.")
+      }
     } finally {
       setIsSubmitting(false)
     }

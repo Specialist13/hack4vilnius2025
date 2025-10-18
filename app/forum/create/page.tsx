@@ -13,6 +13,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { ArrowLeft } from "lucide-react"
 import { AddressPicker } from "@/components/map/address-picker"
 import { useTranslations } from "next-intl"
+import { forumAPI, APIError } from "@/lib/api"
 
 export default function CreatePostPage() {
   const t = useTranslations()
@@ -32,19 +33,31 @@ export default function CreatePostPage() {
     setIsSubmitting(true)
 
     try {
-      // TODO: Submit post to backend
-      // POST /api/posts with { title, content, address, status, language, coordinates }
-      // Expected response: { success: boolean, postId: string }
+      // Submit post to backend
+      const response = await forumAPI.createPost({
+        title: formData.title,
+        content: formData.content,
+        address: formData.address,
+        status: formData.status,
+        language: formData.language,
+        coordinates: formData.coordinates,
+      })
 
-      console.log("[v0] Creating new post:", formData)
+      console.log("[Create Post] Success:", response)
 
-      await new Promise((resolve) => setTimeout(resolve, 1000))
-
-      // TODO: Redirect to the newly created post
-      // router.push(`/forum/post/${response.postId}`)
-      router.push("/forum")
+      // Redirect to the newly created post or forum if no ID returned
+      if (response.postId || response.id) {
+        router.push(`/forum/post/${response.postId || response.id}`)
+      } else {
+        router.push("/forum")
+      }
     } catch (error) {
-      console.error("[v0] Error creating post:", error)
+      console.error("[Create Post] Error:", error)
+      if (error instanceof APIError) {
+        alert(`Failed to create post: ${error.data?.error || error.statusText}`)
+      } else {
+        alert("Failed to create post. Please try again.")
+      }
     } finally {
       setIsSubmitting(false)
     }

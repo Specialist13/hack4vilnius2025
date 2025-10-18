@@ -11,6 +11,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useTranslations } from "next-intl"
+import { authAPI, setAuthToken, APIError } from "@/lib/api"
 
 export function RegisterForm() {
   const t = useTranslations()
@@ -45,27 +46,34 @@ export function RegisterForm() {
     }
 
     try {
-      // TODO: Implement backend registration
-      // POST /api/auth/register with { name, email, password, address }
-      // Expected response: { success: boolean, token: string, user: { id, email, name, address } }
-
-      console.log("[v0] Registration attempt:", {
+      // Call backend registration API
+      const response = await authAPI.register({
         name: formData.name,
         email: formData.email,
-        address: formData.address,
+        password: formData.password,
+        address: formData.address || undefined,
       })
 
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000))
+      console.log("[Registration] Success:", {
+        email: response.email,
+        name: response.name,
+      })
 
-      // TODO: Store auth token in localStorage or cookies
-      // localStorage.setItem('authToken', response.token)
-
-      // TODO: Redirect to forum feed after successful registration
-      router.push("/forum")
+      // For registration, backend returns user data but not a token
+      // User needs to login after registration
+      // Redirect to login page with success message
+      router.push("/auth/login?registered=true")
     } catch (err) {
-      setError("Registration failed. Please try again.")
-      console.error("[v0] Registration error:", err)
+      if (err instanceof APIError) {
+        if (err.status === 400) {
+          setError(err.data?.error || "User already exists or invalid data provided.")
+        } else {
+          setError("Registration failed. Please try again.")
+        }
+      } else {
+        setError("Registration failed. Please try again.")
+      }
+      console.error("[Registration] Error:", err)
     } finally {
       setIsLoading(false)
     }
@@ -145,7 +153,7 @@ export function RegisterForm() {
             <Checkbox
               id="terms"
               checked={formData.agreeToTerms}
-              onCheckedChange={(checked) => setFormData({ ...formData, agreeToTerms: checked as boolean })}
+              onCheckedChange={(checked: boolean) => setFormData({ ...formData, agreeToTerms: checked as boolean })}
               disabled={isLoading}
             />
             <Label htmlFor="terms" className="text-sm leading-relaxed cursor-pointer">

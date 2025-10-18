@@ -8,6 +8,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Loader2, Bot, Send, MapPin, BarChart3, Lightbulb, TrendingUp } from "lucide-react"
 import { useTranslations } from "next-intl"
+import { aiAPI, APIError } from "@/lib/api"
 
 interface Message {
   id: string
@@ -45,72 +46,42 @@ export default function AIConsultantPage() {
     setIsLoading(true)
 
     try {
-      // TODO: Backend integration - AI Consultant API
-      // POST /api/ai-consultant/analyze
-      // Request body: {
-      //   message: string,
-      //   userLocation?: { address: string, coordinates: { lat: number, lng: number } }
-      // }
-      // Expected response: {
-      //   success: boolean,
-      //   response: string,
-      //   nearbyPosts?: Array<{
-      //     id: string,
-      //     title: string,
-      //     address: string,
-      //     distance: number (in km),
-      //     status: string
-      //   }>,
-      //   recommendation: {
-      //     action: "create_new" | "join_existing",
-      //     reasoning: string,
-      //     nearestDiscussions?: number
-      //   }
-      // }
+      // Call AI Consultant API
+      const response = await aiAPI.analyze({
+        message: input,
+        // TODO: Get user location from context or map selection
+        // userLocation: { address: "...", coordinates: { lat: 0, lng: 0 } }
+      })
 
-      // AI Prompt Context for Backend:
-      // You are an AI consultant for ChargeVilnius, a platform connecting Vilnius residents 
-      // who want to bring EV charging infrastructure to their apartment buildings.
-      // 
-      // Your role is to:
-      // 1. Analyze the user's location (building address and coordinates)
-      // 2. Calculate distances to all existing forum posts about EV charging
-      // 3. Consider factors like:
-      //    - Distance to nearest discussions (< 500m = very close, < 2km = nearby, > 2km = far)
-      //    - Status of nearby discussions (open/in-progress/resolved)
-      //    - Number of active participants in nearby discussions
-      //    - Population density in the area
-      // 4. Provide personalized recommendations:
-      //    - If nearby active discussions exist (< 500m): Strongly recommend joining
-      //    - If discussions 500m-2km away: Suggest joining or coordinating
-      //    - If no discussions within 2km: Recommend creating new post
-      //    - If nearby resolved discussions: Highlight success stories
-      // 5. Be conversational, helpful, and encouraging
-      // 6. Provide specific data: distances, number of interested residents, success rate
-      // 
-      // Always respond in the user's language (detect from message or use platform language setting)
+      console.log("[AI Consultant] Response:", response)
 
-      console.log("[AI Consultant] User message:", input)
-      console.log("[AI Consultant] TODO: Send to backend with user location data")
-
-      // Simulate API delay
-      await new Promise((resolve) => setTimeout(resolve, 2000))
-
-      // Mock response (will be replaced with actual AI response from backend)
+      // Create assistant message from response
       const assistantMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: "assistant",
-        content: `${t("comingSoonDescription")}\n\n${t("promptToStart")}`,
+        content: response.response || response.message || "I received your message. How can I help you further?",
         timestamp: new Date(),
       }
 
       setMessages((prev) => [...prev, assistantMessage])
     } catch (error) {
       console.error("[AI Consultant] Error:", error)
+      
+      let errorContent = "Sorry, I encountered an error. Please try again later."
+      
+      if (error instanceof APIError) {
+        if (error.status === 404) {
+          // API endpoint not implemented yet - show coming soon message
+          errorContent = `${t("comingSoonDescription")}\n\n${t("promptToStart")}`
+        } else {
+          errorContent = error.data?.error || "An error occurred while processing your request."
+        }
+      }
+      
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: "assistant",
-        content: "Sorry, I encountered an error. Please try again later.",
+        content: errorContent,
         timestamp: new Date(),
       }
       setMessages((prev) => [...prev, errorMessage])
