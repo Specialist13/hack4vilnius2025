@@ -1,7 +1,7 @@
 {
   "common": {
-    "appName": "ChargeVilnius",
-    "tagline": "Bendruomenės Forumas",
+    "appName": "Chargington",
+    "tagline": "Jūsų krovimo stotelių asistentas",
     "loading": "Kraunama...",
     "error": "Klaida",
     "submit": "Pateikti",
@@ -25,40 +25,40 @@
     "login": "Prisijungti",
     "signup": "Registruotis",
     "logout": "Atsijungti",
-    "aiConsultant": "AI Konsultantas"
+    "aiConsultant": "AI konsultantas"
   },
   "home": {
     "hero": {
-      "title": "Suvienykit Bendruomenę EV Įkrovimui",
-      "subtitle": "Susisiekite su kaimynais Vilniaus daugiabučiuose, kad kartu kovotumėte už elektromobilių įkrovimo infrastruktūrą.",
+      "title": "Jūsų krovimo stotelių asistentas",
+      "subtitle": "Čia rasite viską, ko reikia apie elektromobilių krovimo stoteles!",
       "getStarted": "Pradėti",
-      "viewMap": "Žiūrėti Žemėlapį"
+      "viewMap": "Žiūrėti žemėlapį"
     },
     "howItWorks": {
-      "title": "Kaip Tai Veikia",
-      "subtitle": "Prisijunkite prie judėjimo, kad atneštumėte EV įkrovimą į savo pastatą trimis paprastais žingsniais.",
+      "title": "Kaip tai veikia",
+      "subtitle": "Įsirenkite krovimo stotelę savo kieme trimis paprastais žingsniais.",
       "step1": {
-        "title": "Raskite Savo Vietą",
+        "title": "Raskite savo namą",
         "description": "Ieškokite savo daugiabučio adreso Vilniuje ir sužinokite, ar kiti jau diskutuoja apie EV įkrovimą."
       },
       "step2": {
-        "title": "Susisiekite su Kaimynais",
+        "title": "Susisiekite su kaimynais",
         "description": "Prisijunkite prie esamų diskusijų arba pradėkite naują forumo įrašą, kad susisiektumėte su gyventojais, kurie dalijasi jūsų susidomėjimu EV įkrovimu."
       },
       "step3": {
-        "title": "Veikite Kartu",
+        "title": "Veikite kartu",
         "description": "Bendradarbiaukite su kaimynais, kad pateiktumėte vieningą pasiūlymą pastato administracijai ar vietos valdžiai."
       }
     },
     "cta": {
-      "title": "Pasiruošę Judėti Pirmyn?",
+      "title": "Pasiruošę judėti pirmyn?",
       "subtitle": "Prisijunkite prie šimtų Vilniaus gyventojų, kurie dirba kartu, kad atneštų EV įkrovimo infrastruktūrą į savo pastatus.",
-      "button": "Prisijungti prie Bendruomenės"
+      "button": "Prisijungti prie bendruomenės"
     }
   },
   "auth": {
     "login": {
-      "title": "Sveiki Sugrįžę",
+      "title": "Sveiki sugrįžę",
       "subtitle": "Prisijunkite prie savo paskyros",
       "description": "Prisijunkite prie savo paskyros, kad tęstumėte kovą už EV įkrovimą savo pastate.",
       "email": "El. paštas",
@@ -71,35 +71,35 @@
       "signupLink": "Registruotis"
     },
     "register": {
-      "title": "Sukurti Paskyrą",
+      "title": "Sukurti paskyrą",
       "subtitle": "Prisijunkite prie bendruomenės",
       "description": "Sukurkite paskyrą, kad pradėtumėte bendrauti su kaimynais ir kovoti už EV įkrovimą.",
       "name": "Vardas Pavardė",
       "namePlaceholder": "Jonas Jonaitis",
       "email": "El. paštas",
       "emailPlaceholder": "jonas@pavyzdys.lt",
-      "address": "Pastato Adresas",
+      "address": "Pastato adresas",
       "addressPlaceholder": "Gedimino pr. 1, Vilnius",
       "password": "Slaptažodis",
       "passwordPlaceholder": "Sukurkite stiprų slaptažodį",
-      "confirmPassword": "Patvirtinti Slaptažodį",
+      "confirmPassword": "Patvirtinti slaptažodį",
       "confirmPasswordPlaceholder": "Pakartokite slaptažodį",
       "terms": "Sutinku su",
-      "termsLink": "Paslaugų Teikimo Sąlygomis",
+      "termsLink": "Paslaugų teikimo sąlygomis",
       "and": "ir",
-      "privacyLink": "Privatumo Politika",
-      "submit": "Sukurti Paskyrą",
+      "privacyLink": "Privatumo politika",
+      "submit": "Sukurti paskyrą",
       "hasAccount": "Jau turite paskyrą?",
       "loginLink": "Prisijungti"
     }
   },
   "forum": {
-    "title": "Bendruomenės Forumas",
+    "title": "Bendruomenės forumas",
     "searchPlaceholder": "Ieškoti pagal adresą...",
     "searchButton": "Ieškoti",
-    "createPost": "Sukurti Įrašą",
+    "createPost": "Sukurti įrašą",
     "tabs": {
-      "all": "Visi Įrašai",
+      "all": "Visi įrašai",
       "active": "Aktyvūs",
       "planning": "Planuojami",
       "completed": "Užbaigti"
@@ -114,55 +114,55 @@
     "supporters": "rėmėjai",
     "views": "peržiūros",
     "post": {
-      "backToForum": "Atgal į Forumą",
+      "backToForum": "Atgal į forumą",
       "notFound": "Įrašas nerastas",
       "repliesCount": "Atsakymai",
       "reply": "Atsakyti",
       "support": "Palaikyti"
     },
     "create": {
-      "title": "Sukurti Naują Įrašą",
-      "postTitle": "Įrašo Pavadinimas",
+      "title": "Sukurti naują įrašą",
+      "postTitle": "Įrašo pavadinimas",
       "postTitlePlaceholder": "pvz., Reikalingas EV įkrovimas Gedimino pr. 15",
-      "address": "Pastato Adresas",
+      "address": "Pastato adresas",
       "addressPlaceholder": "Įveskite savo pastato adresą",
       "selectOnMap": "Arba pasirinkite vietą žemėlapyje",
       "clickMap": "Spustelėkite žemėlapyje, kad pasirinktumėte savo pastato vietą",
       "selectedLocation": "Pasirinkta vieta",
-      "language": "Įrašo Kalba",
+      "language": "Įrašo kalba",
       "languageHelp": "Pasirinkite šio įrašo kalbą",
-      "content": "Įrašo Turinys",
+      "content": "Įrašo turinys",
       "contentPlaceholder": "Aprašykite savo situaciją, kiek gyventojų domisi ir kokius žingsnius jau ėmėte...",
-      "submit": "Sukurti Įrašą",
+      "submit": "Sukurti įrašą",
       "submitting": "Kuriama..."
     },
     "reply": {
       "placeholder": "Pasidalinkite savo mintimis, patirtimi ar patarimais...",
-      "submit": "Paskelbti Atsakymą",
+      "submit": "Paskelbti atsakymą",
       "submitting": "Skelbiama..."
     }
   },
   "map": {
-    "title": "EV Įkrovimo Diskusijų Žemėlapis",
+    "title": "EV įkrovimo diskusijų žemėlapis",
     "subtitle": "Tyrinėkite, kur Vilniaus gyventojai kovoja už EV įkrovimo infrastruktūrą.",
     "description": "Šis žemėlapis rodo gyventojų tankį kvadratuose ir esamas EV įkrovimo stoteles Vilniuje. Naudokite jį, kad atrastumėte zonas, kuriose trūksta įkrovimo infrastruktūros, nepaisant didelio gyventojų tankio—tai puikios vietos bendruomenės inicijuotoms EV įkrovimo stotėlėms.",
     "stats": {
-      "activeDiscussions": "Aktyvios Diskusijos",
+      "activeDiscussions": "Aktyvios diskusijos",
       "activeChange": "+12 šį mėnesį",
-      "buildings": "Įtraukti Pastatai",
+      "buildings": "Įtraukti pastatai",
       "buildingsChange": "+8 šį mėnesį",
-      "residents": "Įsitraukę Gyventojai",
+      "residents": "Įsitraukę gyventojai",
       "residentsChange": "+45 šį mėnesį"
     },
     "legend": {
-      "title": "Žemėlapio Legenda",
+      "title": "Žemėlapio legenda",
       "activeLocation": "Aktyvi diskusijos vieta",
       "buildingWithPosts": "Pastatas su forumo įrašais",
       "multipleResidents": "Keli gyventojai domisi",
       "clickMarker": "Spustelėkite žymeklį, kad pamatytumėte įrašus"
     },
     "howToUse": {
-      "title": "Kaip Naudoti Šį Žemėlapį",
+      "title": "Kaip naudoti šį žemėlapį",
       "step1": "Spustelėkite bet kurį žymeklį, kad pamatytumėte to pastato forumo diskusijas",
       "step2": "Naudokite paieškos juostą, kad rastumėte savo adresą ar netoliese esančius pastatus",
       "step3": "Priartinkite ir atitolinkite, kad tyrinėtumėte skirtingas Vilniaus apylinkes",
@@ -172,46 +172,46 @@
     "error": "Nepavyko įkelti žemėlapio",
     "reload": "Perkrauti",
     "placeholder": {
-      "title": "ArcGIS Žemėlapio Vieta",
+      "title": "ArcGIS žemėlapio vieta",
       "description": "Čia bus integruotas interaktyvus ArcGIS žemėlapis. Žemėlapis rodys visus Vilniaus pastatus su aktyviomis EV įkrovimo diskusijomis."
     }
   },
   "about": {
-    "title": "Apie ChargeVilnius",
+    "title": "Apie Chargington",
     "subtitle": "Įgaliname Vilniaus gyventojus atnešti elektromobilių įkrovimo infrastruktūrą į savo daugiabučius.",
     "mission": {
-      "title": "Mūsų Misija",
-      "description": "ChargeVilnius buvo sukurtas spręsti bendrą problemą: atskiriems daugiabučių gyventojams sunku įtikinti pastato administraciją įrengti EV įkrovimo stoteles. Sujungdami kaimynus ir suteikdami platformą kolektyviniam veikimui, mes palengviname paklausos demonstravimą ir pastangų koordinavimą."
+      "title": "Mūsų misija",
+      "description": "Chargington buvo sukurtas spręsti bendrą problemą: atskiriems daugiabučių gyventojams sunku įtikinti pastato administraciją įrengti EV įkrovimo stoteles. Sujungdami kaimynus ir suteikdami platformą kolektyviniam veikimui, mes palengviname paklausos demonstravimą ir pastangų koordinavimą."
     },
     "values": {
-      "title": "Mūsų Vertybės",
+      "title": "Mūsų vertybės",
       "description": "Mes tikime bendruomenės galia, tvariu transportu ir Vilniaus pavertimu žalesniu miestu. Kiekvienas balsas svarbus, ir kartu galime paspartinti perėjimą prie elektrinės mobilumo mūsų mieste."
     },
     "howItWorks": {
-      "title": "Kaip Tai Veikia",
+      "title": "Kaip tai veikia",
       "share": {
-        "title": "Dalinkitės ir Bendraujate",
+        "title": "Dalinkitės ir bendraujate",
         "description": "Kurkite įrašus apie savo pastato EV įkrovimo poreikius ir susisiekite su kaimynais, kurie dalijasi jūsų tikslais."
       },
       "discover": {
-        "title": "Atraskite Netoliese",
+        "title": "Atraskite netoliese",
         "description": "Naudokite mūsų interaktyvų žemėlapį, kad rastumėte kitus pastatus jūsų rajone, dirbančius su panašiomis iniciatyvomis."
       },
       "action": {
-        "title": "Imkitės Veiksmų",
+        "title": "Imkitės veiksmų",
         "description": "Koordinuokite su savo bendruomene, kad pateiktumėte vieningą pasiūlymą pastato administracijai ar vietos valdžiai."
       }
     },
     "cta": {
-      "title": "Prisijunkite prie Judėjimo",
-      "description": "Nesvarbu, ar jau turite EV, ar planuojate pereiti, ChargeVilnius padeda žengti pirmąjį žingsnį link įkrovimo infrastruktūros jūsų pastate.",
+      "title": "Prisijunkite prie judėjimo",
+      "description": "Nesvarbu, ar jau turite EV, ar planuojate pereiti, Chargington padeda žengti pirmąjį žingsnį link įkrovimo infrastruktūros jūsų pastate.",
       "getStarted": "Pradėti",
-      "viewForum": "Žiūrėti Forumą"
+      "viewForum": "Žiūrėti forumą"
     },
     "contact": "Klausimai ar pasiūlymai? Susisiekite su mumis"
   },
   "footer": {
-    "description": "Sujungiame Vilniaus gyventojus, kad kovotų už EV įkrovimo infrastruktūrą daugiabučiuose.",
+    "description": "Čia rasite viską, ko reikia apie elektromobilių krovimo stoteles!",
     "community": {
       "title": "Bendruomenė",
       "forum": "Forumas",
@@ -225,23 +225,23 @@
       "contact": "Kontaktai"
     },
     "legal": {
-      "title": "Teisinė Informacija",
-      "privacy": "Privatumo Politika",
-      "terms": "Paslaugų Teikimo Sąlygos"
+      "title": "Teisinė informacija",
+      "privacy": "Privatumo politika",
+      "terms": "Paslaugų teikimo sąlygos"
     },
     "copyright": "Visos teisės saugomos."
   },
   "terms": {
-    "title": "Paslaugų Teikimo Sąlygos",
+    "title": "Paslaugų teikimo sąlygos",
     "lastUpdated": "Paskutinį kartą atnaujinta: 2025 m. sausio 18 d.",
     "sections": {
       "acceptance": {
-        "title": "1. Sąlygų Priėmimas",
-        "content": "Prisijungdami ir naudodamiesi ChargeVilnius (\"Paslauga\"), jūs sutinkate ir įsipareigojate laikytis šio susitarimo sąlygų ir nuostatų. Jei nesutinkate su šiomis sąlygomis, prašome nenaudoti Paslaugos."
+        "title": "1. Sąlygų priėmimas",
+        "content": "Prisijungdami ir naudodamiesi Chargington (\"Paslauga\"), jūs sutinkate ir įsipareigojate laikytis šio susitarimo sąlygų ir nuostatų. Jei nesutinkate su šiomis sąlygomis, prašome nenaudoti Paslaugos."
       },
       "description": {
-        "title": "2. Paslaugos Aprašymas",
-        "content": "ChargeVilnius teikia bendruomenės forumo platformą daugiabučių namų gyventojams Vilniuje, Lietuvoje, diskutuoti, organizuoti ir kovoti už elektromobilių (EV) įkrovimo infrastruktūrą. Paslauga apima forumo diskusijas, interaktyvius žemėlapius ir bendruomenės koordinavimo įrankius."
+        "title": "2. Paslaugos aprašymas",
+        "content": "Chargington teikia bendruomenės forumo platformą daugiabučių namų gyventojams Vilniuje, Lietuvoje, diskutuoti, organizuoti ir kovoti už elektromobilių (EV) įkrovimo infrastruktūrą. Paslauga apima forumo diskusijas, interaktyvius žemėlapius ir bendruomenės koordinavimo įrankius."
       },
       "accounts": {
         "title": "3. Vartotojo Paskyros ir Registracija",
@@ -272,15 +272,15 @@
       },
       "ip": {
         "title": "6. Intelektinė Nuosavybė",
-        "content": "Paslauga ir jos originalus turinys, funkcijos ir funkcionalumas priklauso ChargeVilnius ir yra saugomi tarptautinių autorių teisių, prekių ženklų ir kitų intelektinės nuosavybės įstatymų. Vartotojų sukurtas turinys lieka atitinkamų vartotojų nuosavybė, tačiau skelbdami suteikiate ChargeVilnius licenciją naudoti, rodyti ir platinti tą turinį Paslaugoje."
+        "content": "Paslauga ir jos originalus turinys, funkcijos ir funkcionalumas priklauso Chargington ir yra saugomi tarptautinių autorių teisių, prekių ženklų ir kitų intelektinės nuosavybės įstatymų. Vartotojų sukurtas turinys lieka atitinkamų vartotojų nuosavybė, tačiau skelbdami suteikiate Chargington licenciją naudoti, rodyti ir platinti tą turinį Paslaugoje."
       },
       "warranty": {
         "title": "7. Garantijų Atsisakymas",
-        "content": "Paslauga teikiama \"kaip yra\" ir \"kaip prieinama\" be jokių garantijų, nei aiškių, nei numanomų. ChargeVilnius negarantuoja, kad Paslauga bus nepertraukiama, saugi ar be klaidų. Mes negarantuojame vartotojų pateiktos informacijos tikslumo ar išsamumo."
+        "content": "Paslauga teikiama \"kaip yra\" ir \"kaip prieinama\" be jokių garantijų, nei aiškių, nei numanomų. Chargington negarantuoja, kad Paslauga bus nepertraukiama, saugi ar be klaidų. Mes negarantuojame vartotojų pateiktos informacijos tikslumo ar išsamumo."
       },
       "liability": {
         "title": "8. Atsakomybės Apribojimas",
-        "content": "ChargeVilnius nebus atsakingas už jokias netiesiogines, atsitiktines, specialias, pasekmes ar baudžiamąsias žalas, atsiradusias dėl jūsų naudojimosi ar negalėjimo naudotis Paslauga. Tai apima žalą dėl pelno, duomenų ar kitų nematerialių nuostolių praradimo."
+        "content": "Chargington nebus atsakingas už jokias netiesiogines, atsitiktines, specialias, pasekmes ar baudžiamąsias žalas, atsiradusias dėl jūsų naudojimosi ar negalėjimo naudotis Paslauga. Tai apima žalą dėl pelno, duomenų ar kitų nematerialių nuostolių praradimo."
       },
       "modifications": {
         "title": "9. Paslaugos Pakeitimai",
@@ -292,7 +292,7 @@
       },
       "contact": {
         "title": "11. Kontaktinė Informacija",
-        "content": "Jei turite klausimų dėl šių Sąlygų, susisiekite su mumis: info@chargevilnius.lt"
+        "content": "Jei turite klausimų dėl šių Sąlygų, susisiekite su mumis: info@Chargington.lt"
       }
     }
   },
@@ -302,7 +302,7 @@
     "sections": {
       "intro": {
         "title": "1. Įvadas",
-        "content": "ChargeVilnius (\"mes\", \"mūsų\" arba \"mus\") įsipareigoja saugoti jūsų privatumą. Ši Privatumo Politika paaiškina, kaip renkame, naudojame, atskleidžiame ir saugome jūsų informaciją, kai naudojatės mūsų bendruomenės forumo platforma. Ši politika atitinka Bendrąjį duomenų apsaugos reglamentą (BDAR) ir Lietuvos duomenų apsaugos įstatymus."
+        "content": "Chargington (\"mes\", \"mūsų\" arba \"mus\") įsipareigoja saugoti jūsų privatumą. Ši Privatumo Politika paaiškina, kaip renkame, naudojame, atskleidžiame ir saugome jūsų informaciją, kai naudojatės mūsų bendruomenės forumo platforma. Ši politika atitinka Bendrąjį duomenų apsaugos reglamentą (BDAR) ir Lietuvos duomenų apsaugos įstatymus."
       },
       "collection": {
         "title": "2. Informacija, Kurią Renkame",
@@ -364,7 +364,7 @@
           "Duomenų perkeliamumui",
           "Bet kada atšaukti sutikimą"
         ],
-        "contact": "Norėdami pasinaudoti šiomis teisėmis, susisiekite su mumis: privacy@chargevilnius.lt"
+        "contact": "Norėdami pasinaudoti šiomis teisėmis, susisiekite su mumis: privacy@Chargington.lt"
       },
       "security": {
         "title": "6. Duomenų Saugumas",
@@ -384,33 +384,33 @@
       },
       "contact": {
         "title": "10. Susisiekite su Mumis",
-        "content": "Jei turite klausimų dėl šios Privatumo Politikos, susisiekite su mumis: privacy@chargevilnius.lt"
+        "content": "Jei turite klausimų dėl šios Privatumo Politikos, susisiekite su mumis: privacy@Chargington.lt"
       }
     }
   },
   "faq": {
-    "title": "Dažniausiai Užduodami Klausimai",
-    "subtitle": "Raskite atsakymus į dažniausius klausimus apie ChargeVilnius ir EV įkrovimą daugiabučiuose.",
+    "title": "Privatumo politika",
+    "subtitle": "Raskite atsakymus į dažniausius klausimus apie Chargington ir EV įkrovimą daugiabučiuose.",
     "categories": {
       "general": {
-        "title": "Bendrieji Klausimai",
+        "title": "Bendrieji klausimai",
         "questions": [
           {
-            "q": "Kas yra ChargeVilnius?",
-            "a": "ChargeVilnius yra bendruomenės platforma, jungianti daugiabučių namų gyventojus Vilniuje, kurie nori kovoti už elektromobilių (EV) įkrovimo infrastruktūrą. Mes padedame kaimynams rasti vienas kitą, dalintis patirtimi ir koordinuoti pastangas, kad atneštų įkrovimo stoteles į savo pastatus."
+            "q": "Kas yra Chargington?",
+            "a": "Chargington yra bendruomenės platforma, jungianti daugiabučių namų gyventojus Vilniuje, kurie nori kovoti už elektromobilių (EV) įkrovimo infrastruktūrą. Mes padedame kaimynams rasti vienas kitą, dalintis patirtimi ir koordinuoti pastangas, kad atneštų įkrovimo stoteles į savo pastatus."
           },
           {
-            "q": "Ar ChargeVilnius naudojimas nemokamas?",
-            "a": "Taip, ChargeVilnius naudojimas yra visiškai nemokamas. Mes tikime, kad prieiga prie tvarios transporto infrastruktūros turėtų būti prieinama visiems, ir mūsų platforma padeda tai įgyvendinti per bendruomenės koordinavimą."
+            "q": "Ar Chargington naudojimas nemokamas?",
+            "a": "Taip, Chargington naudojimas yra visiškai nemokamas. Mes tikime, kad prieiga prie tvarios transporto infrastruktūros turėtų būti prieinama visiems, ir mūsų platforma padeda tai įgyvendinti per bendruomenės koordinavimą."
           },
           {
-            "q": "Kas gali naudotis ChargeVilnius?",
-            "a": "Bet kas, gyvenantis daugiabučiame name Vilniuje, Lietuvoje, gali naudotis ChargeVilnius. Nesvarbu, ar jau turite elektromobilį, ar planuojate jį įsigyti, galite prisijungti prie bendruomenės ir pradėti bendrauti su savo kaimynais."
+            "q": "Kas gali naudotis Chargington?",
+            "a": "Bet kas, gyvenantis daugiabučiame name Vilniuje, Lietuvoje, gali naudotis Chargington. Nesvarbu, ar jau turite elektromobilį, ar planuojate jį įsigyti, galite prisijungti prie bendruomenės ir pradėti bendrauti su savo kaimynais."
           }
         ]
       },
       "technical": {
-        "title": "Techniniai Klausimai",
+        "title": "Techniniai klausimai",
         "questions": [
           {
             "q": "Kokie EV įkrovimo stotelių tipai tinka daugiabučiams?",
@@ -431,7 +431,7 @@
         "questions": [
           {
             "q": "Ar man reikia leidimo iš pastato administracijos?",
-            "a": "Taip, daugumoje atvejų jums reikės patvirtinimo iš pastato savininkų bendruomenės (HOA) arba valdymo įmonės. Patvirtinimo procesas skiriasi, bet paprastai reikia pateikti pasiūlymą savininkų susirinkime. Keli suinteresuoti gyventojai (kuriuos ChargeVilnius padeda rasti) stipriai sustiprina jūsų poziciją."
+            "a": "Taip, daugumoje atvejų jums reikės patvirtinimo iš pastato savininkų bendruomenės (HOA) arba valdymo įmonės. Patvirtinimo procesas skiriasi, bet paprastai reikia pateikti pasiūlymą savininkų susirinkime. Keli suinteresuoti gyventojai (kuriuos Chargington padeda rasti) stipriai sustiprina jūsų poziciją."
           },
           {
             "q": "Kokie yra teisiniai reikalavimai Lietuvoje?",
@@ -439,7 +439,7 @@
           },
           {
             "q": "Ar galiu įrengti įkrovimo stotelę tik savo parkavimo vietoje?",
-            "a": "Daugumoje atvejų taip, bet vis tiek reikia HOA patvirtinimo net privačiam įrengimui. Paprastai reikės: 1) Gauti elektros pajėgumo vertinimą, 2) Pateikti planus HOA, 3) Gauti daugumos balsų patvirtinimą, 4) Samdyti sertifikuotą elektriką, 5) Padengti visas išlaidas patiems. Tačiau koordinavimas su kaimynais (per ChargeVilnius) gali lemti geresnius, ekonomiškesnius sprendimus visiems."
+            "a": "Daugumoje atvejų taip, bet vis tiek reikia HOA patvirtinimo net privačiam įrengimui. Paprastai reikės: 1) Gauti elektros pajėgumo vertinimą, 2) Pateikti planus HOA, 3) Gauti daugumos balsų patvirtinimą, 4) Samdyti sertifikuotą elektriką, 5) Padengti visas išlaidas patiems. Tačiau koordinavimas su kaimynais (per Chargington) gali lemti geresnius, ekonomiškesnius sprendimus visiems."
           }
         ]
       },
@@ -448,27 +448,27 @@
         "questions": [
           {
             "q": "Kiek kaimynų man reikia, kad pradėčiau EV įkrovimo iniciatyvą?",
-            "a": "Nors vienas asmuo gali pasiūlyti idėją, turėjimas 3-5 suinteresuotų gyventojų žymiai padidina jūsų sėkmės galimybes. Tai parodo tikrą paklausą ir daro kainą vienam gyventojui patrauklesnę. ChargeVilnius padeda rasti šiuos kaimynus jūsų pastate."
+            "a": "Nors vienas asmuo gali pasiūlyti idėją, turėjimas 3-5 suinteresuotų gyventojų žymiai padidina jūsų sėkmės galimybes. Tai parodo tikrą paklausą ir daro kainą vienam gyventojui patrauklesnę. Chargington padeda rasti šiuos kaimynus jūsų pastate."
           },
           {
             "q": "Kokie yra įprasti žingsniai EV įkrovimo įrengimui?",
-            "a": "1) Raskite suinteresuotus kaimynus (naudokite ChargeVilnius!), 2) Gaukite elektros pajėgumo vertinimą, 3) Gaukite pasiūlymus iš įrengimo įmonių, 4) Paruoškite pasiūlymą su išlaidomis ir grafiku, 5) Pristatykite HOA susirinkime, 6) Gaukite daugumos balsų patvirtinimą, 7) Pasirašykite sutartis ir pradėkite įrengimą, 8) Paprastai užtrunka 3-12 mėnesių iš viso."
+            "a": "1) Raskite suinteresuotus kaimynus (naudokite Chargington!), 2) Gaukite elektros pajėgumo vertinimą, 3) Gaukite pasiūlymus iš įrengimo įmonių, 4) Paruoškite pasiūlymą su išlaidomis ir grafiku, 5) Pristatykite HOA susirinkime, 6) Gaukite daugumos balsų patvirtinimą, 7) Pasirašykite sutartis ir pradėkite įrengimą, 8) Paprastai užtrunka 3-12 mėnesių iš viso."
           },
           {
             "q": "Kaip įtikinti skeptiškus kaimynus?",
-            "a": "Sutelkite dėmesį į: 1) Pastato paruošimą ateičiai (EV naudojimas sparčiai auga), 2) Turto vertės didinimą, 3) Jokių išlaidų ne-EV savininkams, jei vartotojai moka už įrengimą ir elektrą, 4) Aplinkosaugos naudą, 5) Dalinkitės sėkmės istorijomis iš kitų pastatų (rasite ChargeVilnius forume)."
+            "a": "Sutelkite dėmesį į: 1) Pastato paruošimą ateičiai (EV naudojimas sparčiai auga), 2) Turto vertės didinimą, 3) Jokių išlaidų ne-EV savininkams, jei vartotojai moka už įrengimą ir elektrą, 4) Aplinkosaugos naudą, 5) Dalinkitės sėkmės istorijomis iš kitų pastatų (rasite Chargington forume)."
           }
         ]
       }
     }
   },
   "guidelines": {
-    "title": "Bendruomenės Gairės",
+    "title": "Bendruomenės gairės",
     "subtitle": "Padėkite mums palaikyti pagarbią, naudingą ir produktyvią bendruomenę visiems nariams.",
-    "intro": "ChargeVilnius sukurtas remiantis principu, kad kaimynai padeda kaimynams. Šios gairės užtikrina, kad mūsų bendruomenė išliktų svetinga, konstruktyvi ir sutelkta į bendrą tikslą - atnešti EV įkrovimo infrastruktūrą į Vilniaus daugiabučius.",
+    "intro": "Chargington sukurtas remiantis principu, kad kaimynai padeda kaimynams. Šios gairės užtikrina, kad mūsų bendruomenė išliktų svetinga, konstruktyvi ir sutelkta į bendrą tikslą - atnešti EV įkrovimo infrastruktūrą į Vilniaus daugiabučius.",
     "sections": {
       "respect": {
-        "title": "Būkite Pagarbus ir Konstruktyvūs",
+        "title": "Gerbkite visus bendruomenės narius ir konstruktyvūs",
         "items": [
           "Gerbkite visus bendruomenės narius, nepriklausomai nuo jų EV nuosavybės statuso ar techninių žinių",
           "Nesutikite mandagiai ir sutelkite dėmesį į idėjas, o ne asmeninius puolimus",
@@ -477,7 +477,7 @@
         ]
       },
       "helpful": {
-        "title": "Būkite Naudingi ir Dalinkitės Žiniomis",
+        "title": "Būkite naudingi ir dalinkitės žiniomis",
         "items": [
           "Dalinkitės savo patirtimi, tiek sėkmėmis, tiek nesėkmėmis - kiti gali mokytis iš abiejų",
           "Pateikite konkrečias detales, kai diskutuojate apie išlaidas, terminus ir paslaugų teikėjus",
@@ -487,7 +487,7 @@
         ]
       },
       "accurate": {
-        "title": "Išlaikykite Informaciją Tikslią",
+        "title": "Išlaikykite informaciją tikslią",
         "items": [
           "Skelbiankite tik apie pastatus, kuriuose esate gyventojas arba turite leidimą atstovauti",
           "Pateikite tikslų adresą ir kontaktinę informaciją",
@@ -497,7 +497,7 @@
         ]
       },
       "privacy": {
-        "title": "Gerbkite Privatumą",
+        "title": "Gerbkite privatumą",
         "items": [
           "Nedalinkitės kitų asmenine informacija (vardais, telefono numeriais, butų numeriais) be leidimo",
           "Žinokite, kad jūsų įrašai yra vieši ir susieti su jūsų pastato adresu",
@@ -506,7 +506,7 @@
         ]
       },
       "ontopic": {
-        "title": "Laikykitės Temos",
+        "title": "Laikykitės temos",
         "items": [
           "Diskusijas palaikykite sutelktas į EV įkrovimo infrastruktūrą ir susijusias temas",
           "Venkite bendrų politinių debatų, religinių diskusijų ar ne pagal temą pokalbių",
@@ -515,7 +515,7 @@
         ]
       },
       "legal": {
-        "title": "Laikykitės Įstatymų ir Taisyklių",
+        "title": "Laikykitės taisyklių",
         "items": [
           "Neraginkite ir nediskutuokite apie neteisėtą veiklą",
           "Gerbkite intelektinę nuosavybę ir autorių teises",
@@ -526,70 +526,70 @@
       }
     },
     "reporting": {
-      "title": "Pažeidimų Pranešimas",
-      "description": "Jei matote turinį, kuris pažeidžia šias gaires, prašome pranešti mūsų moderavimo komandai: moderation@chargevilnius.lt. Įtraukite nuorodą į įrašą ir trumpą problemos aprašymą."
+      "title": "Pažeidimų pranešimas",
+      "description": "Jei matote turinį, kuris pažeidžia šias gaires, prašome pranešti mūsų moderavimo komandai: moderation@Chargington.lt. Įtraukite nuorodą į įrašą ir trumpą problemos aprašymą."
     },
     "consequences": {
-      "title": "Pažeidimų Pasekmės",
+      "title": "Pažeidimų pasekmės",
       "description": "Šių gairių pažeidimai gali lemti: įspėjimus, laikiną sustabdymą arba nuolatinį paskyros nutraukimą, priklausomai nuo rimtumo ir dažnio. Mes siekiame pirmiausia mokyti, bet rimti pažeidimai (priekabiavimas, neapykantos kalba, neteisėtas turinys) lems nedelsiantį pašalinimą."
     }
   },
   "contact": {
     "title": "Susisiekite su Mumis",
-    "subtitle": "Susisiekite su ChargeVilnius komanda. Mes čia, kad padėtume!",
+    "subtitle": "Susisiekite su Chargington komanda. Mes čia, kad padėtume!",
     "intro": "Turite klausimų, pasiūlymų ar reikia pagalbos? Norėtume išgirsti iš jūsų.",
     "methods": {
       "email": {
         "title": "El. paštas",
         "general": {
-          "label": "Bendrieji Klausimai",
-          "value": "info@chargevilnius.lt",
+          "label": "Bendrieji klausimai",
+          "value": "info@Chargington.lt",
           "description": "Bendriems klausimams apie platformą, partnerystes ar žiniasklaidos užklausoms"
         },
         "support": {
-          "label": "Techninė Parama",
-          "value": "support@chargevilnius.lt",
+          "label": "Pagalba",
+          "value": "support@Chargington.lt",
           "description": "Pagalbai su jūsų paskyra, techninėmis problemomis ar klaidų pranešimams"
         },
         "privacy": {
-          "label": "Privatumas ir Duomenys",
-          "value": "privacy@chargevilnius.lt",
+          "label": "Privatumas ir duomenys",
+          "value": "privacy@Chargington.lt",
           "description": "Klausimams apie privatumą, duomenų apsaugą ar BDAR užklausoms"
         },
         "moderation": {
-          "label": "Turinio Moderavimas",
-          "value": "moderation@chargevilnius.lt",
+          "label": "Turinio moderavimas",
+          "value": "moderation@Chargington.lt",
           "description": "Pranešti apie netinkamą turinį ar gairių pažeidimus"
         }
       },
       "social": {
-        "title": "Socialiniai Tinklai",
+        "title": "Socialiniai tinklai",
         "description": "Sekite mus dėl naujienų, sėkmės istorijų ir bendruomenės akcentų",
         "platforms": {
-          "facebook": "Facebook: @ChargeVilnius",
-          "twitter": "Twitter: @ChargeVilnius",
-          "linkedin": "LinkedIn: ChargeVilnius"
+          "facebook": "Facebook: @Chargington",
+          "twitter": "Twitter: @Chargington",
+          "linkedin": "LinkedIn: Chargington"
         }
       },
       "response": {
-        "title": "Atsakymo Laikas",
+        "title": "Atsakymo laikas",
         "description": "Mes siekiame atsakyti į visas užklausas per 48 valandas darbo dienomis (pirmadienį-penktadienį). Skubių techninių problemų atveju, prašome įtraukti \"SKUBU\" į jūsų el. pašto temą."
       }
     },
     "faq": {
-      "title": "Prieš Susisiekdami su Mumis",
+      "title": "Prieš susisiekdami su mumis",
       "description": "Daugelis dažnų klausimų yra atsakyti mūsų DUK skyriuje. Pirmiausia patikrinkite ten - galite rasti savo atsakymą iš karto!"
     },
     "feedback": {
       "title": "Atsiliepimai ir Pasiūlymai",
-      "description": "Mes nuolat dirbame, kad pagerintume ChargeVilnius. Jei turite idėjų dėl naujų funkcijų, patobulinimų ar partnerysčių, norėtume jas išgirsti. Rašykite mums info@chargevilnius.lt su \"Funkcijos Pasiūlymas\" temos eilutėje."
+      "description": "Mes nuolat dirbame, kad pagerintume Chargington. Jei turite idėjų dėl naujų funkcijų, patobulinimų ar partnerysčių, norėtume jas išgirsti. Rašykite mums info@Chargington.lt su \"Funkcijos Pasiūlymas\" temos eilutėje."
     }
   },
   "aiConsultant": {
     "title": "AI Konsultantas",
     "subtitle": "Gaukite pritaikytas rekomendacijas jūsų EV įkrovimo poreikiams",
     "description": "Mūsų AI asistentas analizuoja jūsų vietą ir netoliese esančias forumo diskusijas, kad pateiktų pritaikytas rekomendacijas, ar prisijungti prie esamų iniciatyvų, ar pradėti naują.",
-    "welcome": "Sveiki! Esu jūsų ChargeVilnius AI konsultantas. Galiu padėti nustatyti geriausią veiksmų planą, kaip atnešti EV įkrovimą į jūsų pastatą.",
+    "welcome": "Sveiki! Esu jūsų Chargington AI konsultantas. Galiu padėti nustatyti geriausią veiksmų planą, kaip atnešti EV įkrovimą į jūsų pastatą.",
     "promptToStart": "Pasidalinkite savo pastato adresu, kad pradėtume, ir aš išanalizuosiu netoliese esančias diskusijas ir pateiksiu pritaikytas rekomendacijas.",
     "inputPlaceholder": "Įveskite savo žinutę čia...",
     "send": "Siųsti",
@@ -734,7 +734,7 @@
     "pdf": {
       "header": {
         "title": "ELEKTROMOBILIŲ KROVIMO STOTELĖS DOKUMENTAI",
-        "subtitle": "Juridinių Dokumentų Paketas",
+        "subtitle": "Juridinių dokumentų paketas",
         "date": "Data"
       },
       "doc1": {
@@ -796,7 +796,7 @@
         "header": "INSTRUKCIJOS IR TOLIMESNI ŽINGSNIAI",
         "step1Title": "Surinkite bendrasavininkų sutikimus",
         "step1Text": "Naudokite šio PDF šabloną (Dokumentas #2). Surinkite visų bendrasavininkų parašus arba sušaukite bendrą susirinkimą ir patvirtinkite sprendimą protokolu. Laikas: 1-4 savaitės.",
-        "step2Title": "Gaukite Nekilnojamojo turto registro išrašą",
+        "step2Title": "Gaukite nekilnojamojo turto registro išrašą",
         "step2How": "Kaip gauti:",
         "step2Online": "Internetu: www.registrucentras.lt/paslaugos",
         "step2Tel": "Tel.: 1884 (darbo dienomis 8-17)",
