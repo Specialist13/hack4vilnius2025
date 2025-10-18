@@ -25,7 +25,7 @@
     "login": "Prisijungti",
     "signup": "Registruotis",
     "logout": "Atsijungti",
-    "aiConsultant": "AI konsultantas"
+    "aiConsultant": "DI konsultantas"
   },
   "home": {
     "hero": {
@@ -586,10 +586,10 @@
     }
   },
   "aiConsultant": {
-    "title": "AI konsultantas",
+    "title": "DI konsultantas",
     "subtitle": "Gaukite pritaikytas rekomendacijas jūsų EV įkrovimo poreikiams",
-    "description": "Mūsų AI asistentas analizuoja jūsų vietą ir netoliese esančias forumo diskusijas, kad pateiktų pritaikytas rekomendacijas, ar prisijungti prie esamų iniciatyvų, ar pradėti naują.",
-    "welcome": "Sveiki! Esu jūsų Chargington AI konsultantas. Galiu padėti nustatyti geriausią veiksmų planą, kaip atnešti EV įkrovimą į jūsų pastatą.",
+    "description": "Mūsų DI asistentas analizuoja jūsų vietą ir netoliese esančias forumo diskusijas, kad pateiktų pritaikytas rekomendacijas, ar prisijungti prie esamų iniciatyvų, ar pradėti naują.",
+    "welcome": "Sveiki! Esu jūsų Chargington DI konsultantas. Galiu padėti nustatyti geriausią veiksmų planą, kaip atnešti EV įkrovimą į jūsų pastatą.",
     "promptToStart": "Pasidalinkite savo pastato adresu, kad pradėtume, ir aš išanalizuosiu netoliese esančias diskusijas ir pateiksiu pritaikytas rekomendacijas.",
     "inputPlaceholder": "Įveskite savo žinutę čia...",
     "send": "Siųsti",
@@ -608,8 +608,8 @@
       "guidance": "Pasiūlyti gaires dėl kitų žingsnių ir geriausios praktikos"
     },
     "privacyNote": "Jūsų vietos duomenys naudojami tik rekomendacijoms pateikti ir nėra saugomi nuolat.",
-    "comingSoon": "AI konsultantas Jau Greitai",
-    "comingSoonDescription": "Ši funkcija šiuo metu kuriama. Mūsų AI konsultantas padės jums priimti pagrįstus sprendimus dėl EV įkrovimo iniciatyvų jūsų pastate."
+    "comingSoon": "DI konsultantas jau greitai",
+    "comingSoonDescription": "Ši funkcija šiuo metu kuriama. Mūsų DI konsultantas padės jums priimti pagrįstus sprendimus dėl EV įkrovimo iniciatyvų jūsų pastate."
   },
   "documents": {
     "title": "EV Krovimo Stotelės Dokumentai",
@@ -682,6 +682,20 @@
         "modelPlaceholder": "pvz. Tesla Wall Connector",
         "modelOptional": "Galite nurodyti vėliau"
       },
+      "installer": {
+        "title": "Įrengėjo pasirinkimas",
+        "description": "Pasirinkite sertifikuotą įrengėją jūsų krovimo stotelei",
+        "selectInstaller": "Pasirinkite įrengėją",
+        "selected": "Pasirinkta",
+        "reviews": "atsiliepimai",
+        "priceRange": "Apytikslė kaina",
+        "priceCalculation": "Kaina skaičiuojama dinamiškai",
+        "priceNote": "Kaina automatiškai apskaičiuojama pagal pasirinktus parametrus: stotelės galią, prieigų skaičių, turto tipą ir montavimo būdą.",
+        "noteTitle": "Kaip tai veikia?",
+        "noteDescription": "Gavę dokumentus, susisieksime su pasirinktu įrengėju ir perduosime jiems jūsų kontaktus bei informaciją apie projektą.",
+        "contactNote": "Susisieksime su įmone",
+        "contactDescription": "Gavę dokumentus, mes perduosime jūsų informaciją pasirinktam įrengėjui, kuris susisieks dėl įrengimo detalių ir tikslios kainos."
+      },
       "documents": {
         "title": "Bendrasavininkų sutikimas",
         "description": "Informacija apie bendrasavininkų sutikimo reikalavimus",
@@ -704,6 +718,12 @@
       "property": "Turtas",
       "apartment": "Butas",
       "charger": "Stotelė",
+      "installerTitle": "Pasirinktas įrengėjas",
+      "installerDescription": "Susisieksime su šia įmone dėl įrengimo",
+      "reviews": "atsiliepimai",
+      "priceRange": "Apytikslė kaina",
+      "contactNote": "Susisieksime už jus",
+      "contactNoteDescription": "Gavę dokumentus, mes perduosime jūsų informaciją įrengėjui, kuris susisieks dėl įrengimo detalių.",
       "documentsTitle": "Sugeneruoti dokumentai",
       "documentsDescription": "Jūsų dokumentų paketas paruoštas atsisiuntimui",
       "applicationDocument": "Pareiškimas dėl įrengimo",

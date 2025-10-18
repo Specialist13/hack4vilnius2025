@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle2, Download, FileText, Home, Phone, Mail, Building2 } from "lucide-react"
+import { CheckCircle2, Download, FileText, Home, Phone, Mail, Building2, Wrench, Star } from "lucide-react"
 import { useTranslations, useLocale } from "next-intl"
 import type { FormData } from "@/app/documents/page"
 import { generatePDF } from "@/lib/pdf-generator-pdfmake"
@@ -21,6 +21,70 @@ export function DocumentResult({ formData, onReset }: Props) {
 
   const isApartment = formData.propertyType === "apartment"
   const needsCoOwnerDocs = isApartment && formData.hasCoOwnerConsent === "no"
+
+  // Installer data - matching the data from installer-selection-step.tsx
+  const installers = [
+    {
+      id: "ev-charging-pro",
+      name: "EV Charging Pro",
+      rating: 4.9,
+      reviewCount: 127,
+      basePrice: 1200,
+      pricePerKW: 100,
+      phone: "+370 600 12345",
+      email: "info@evchargingpro.lt",
+    },
+    {
+      id: "green-energy-lt",
+      name: "Green Energy LT",
+      rating: 4.8,
+      reviewCount: 98,
+      basePrice: 1400,
+      pricePerKW: 120,
+      phone: "+370 600 54321",
+      email: "kontaktai@greenenergy.lt",
+    },
+    {
+      id: "smart-charge-vilnius",
+      name: "Smart Charge Vilnius",
+      rating: 4.7,
+      reviewCount: 156,
+      basePrice: 1100,
+      pricePerKW: 90,
+      phone: "+370 600 98765",
+      email: "info@smartcharge.lt",
+    },
+  ]
+
+  const selectedInstaller = installers.find((inst) => inst.id === formData.selectedInstaller)
+
+  // Calculate price based on project parameters
+  const calculatePrice = () => {
+    if (!selectedInstaller) return { min: 0, max: 0 }
+
+    let basePrice = selectedInstaller.basePrice
+
+    // Add cost based on power (kW)
+    const power = parseFloat(formData.power) || 11
+    const powerCost = power * selectedInstaller.pricePerKW
+
+    // Add cost for additional connectors
+    const connectors = parseInt(formData.connectors) || 1
+    const connectorCost = connectors > 1 ? 300 : 0
+
+    // Add cost for apartment complexity (need more work)
+    const apartmentCost = formData.propertyType === "apartment" ? 200 : 0
+
+    // Add cost for ground-mounted charger (more installation work)
+    const typeCost = formData.chargerType === "ground" ? 400 : 0
+
+    const totalMin = basePrice + powerCost + connectorCost + apartmentCost + typeCost
+    const totalMax = totalMin + 500 // Add range for variations
+
+    return { min: Math.round(totalMin), max: Math.round(totalMax) }
+  }
+
+  const installerPrice = calculatePrice()
 
   const handleDownload = async () => {
     setIsGenerating(true)
@@ -90,6 +154,57 @@ export function DocumentResult({ formData, onReset }: Props) {
             </div>
           </CardContent>
         </Card>
+
+        {selectedInstaller && (
+          <Card className="mb-6 border-green-200 bg-green-50 dark:bg-green-950 dark:border-green-800">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Wrench className="w-5 h-5 text-green-600" />
+                {t("installerTitle")}
+              </CardTitle>
+              <CardDescription>{t("installerDescription")}</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="bg-white dark:bg-gray-900 rounded-lg p-4 border">
+                <div className="flex items-start justify-between mb-3">
+                  <div>
+                    <h3 className="font-semibold text-lg">{selectedInstaller.name}</h3>
+                    <div className="flex items-center gap-2 mt-1">
+                      <div className="flex items-center gap-1">
+                        <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                        <span className="font-medium text-sm">{selectedInstaller.rating}</span>
+                        <span className="text-muted-foreground text-sm">
+                          ({selectedInstaller.reviewCount} {t("reviews")})
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <div className="text-lg font-bold text-green-600">
+                      €{installerPrice.min.toLocaleString()} - €{installerPrice.max.toLocaleString()}
+                    </div>
+                    <p className="text-xs text-muted-foreground">{t("priceRange")}</p>
+                  </div>
+                </div>
+                <div className="space-y-2 pt-3 border-t">
+                  <div className="flex items-center gap-2 text-sm">
+                    <Phone className="w-4 h-4 text-muted-foreground" />
+                    <span>{selectedInstaller.phone}</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm">
+                    <Mail className="w-4 h-4 text-muted-foreground" />
+                    <span>{selectedInstaller.email}</span>
+                  </div>
+                </div>
+                <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-950 rounded-lg">
+                  <p className="text-sm text-blue-900 dark:text-blue-100">
+                    <strong>📞 {t("contactNote")}</strong> {t("contactNoteDescription")}
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        )}
 
         <Card className="mb-6">
           <CardHeader>
