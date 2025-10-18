@@ -23,7 +23,8 @@
     "about": "Apie",
     "login": "Prisijungti",
     "signup": "Registruotis",
-    "logout": "Atsijungti"
+    "logout": "Atsijungti",
+    "aiConsultant": "AI Konsultantas"
   },
   "home": {
     "hero": {
@@ -254,7 +255,7 @@
       },
       "conduct": {
         "title": "4. Vartotojo Turinys ir Elgesys",
-        "intro": "Jūs esate atsakingi už visą turinį, kurį skelbiате Paslaugoje. Sutinkate neskelbti turinio, kuris:",
+        "intro": "Jūs esate atsakingi už visą turinį, kurį skelbiáte Paslaugoje. Sutinkate neskelbti turinio, kuris:",
         "items": [
           "Yra klaidingas, apgaulingas ar sukčiavimo",
           "Pažeidžia intelektinės nuosavybės teises",
@@ -582,5 +583,31 @@
       "title": "Atsiliepimai ir Pasiūlymai",
       "description": "Mes nuolat dirbame, kad pagerintume ChargeVilnius. Jei turite idėjų dėl naujų funkcijų, patobulinimų ar partnerysčių, norėtume jas išgirsti. Rašykite mums info@chargevilnius.lt su \"Funkcijos Pasiūlymas\" temos eilutėje."
     }
+  },
+  "aiConsultant": {
+    "title": "AI Konsultantas",
+    "subtitle": "Gaukite pritaikytas rekomendacijas jūsų EV įkrovimo poreikiams",
+    "description": "Mūsų AI asistentas analizuoja jūsų vietą ir netoliese esančias forumo diskusijas, kad pateiktų pritaikytas rekomendacijas, ar prisijungti prie esamų iniciatyvų, ar pradėti naują.",
+    "welcome": "Sveiki! Esu jūsų ChargeVilnius AI konsultantas. Galiu padėti nustatyti geriausią veiksmų planą, kaip atnešti EV įkrovimą į jūsų pastatą.",
+    "promptToStart": "Pasidalinkite savo pastato adresu, kad pradėtume, ir aš išanalizuosiu netoliese esančias diskusijas ir pateiksiu pritaikytas rekomendacijas.",
+    "inputPlaceholder": "Įveskite savo žinutę čia...",
+    "send": "Siųsti",
+    "thinking": "Analizuoju...",
+    "exampleQuestions": {
+      "title": "Pavyzdiniai klausimai:",
+      "q1": "Ar turėčiau sukurti naują įrašą, ar prisijungti prie esamos diskusijos?",
+      "q2": "Koks artimiausias pastatas su EV įkrovimo diskusijomis?",
+      "q3": "Kiek gyventojų netoliese domisi EV įkrovimu?"
+    },
+    "features": {
+      "title": "Su kuo galiu padėti:",
+      "proximity": "Analizuoti artumą prie esamų diskusijų",
+      "recommendation": "Rekomenduoti prisijungti prie netoliese esančių iniciatyvų ar pradėti naujas",
+      "statistics": "Pateikti statistiką apie EV įkrovimo susidomėjimą jūsų rajone",
+      "guidance": "Pasiūlyti gaires dėl kitų žingsnių ir geriausios praktikos"
+    },
+    "privacyNote": "Jūsų vietos duomenys naudojami tik rekomendacijoms pateikti ir nėra saugomi nuolat.",
+    "comingSoon": "AI Konsultantas Jau Greitai",
+    "comingSoonDescription": "Ši funkcija šiuo metu kuriama. Mūsų AI konsultantas padės jums priimti pagrįstus sprendimus dėl EV įkrovimo iniciatyvų jūsų pastate."
   }
 }

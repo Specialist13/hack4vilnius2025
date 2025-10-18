@@ -510,6 +510,98 @@ GET /api/map/stats
 }
 ```
 
+### AI Consultant Endpoint
+
+#### 11. AI Consultant Analysis
+```
+POST /api/ai-consultant/analyze
+```
+
+**Request Body:**
+```json
+{
+  "message": "string (user's question or address)",
+  "userLocation": {
+    "address": "string (optional - building address)",
+    "coordinates": {
+      "lat": "number (optional)",
+      "lng": "number (optional)"
+    }
+  },
+  "language": "en | lt (optional - defaults to user's language setting)"
+}
+```
+
+**Success Response (200):**
+```json
+{
+  "success": true,
+  "response": "string (AI-generated response text)",
+  "nearbyPosts": [
+    {
+      "id": "string",
+      "title": "string",
+      "address": "string",
+      "distance": "number (in kilometers)",
+      "status": "open | in-progress | resolved",
+      "participants": "number"
+    }
+  ],
+  "recommendation": {
+    "action": "create_new | join_existing | coordinate_nearby",
+    "reasoning": "string (explanation for the recommendation)",
+    "nearestDiscussionDistance": "number (in km, optional)",
+    "successStoriesNearby": "number (optional)"
+  },
+  "statistics": {
+    "discussionsWithin500m": "number",
+    "discussionsWithin2km": "number",
+    "averageSuccessRate": "number (0-100)"
+  }
+}
+```
+
+**AI System Prompt Context:**
+
+The AI Consultant should be configured with the following context:
+
+```
+You are an AI consultant for ChargeVilnius, a platform connecting Vilnius apartment 
+building residents who want to bring EV charging infrastructure to their buildings.
+
+Your role is to:
+1. Analyze the user's location (building address and coordinates)
+2. Calculate distances to all existing forum posts about EV charging
+3. Consider factors like:
+   - Distance to nearest discussions (< 500m = very close, < 2km = nearby, > 2km = far)
+   - Status of nearby discussions (open/in-progress/resolved)
+   - Number of active participants in nearby discussions
+   - Population density in the area from map data
+   - Existing EV charging stations in the vicinity
+4. Provide personalized recommendations:
+   - If nearby active discussions exist (< 500m): Strongly recommend joining
+   - If discussions 500m-2km away: Suggest joining or coordinating
+   - If no discussions within 2km: Recommend creating new post
+   - If nearby resolved discussions: Highlight success stories and learnings
+5. Be conversational, helpful, and encouraging
+6. Provide specific data: distances, number of interested residents, success rate
+7. Always respond in the user's language (Lithuanian or English)
+
+Decision Logic:
+- Distance < 500m AND status is "open" → "Join this existing discussion"
+- Distance 500m-2km AND active participants > 3 → "Consider coordinating with nearby"
+- Distance > 2km OR no active discussions → "Create a new post for your location"
+- Nearby resolved posts → "Learn from these successful initiatives"
+```
+
+**Error Response (400):**
+```json
+{
+  "success": false,
+  "message": "Invalid request or unable to analyze location"
+}
+```
+
 ### Error Responses
 
 All endpoints should follow consistent error response format:
@@ -689,4 +781,3 @@ When contributing:
 **Last Updated**: October 2025  
 **Version**: 0.1.0  
 **Built with**: Next.js 15, React 19, TypeScript, Tailwind CSS
-

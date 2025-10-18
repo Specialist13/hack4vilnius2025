@@ -23,7 +23,8 @@
     "about": "About",
     "login": "Log In",
     "signup": "Sign Up",
-    "logout": "Log Out"
+    "logout": "Log Out",
+    "aiConsultant": "AI Consultant"
   },
   "home": {
     "hero": {
@@ -577,5 +578,31 @@
       "title": "Feedback & Suggestions",
       "description": "We're constantly working to improve ChargeVilnius. If you have ideas for new features, improvements, or partnerships, we'd love to hear them. Email us at info@chargevilnius.lt with \"Feature Suggestion\" in the subject line."
     }
+  },
+  "aiConsultant": {
+    "title": "AI Consultant",
+    "subtitle": "Get personalized recommendations for your EV charging needs",
+    "description": "Our AI assistant analyzes your location and nearby forum discussions to provide tailored advice on whether to join existing initiatives or start a new one.",
+    "welcome": "Hi! I'm your ChargeVilnius AI Consultant. I can help you determine the best course of action for bringing EV charging to your building.",
+    "promptToStart": "Share your building's address to get started, and I'll analyze nearby discussions and provide personalized recommendations.",
+    "inputPlaceholder": "Type your message here...",
+    "send": "Send",
+    "thinking": "Analyzing...",
+    "exampleQuestions": {
+      "title": "Example questions:",
+      "q1": "Should I create a new post or join an existing discussion?",
+      "q2": "What's the nearest building with EV charging discussions?",
+      "q3": "How many residents nearby are interested in EV charging?"
+    },
+    "features": {
+      "title": "What I can help with:",
+      "proximity": "Analyze proximity to existing discussions",
+      "recommendation": "Recommend joining nearby initiatives or starting new ones",
+      "statistics": "Provide statistics about EV charging interest in your area",
+      "guidance": "Offer guidance on next steps and best practices"
+    },
+    "privacyNote": "Your location data is only used to provide recommendations and is not stored permanently.",
+    "comingSoon": "AI Consultant Coming Soon",
+    "comingSoonDescription": "This feature is currently under development. Our AI consultant will help you make informed decisions about EV charging initiatives in your building."
   }
 }

@@ -43,6 +43,12 @@ export function Header() {
             {t("nav.map")}
           </Link>
           <Link
+            href="/ai-consultant"
+            className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
+          >
+            {t("nav.aiConsultant")}
+          </Link>
+          <Link
             href="/about"
             className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
           >
@@ -97,6 +103,9 @@ export function Header() {
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <Link href="/map">{t("nav.map")}</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/ai-consultant">{t("nav.aiConsultant")}</Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <Link href="/about">{t("nav.about")}</Link>
