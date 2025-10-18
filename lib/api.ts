@@ -172,6 +172,24 @@ export const authAPI = {
  */
 export const userAPI = {
   /**
+   * Get user profile
+   * GET /api/users
+   */
+  getProfile: async () => {
+    return apiRequest<{
+      code: string
+      email: string
+      name: string
+      address?: string
+      image?: string
+      createdAt: string
+      updatedAt: string
+    }>('/api/users', {
+      method: 'GET',
+    })
+  },
+
+  /**
    * Update user profile (full update)
    * PUT /api/users
    */

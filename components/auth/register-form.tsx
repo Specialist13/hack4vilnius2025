@@ -1,7 +1,5 @@
 "use client"
-
 import type React from "react"
-
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -12,7 +10,7 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useTranslations } from "next-intl"
 import { authAPI, setAuthToken, APIError } from "@/lib/api"
-
+import { AddressPicker } from "@/components/map/address-picker"
 export function RegisterForm() {
   const t = useTranslations()
   const router = useRouter()
@@ -22,29 +20,29 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
     address: "",
+    coordinates: undefined as { lat: number; lng: number } | undefined,
     agreeToTerms: false,
   })
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState("")
-
+  const handleAddressSelect = (address: string, coordinates?: { lat: number; lng: number }) => {
+    setFormData((prev) => ({ ...prev, address, coordinates }))
+  }
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
     setError("")
-
     // Validation
     if (formData.password !== formData.confirmPassword) {
       setError("Passwords do not match")
       setIsLoading(false)
       return
     }
-
     if (!formData.agreeToTerms) {
       setError("You must agree to the terms and conditions")
       setIsLoading(false)
       return
     }
-
     try {
       // Call backend registration API
       const response = await authAPI.register({
@@ -53,12 +51,10 @@ export function RegisterForm() {
         password: formData.password,
         address: formData.address || undefined,
       })
-
       console.log("[Registration] Success:", {
         email: response.email,
         name: response.name,
       })
-
       // For registration, backend returns user data but not a token
       // User needs to login after registration
       // Redirect to login page with success message
@@ -78,9 +74,8 @@ export function RegisterForm() {
       setIsLoading(false)
     }
   }
-
   return (
-    <Card className="w-full max-w-md">
+    <Card className="w-full max-w-4xl">
       <CardHeader>
         <CardTitle className="text-2xl">{t("auth.register.title")}</CardTitle>
         <CardDescription>{t("auth.register.description")}</CardDescription>
@@ -95,7 +90,7 @@ export function RegisterForm() {
               type="text"
               placeholder={t("auth.register.namePlaceholder")}
               value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              onChange={(e) => setFormData((prev) => ({ ...prev, name: e.target.value }))}
               required
               disabled={isLoading}
             />
@@ -107,21 +102,16 @@ export function RegisterForm() {
               type="email"
               placeholder={t("auth.register.emailPlaceholder")}
               value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
               required
               disabled={isLoading}
             />
           </div>
+          {/* Google Maps Address Picker */}
           <div className="space-y-2">
-            <Label htmlFor="address">{t("auth.register.address")}</Label>
-            <Input
-              id="address"
-              type="text"
-              placeholder={t("auth.register.addressPlaceholder")}
-              value={formData.address}
-              onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-              required
-              disabled={isLoading}
+            <AddressPicker
+              onAddressSelect={handleAddressSelect}
+              initialAddress={formData.address}
             />
           </div>
           <div className="space-y-2">
@@ -131,7 +121,7 @@ export function RegisterForm() {
               type="password"
               placeholder={t("auth.register.passwordPlaceholder")}
               value={formData.password}
-              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+              onChange={(e) => setFormData((prev) => ({ ...prev, password: e.target.value }))}
               required
               disabled={isLoading}
               minLength={8}
@@ -144,7 +134,7 @@ export function RegisterForm() {
               type="password"
               placeholder={t("auth.register.confirmPasswordPlaceholder")}
               value={formData.confirmPassword}
-              onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
+              onChange={(e) => setFormData((prev) => ({ ...prev, confirmPassword: e.target.value }))}
               required
               disabled={isLoading}
             />
@@ -153,7 +143,7 @@ export function RegisterForm() {
             <Checkbox
               id="terms"
               checked={formData.agreeToTerms}
-              onCheckedChange={(checked: boolean) => setFormData({ ...formData, agreeToTerms: checked as boolean })}
+              onCheckedChange={(checked: boolean) => setFormData((prev) => ({ ...prev, agreeToTerms: checked as boolean }))}
               disabled={isLoading}
             />
             <Label htmlFor="terms" className="text-sm leading-relaxed cursor-pointer">

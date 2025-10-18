@@ -182,6 +182,77 @@ paths:
                     example: Internal server error
 
   /api/users:
+    get:
+      summary: Get user profile
+      description: Get authenticated user's profile information
+      tags:
+        - Users
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Profile retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    format: uuid
+                    example: 660e8400-e29b-41d4-a716-446655440001
+                  email:
+                    type: string
+                    example: user@example.com
+                  name:
+                    type: string
+                    example: John Doe
+                  address:
+                    type: string
+                    nullable: true
+                    example: 123 Main St
+                  image:
+                    type: string
+                    nullable: true
+                    example: https://example.com/avatar.jpg
+                  createdAt:
+                    type: string
+                    format: date-time
+                    example: 2025-10-18T10:30:00.000Z
+                  updatedAt:
+                    type: string
+                    format: date-time
+                    example: 2025-10-18T10:30:00.000Z
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: User not found
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: No token provided
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Internal server error
     put:
       summary: Update user profile
       description: Update authenticated user's profile information

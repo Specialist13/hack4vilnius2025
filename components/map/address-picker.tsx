@@ -23,6 +23,11 @@ export function AddressPicker({ onAddressSelect, initialAddress = "" }: AddressP
   const [selectedAddress, setSelectedAddress] = useState(initialAddress)
   const [error, setError] = useState<string | null>(null)
 
+  // Sync internal state with prop changes
+  useEffect(() => {
+    setSelectedAddress(initialAddress)
+  }, [initialAddress])
+
   useEffect(() => {
     // Check if Google Maps API key is available
     const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
