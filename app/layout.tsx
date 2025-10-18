@@ -12,7 +12,7 @@ const _inter = Inter({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "ChargeVilnius - Community Forum for EV Charging",
+  title: "Chargington - Community Forum for EV Charging",
   description: "Forum for Vilnius apartment residents advocating for electric vehicle charging stations",
   generator: "v0.app",
 }

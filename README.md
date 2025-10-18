@@ -1,4 +1,4 @@
-# ChargeVilnius - EV Charging Community Forum
+# Chargington - EV Charging Community Forum
 
 A Next.js-based community platform connecting Vilnius apartment residents to advocate for electric vehicle charging infrastructure. Built with TypeScript, React 19, Next.js 15, and Tailwind CSS.
 
@@ -16,7 +16,7 @@ A Next.js-based community platform connecting Vilnius apartment residents to adv
 
 ## 🎯 Project Overview
 
-ChargeVilnius is a bilingual (English/Lithuanian) community forum that helps apartment residents in Vilnius:
+Chargington is a bilingual (English/Lithuanian) community forum that helps apartment residents in Vilnius:
 - Connect with neighbors interested in EV charging infrastructure
 - Share experiences and success stories
 - Coordinate advocacy efforts with building management
@@ -566,7 +566,7 @@ POST /api/ai-consultant/analyze
 The AI Consultant should be configured with the following context:
 
 ```
-You are an AI consultant for ChargeVilnius, a platform connecting Vilnius apartment 
+You are an AI consultant for Chargington, a platform connecting Vilnius apartment 
 building residents who want to bring EV charging infrastructure to their buildings.
 
 Your role is to:
@@ -668,7 +668,7 @@ NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_google_maps_api_key_here
 NEXT_PUBLIC_API_URL=http://localhost:3001/api
 
 # Optional - for production deployment
-NEXT_PUBLIC_SITE_URL=https://chargevilnius.com
+NEXT_PUBLIC_SITE_URL=https://Chargington.com
 ```
 
 ### Environment Variable Details

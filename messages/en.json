@@ -1,6 +1,6 @@
 {
   "common": {
-    "appName": "ChargeVilnius",
+    "appName": "Chargington",
     "tagline": "Community Forum",
     "loading": "Loading...",
     "error": "Error",
@@ -177,11 +177,11 @@
     }
   },
   "about": {
-    "title": "About ChargeVilnius",
+    "title": "About Chargington",
     "subtitle": "Empowering Vilnius residents to bring electric vehicle charging infrastructure to their apartment buildings.",
     "mission": {
       "title": "Our Mission",
-      "description": "ChargeVilnius was created to solve a common problem: individual apartment residents struggle to convince building management to install EV charging stations. By connecting neighbors and providing a platform for collective action, we make it easier to demonstrate demand and coordinate efforts."
+      "description": "Chargington was created to solve a common problem: individual apartment residents struggle to convince building management to install EV charging stations. By connecting neighbors and providing a platform for collective action, we make it easier to demonstrate demand and coordinate efforts."
     },
     "values": {
       "title": "Our Values",
@@ -204,7 +204,7 @@
     },
     "cta": {
       "title": "Join the Movement",
-      "description": "Whether you already own an EV or are planning to make the switch, ChargeVilnius helps you take the first step toward charging infrastructure in your building.",
+      "description": "Whether you already own an EV or are planning to make the switch, Chargington helps you take the first step toward charging infrastructure in your building.",
       "getStarted": "Get Started",
       "viewForum": "View Forum"
     },
@@ -237,11 +237,11 @@
     "sections": {
       "acceptance": {
         "title": "1. Acceptance of Terms",
-        "content": "By accessing and using ChargeVilnius (\"the Service\"), you accept and agree to be bound by the terms and provisions of this agreement. If you do not agree to these terms, please do not use the Service."
+        "content": "By accessing and using Chargington (\"the Service\"), you accept and agree to be bound by the terms and provisions of this agreement. If you do not agree to these terms, please do not use the Service."
       },
       "description": {
         "title": "2. Description of Service",
-        "content": "ChargeVilnius provides a community forum platform for residents of apartment buildings in Vilnius, Lithuania to discuss, organize, and advocate for electric vehicle (EV) charging infrastructure. The Service includes forum discussions, interactive maps, and community coordination tools."
+        "content": "Chargington provides a community forum platform for residents of apartment buildings in Vilnius, Lithuania to discuss, organize, and advocate for electric vehicle (EV) charging infrastructure. The Service includes forum discussions, interactive maps, and community coordination tools."
       },
       "accounts": {
         "title": "3. User Accounts and Registration",
@@ -272,15 +272,15 @@
       },
       "ip": {
         "title": "6. Intellectual Property",
-        "content": "The Service and its original content, features, and functionality are owned by ChargeVilnius and are protected by international copyright, trademark, and other intellectual property laws. User-generated content remains the property of the respective users, but by posting, you grant ChargeVilnius a license to use, display, and distribute that content within the Service."
+        "content": "The Service and its original content, features, and functionality are owned by Chargington and are protected by international copyright, trademark, and other intellectual property laws. User-generated content remains the property of the respective users, but by posting, you grant Chargington a license to use, display, and distribute that content within the Service."
       },
       "warranty": {
         "title": "7. Disclaimer of Warranties",
-        "content": "The Service is provided \"as is\" and \"as available\" without warranties of any kind, either express or implied. ChargeVilnius does not guarantee that the Service will be uninterrupted, secure, or error-free. We do not warrant the accuracy or completeness of information provided by users."
+        "content": "The Service is provided \"as is\" and \"as available\" without warranties of any kind, either express or implied. Chargington does not guarantee that the Service will be uninterrupted, secure, or error-free. We do not warrant the accuracy or completeness of information provided by users."
       },
       "liability": {
         "title": "8. Limitation of Liability",
-        "content": "ChargeVilnius shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of or inability to use the Service. This includes damages for loss of profits, data, or other intangible losses."
+        "content": "Chargington shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of or inability to use the Service. This includes damages for loss of profits, data, or other intangible losses."
       },
       "modifications": {
         "title": "9. Modifications to Service",
@@ -292,7 +292,7 @@
       },
       "contact": {
         "title": "11. Contact Information",
-        "content": "If you have any questions about these Terms, please contact us at: info@chargevilnius.lt"
+        "content": "If you have any questions about these Terms, please contact us at: info@Chargington.lt"
       }
     }
   },
@@ -302,7 +302,7 @@
     "sections": {
       "intro": {
         "title": "1. Introduction",
-        "content": "ChargeVilnius (\"we\", \"our\", or \"us\") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our community forum platform. This policy complies with the General Data Protection Regulation (GDPR) and Lithuanian data protection laws."
+        "content": "Chargington (\"we\", \"our\", or \"us\") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our community forum platform. This policy complies with the General Data Protection Regulation (GDPR) and Lithuanian data protection laws."
       },
       "collection": {
         "title": "2. Information We Collect",
@@ -359,7 +359,7 @@
           "Data portability",
           "Withdraw consent at any time"
         ],
-        "contact": "To exercise these rights, contact us at: privacy@chargevilnius.lt"
+        "contact": "To exercise these rights, contact us at: privacy@Chargington.lt"
       },
       "security": {
         "title": "6. Data Security",
@@ -379,28 +379,28 @@
       },
       "contact": {
         "title": "10. Contact Us",
-        "content": "If you have questions about this Privacy Policy, please contact us at: privacy@chargevilnius.lt"
+        "content": "If you have questions about this Privacy Policy, please contact us at: privacy@Chargington.lt"
       }
     }
   },
   "faq": {
     "title": "Frequently Asked Questions",
-    "subtitle": "Find answers to common questions about ChargeVilnius and EV charging in apartment buildings.",
+    "subtitle": "Find answers to common questions about Chargington and EV charging in apartment buildings.",
     "categories": {
       "general": {
         "title": "General Questions",
         "questions": [
           {
-            "q": "What is ChargeVilnius?",
-            "a": "ChargeVilnius is a community platform that connects residents of apartment buildings in Vilnius who want to advocate for electric vehicle (EV) charging infrastructure. We help neighbors find each other, share experiences, and coordinate efforts to bring charging stations to their buildings."
+            "q": "What is Chargington?",
+            "a": "Chargington is a community platform that connects residents of apartment buildings in Vilnius who want to advocate for electric vehicle (EV) charging infrastructure. We help neighbors find each other, share experiences, and coordinate efforts to bring charging stations to their buildings."
           },
           {
-            "q": "Is ChargeVilnius free to use?",
-            "a": "Yes, ChargeVilnius is completely free to use. We believe that access to sustainable transportation infrastructure should be available to everyone, and our platform helps make that possible through community coordination."
+            "q": "Is Chargington free to use?",
+            "a": "Yes, Chargington is completely free to use. We believe that access to sustainable transportation infrastructure should be available to everyone, and our platform helps make that possible through community coordination."
           },
           {
-            "q": "Who can use ChargeVilnius?",
-            "a": "Anyone living in an apartment building in Vilnius, Lithuania can use ChargeVilnius. Whether you already own an electric vehicle or are planning to purchase one, you can join the community and start connecting with your neighbors."
+            "q": "Who can use Chargington?",
+            "a": "Anyone living in an apartment building in Vilnius, Lithuania can use Chargington. Whether you already own an electric vehicle or are planning to purchase one, you can join the community and start connecting with your neighbors."
           }
         ]
       },
@@ -426,7 +426,7 @@
         "questions": [
           {
             "q": "Do I need permission from my building management?",
-            "a": "Yes, in most cases you will need approval from your building's homeowners association (HOA) or management company. The approval process varies, but typically requires presenting a proposal at a homeowners meeting. Having multiple interested residents (which ChargeVilnius helps you find) strengthens your case significantly."
+            "a": "Yes, in most cases you will need approval from your building's homeowners association (HOA) or management company. The approval process varies, but typically requires presenting a proposal at a homeowners meeting. Having multiple interested residents (which Chargington helps you find) strengthens your case significantly."
           },
           {
             "q": "What are the legal requirements in Lithuania?",
@@ -434,7 +434,7 @@
           },
           {
             "q": "Can I install a charging station just for my parking spot?",
-            "a": "In most cases, yes, but you still need HOA approval even for a private installation. You'll typically need to: 1) Get electrical capacity assessment, 2) Present plans to HOA, 3) Get majority vote approval, 4) Hire certified electrician, 5) Cover all costs yourself. However, coordinating with neighbors (via ChargeVilnius) can lead to better, more cost-effective solutions for everyone."
+            "a": "In most cases, yes, but you still need HOA approval even for a private installation. You'll typically need to: 1) Get electrical capacity assessment, 2) Present plans to HOA, 3) Get majority vote approval, 4) Hire certified electrician, 5) Cover all costs yourself. However, coordinating with neighbors (via Chargington) can lead to better, more cost-effective solutions for everyone."
           }
         ]
       },
@@ -443,15 +443,15 @@
         "questions": [
           {
             "q": "How many neighbors do I need to start an EV charging initiative?",
-            "a": "While one person can propose the idea, having 3-5 interested residents significantly increases your chances of success. This shows real demand and makes the cost-per-resident more attractive. ChargeVilnius helps you find these neighbors in your building."
+            "a": "While one person can propose the idea, having 3-5 interested residents significantly increases your chances of success. This shows real demand and makes the cost-per-resident more attractive. Chargington helps you find these neighbors in your building."
           },
           {
             "q": "What are the typical steps to get EV charging installed?",
-            "a": "1) Find interested neighbors (use ChargeVilnius!), 2) Get electrical capacity assessment, 3) Obtain quotes from installation companies, 4) Prepare proposal with costs and timeline, 5) Present to HOA meeting, 6) Get majority vote approval, 7) Sign contracts and begin installation, 8) Typically takes 3-12 months total."
+            "a": "1) Find interested neighbors (use Chargington!), 2) Get electrical capacity assessment, 3) Obtain quotes from installation companies, 4) Prepare proposal with costs and timeline, 5) Present to HOA meeting, 6) Get majority vote approval, 7) Sign contracts and begin installation, 8) Typically takes 3-12 months total."
           },
           {
             "q": "How do I convince skeptical neighbors?",
-            "a": "Focus on: 1) Future-proofing the building (EV adoption is growing rapidly), 2) Increasing property values, 3) No cost to non-EV owners if users pay for installation and electricity, 4) Environmental benefits, 5) Share success stories from other buildings (found in ChargeVilnius forum)."
+            "a": "Focus on: 1) Future-proofing the building (EV adoption is growing rapidly), 2) Increasing property values, 3) No cost to non-EV owners if users pay for installation and electricity, 4) Environmental benefits, 5) Share success stories from other buildings (found in Chargington forum)."
           }
         ]
       }
@@ -460,7 +460,7 @@
   "guidelines": {
     "title": "Community Guidelines",
     "subtitle": "Help us maintain a respectful, helpful, and productive community for all members.",
-    "intro": "ChargeVilnius is built on the principle of neighbors helping neighbors. These guidelines ensure our community remains welcoming, constructive, and focused on our shared goal of bringing EV charging infrastructure to Vilnius apartment buildings.",
+    "intro": "Chargington is built on the principle of neighbors helping neighbors. These guidelines ensure our community remains welcoming, constructive, and focused on our shared goal of bringing EV charging infrastructure to Vilnius apartment buildings.",
     "sections": {
       "respect": {
         "title": "Be Respectful and Constructive",
@@ -522,7 +522,7 @@
     },
     "reporting": {
       "title": "Reporting Violations",
-      "description": "If you see content that violates these guidelines, please report it to our moderation team at: moderation@chargevilnius.lt. Include a link to the post and a brief description of the issue."
+      "description": "If you see content that violates these guidelines, please report it to our moderation team at: moderation@Chargington.lt. Include a link to the post and a brief description of the issue."
     },
     "consequences": {
       "title": "Consequences of Violations",
@@ -531,29 +531,29 @@
   },
   "contact": {
     "title": "Contact Us",
-    "subtitle": "Get in touch with the ChargeVilnius team. We're here to help!",
+    "subtitle": "Get in touch with the Chargington team. We're here to help!",
     "intro": "Have questions, suggestions, or need assistance? We'd love to hear from you.",
     "methods": {
       "email": {
         "title": "Email",
         "general": {
           "label": "General Inquiries",
-          "value": "info@chargevilnius.lt",
+          "value": "info@Chargington.lt",
           "description": "For general questions about the platform, partnerships, or media inquiries"
         },
         "support": {
           "label": "Technical Support",
-          "value": "support@chargevilnius.lt",
+          "value": "support@Chargington.lt",
           "description": "For help with your account, technical issues, or bug reports"
         },
         "privacy": {
           "label": "Privacy & Data",
-          "value": "privacy@chargevilnius.lt",
+          "value": "privacy@Chargington.lt",
           "description": "For questions about privacy, data protection, or GDPR requests"
         },
         "moderation": {
           "label": "Content Moderation",
-          "value": "moderation@chargevilnius.lt",
+          "value": "moderation@Chargington.lt",
           "description": "To report inappropriate content or guideline violations"
         }
       },
@@ -561,9 +561,9 @@
         "title": "Social Media",
         "description": "Follow us for updates, success stories, and community highlights",
         "platforms": {
-          "facebook": "Facebook: @ChargeVilnius",
-          "twitter": "Twitter: @ChargeVilnius",
-          "linkedin": "LinkedIn: ChargeVilnius"
+          "facebook": "Facebook: @Chargington",
+          "twitter": "Twitter: @Chargington",
+          "linkedin": "LinkedIn: Chargington"
         }
       },
       "response": {
@@ -577,14 +577,14 @@
     },
     "feedback": {
       "title": "Feedback & Suggestions",
-      "description": "We're constantly working to improve ChargeVilnius. If you have ideas for new features, improvements, or partnerships, we'd love to hear them. Email us at info@chargevilnius.lt with \"Feature Suggestion\" in the subject line."
+      "description": "We're constantly working to improve Chargington. If you have ideas for new features, improvements, or partnerships, we'd love to hear them. Email us at info@Chargington.lt with \"Feature Suggestion\" in the subject line."
     }
   },
   "aiConsultant": {
     "title": "AI Consultant",
     "subtitle": "Get personalized recommendations for your EV charging needs",
     "description": "Our AI assistant analyzes your location and nearby forum discussions to provide tailored advice on whether to join existing initiatives or start a new one.",
-    "welcome": "Hi! I'm your ChargeVilnius AI Consultant. I can help you determine the best course of action for bringing EV charging to your building.",
+    "welcome": "Hi! I'm your Chargington AI Consultant. I can help you determine the best course of action for bringing EV charging to your building.",
     "promptToStart": "Share your building's address to get started, and I'll analyze nearby discussions and provide personalized recommendations.",
     "inputPlaceholder": "Type your message here...",
     "send": "Send",
