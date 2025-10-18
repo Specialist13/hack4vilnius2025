@@ -37,7 +37,12 @@ export function Header() {
   const handleLogout = () => {
     removeAuthToken()
     setIsAuth(false)
-    router.push("/")
+    
+    // Trigger storage event for other tabs/components
+    window.dispatchEvent(new Event('storage'))
+    
+    // Force page refresh to update UI state everywhere
+    window.location.href = "/"
   }
 
   return (
@@ -154,3 +159,4 @@ export function Header() {
     </header>
   )
 }
+
