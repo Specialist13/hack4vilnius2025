@@ -10,6 +10,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useTranslations } from "next-intl"
+import { authAPI, setAuthToken, APIError } from "@/lib/api"
 
 export function LoginForm() {
   const t = useTranslations()
@@ -25,23 +26,27 @@ export function LoginForm() {
     setError("")
 
     try {
-      // TODO: Implement backend authentication
-      // POST /api/auth/login with { email, password }
-      // Expected response: { success: boolean, token: string, user: { id, email, name } }
+      // Call backend authentication API
+      const response = await authAPI.login({ email, password })
+      
+      // Store auth token in localStorage
+      setAuthToken(response.accessToken)
 
-      console.log("[v0] Login attempt:", { email })
-
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000))
-
-      // TODO: Store auth token in localStorage or cookies
-      // localStorage.setItem('authToken', response.token)
-
-      // TODO: Redirect to forum feed after successful login
+      // Redirect to forum feed after successful login
       router.push("/forum")
     } catch (err) {
-      setError("Invalid email or password. Please try again.")
-      console.error("[v0] Login error:", err)
+      if (err instanceof APIError) {
+        if (err.status === 401) {
+          setError("Invalid email or password. Please try again.")
+        } else if (err.status === 400) {
+          setError("Please provide valid email and password.")
+        } else {
+          setError("An error occurred. Please try again later.")
+        }
+      } else {
+        setError("Invalid email or password. Please try again.")
+      }
+      console.error("[Login] Error:", err)
     } finally {
       setIsLoading(false)
     }

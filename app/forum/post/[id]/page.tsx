@@ -11,6 +11,7 @@ import { ArrowLeft, MapPin, Calendar, ThumbsUp, Loader2 } from "lucide-react"
 import { ReplyCard, type Reply } from "@/components/forum/reply-card"
 import { ReplyForm } from "@/components/forum/reply-form"
 import type { ForumPost } from "@/components/forum/post-card"
+import { forumAPI, APIError } from "@/lib/api"
 
 const statusColors = {
   open: "bg-blue-100 text-blue-800 border-blue-200",
@@ -35,71 +36,23 @@ export default function PostDetailPage() {
 
   const fetchPostData = async () => {
     try {
-      // TODO: Fetch post and replies from backend
-      // GET /api/posts/{postId}
-      // Expected response: { post: ForumPost, replies: Reply[] }
+      setIsLoading(true)
+      
+      // Fetch post and replies from backend
+      const postData = await forumAPI.getPost(postId)
+      const repliesData = await forumAPI.getReplies(postId)
 
-      console.log("[v0] Fetching post details:", postId)
+      console.log("[Post Detail] Fetched data:", { postData, repliesData })
 
-      // Simulate API call with mock data
-      await new Promise((resolve) => setTimeout(resolve, 1000))
-
-      const mockPost: ForumPost = {
-        id: postId,
-        title: "Need EV charging at Gedimino pr. 20",
-        content:
-          "Our building has 45 apartments and at least 8 residents with electric vehicles. We desperately need charging infrastructure. The building was constructed in 2015, so the electrical system should be capable of supporting charging stations.\n\nI've spoken with a few neighbors and they're all interested. Has anyone successfully advocated for this in their building? What steps did you take? Did you need approval from all residents or just a majority?\n\nAny advice would be greatly appreciated!",
-        author: {
-          name: "Jonas Petraitis",
-          avatar: "/man.jpg",
-        },
-        address: "Gedimino pr. 20, Vilnius",
-        createdAt: "2025-01-15T10:30:00Z",
-        likes: 24,
-        replies: 12,
-        status: "open",
-      }
-
-      const mockReplies: Reply[] = [
-        {
-          id: "r1",
-          content:
-            "I went through this process last year! The key is to get a formal petition signed by at least 30% of residents. Then present it to your building management with cost estimates from contractors. Happy to share our documentation.",
-          author: {
-            name: "Rūta Kazlauskienė",
-            avatar: "/diverse-woman-portrait.png",
-          },
-          createdAt: "2025-01-15T11:45:00Z",
-          likes: 15,
-        },
-        {
-          id: "r2",
-          content:
-            "Check if your building qualifies for the Vilnius municipality EV infrastructure grant. They cover up to 50% of installation costs for residential buildings. The application deadline is March 31st.",
-          author: {
-            name: "Mindaugas Vasiliauskas",
-            avatar: "/man-beard.jpg",
-          },
-          createdAt: "2025-01-15T13:20:00Z",
-          likes: 22,
-        },
-        {
-          id: "r3",
-          content:
-            "I live nearby at Gedimino pr. 18. We're in the same situation. Maybe we could coordinate our efforts and approach the municipality together for a neighborhood solution?",
-          author: {
-            name: "Laura Mockutė",
-            avatar: "/woman-blonde.jpg",
-          },
-          createdAt: "2025-01-15T15:10:00Z",
-          likes: 8,
-        },
-      ]
-
-      setPost(mockPost)
-      setReplies(mockReplies)
+      setPost(postData)
+      setReplies(repliesData)
     } catch (error) {
-      console.error("[v0] Error fetching post:", error)
+      console.error("[Post Detail] Error fetching post:", error)
+      if (error instanceof APIError) {
+        // Post not found or other error
+        setPost(null)
+        setReplies([])
+      }
     } finally {
       setIsLoading(false)
     }

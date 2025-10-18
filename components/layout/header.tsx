@@ -1,10 +1,13 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Zap, Menu, User } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { LanguageSwitcher } from "@/components/layout/language-switcher"
+import { isAuthenticated, removeAuthToken } from "@/lib/api"
+import { useRouter } from "next/navigation"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -15,9 +18,27 @@ import {
 
 export function Header() {
   const t = useTranslations()
+  const router = useRouter()
+  const [isAuth, setIsAuth] = useState(false)
 
-  // TODO: Get user authentication status from backend
-  const isAuthenticated = false
+  // Check authentication status on mount and when localStorage changes
+  useEffect(() => {
+    setIsAuth(isAuthenticated())
+
+    // Listen for storage changes (e.g., login/logout in another tab)
+    const handleStorageChange = () => {
+      setIsAuth(isAuthenticated())
+    }
+
+    window.addEventListener('storage', handleStorageChange)
+    return () => window.removeEventListener('storage', handleStorageChange)
+  }, [])
+
+  const handleLogout = () => {
+    removeAuthToken()
+    setIsAuth(false)
+    router.push("/")
+  }
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -65,7 +86,7 @@ export function Header() {
         <div className="flex items-center gap-1 sm:gap-2">
           <LanguageSwitcher />
 
-          {isAuthenticated ? (
+          {isAuth ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="icon" className="rounded-full h-9 w-9 sm:h-10 sm:w-10">
@@ -80,8 +101,7 @@ export function Header() {
                   <Link href="/my-posts">My Posts</Link>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>
-                  {/* TODO: Implement logout functionality */}
+                <DropdownMenuItem onClick={handleLogout}>
                   {t("nav.logout")}
                 </DropdownMenuItem>
               </DropdownMenuContent>
@@ -119,7 +139,7 @@ export function Header() {
               <DropdownMenuItem asChild>
                 <Link href="/about">{t("nav.about")}</Link>
               </DropdownMenuItem>
-              {!isAuthenticated && (
+              {!isAuth && (
                 <>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem asChild className="sm:hidden">
