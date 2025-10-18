@@ -143,6 +143,7 @@
   "map": {
     "title": "EV Charging Discussion Map",
     "subtitle": "Explore where Vilnius residents are advocating for EV charging infrastructure.",
+    "description": "This map displays population density in squares and existing EV charging stations across Vilnius. Use it to discover areas that lack charging infrastructure despite having high population density—these are prime locations for community-driven EV charging initiatives.",
     "stats": {
       "activeDiscussions": "Active Discussions",
       "activeChange": "+12 this month",
@@ -378,6 +379,203 @@
         "title": "10. Contact Us",
         "content": "If you have questions about this Privacy Policy, please contact us at: privacy@chargevilnius.lt"
       }
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Find answers to common questions about ChargeVilnius and EV charging in apartment buildings.",
+    "categories": {
+      "general": {
+        "title": "General Questions",
+        "questions": [
+          {
+            "q": "What is ChargeVilnius?",
+            "a": "ChargeVilnius is a community platform that connects residents of apartment buildings in Vilnius who want to advocate for electric vehicle (EV) charging infrastructure. We help neighbors find each other, share experiences, and coordinate efforts to bring charging stations to their buildings."
+          },
+          {
+            "q": "Is ChargeVilnius free to use?",
+            "a": "Yes, ChargeVilnius is completely free to use. We believe that access to sustainable transportation infrastructure should be available to everyone, and our platform helps make that possible through community coordination."
+          },
+          {
+            "q": "Who can use ChargeVilnius?",
+            "a": "Anyone living in an apartment building in Vilnius, Lithuania can use ChargeVilnius. Whether you already own an electric vehicle or are planning to purchase one, you can join the community and start connecting with your neighbors."
+          }
+        ]
+      },
+      "technical": {
+        "title": "Technical Questions",
+        "questions": [
+          {
+            "q": "What types of EV charging stations are suitable for apartment buildings?",
+            "a": "Most apartment buildings install Level 2 (AC) charging stations, which typically provide 7-22 kW of power. These can fully charge most EVs overnight. The specific type depends on your building's electrical capacity, parking setup, and budget. Common solutions include wall-mounted chargers in individual parking spots or shared charging stations in common areas."
+          },
+          {
+            "q": "How much does it cost to install EV charging in an apartment building?",
+            "a": "Costs vary significantly based on several factors: the number of charging points, electrical infrastructure upgrades needed, parking layout, and chosen equipment. A single charging point can cost €1,500-€5,000, while comprehensive building-wide solutions may cost €20,000-€100,000+. Many buildings start with a pilot project of 2-5 charging points. EU and Lithuanian government grants may be available to offset costs."
+          },
+          {
+            "q": "Does our building need electrical upgrades?",
+            "a": "It depends on your building's current electrical capacity and how many charging stations you plan to install. A professional electrical assessment is recommended. Many modern buildings can accommodate several charging points with minimal upgrades, while older buildings may need significant electrical work. Load management systems can help optimize existing capacity."
+          }
+        ]
+      },
+      "legal": {
+        "title": "Legal & Administrative",
+        "questions": [
+          {
+            "q": "Do I need permission from my building management?",
+            "a": "Yes, in most cases you will need approval from your building's homeowners association (HOA) or management company. The approval process varies, but typically requires presenting a proposal at a homeowners meeting. Having multiple interested residents (which ChargeVilnius helps you find) strengthens your case significantly."
+          },
+          {
+            "q": "What are the legal requirements in Lithuania?",
+            "a": "Lithuanian law (Law on Construction, Building Technical Regulation STR 1.01.03:2017) requires new residential buildings to have infrastructure for EV charging. For existing buildings, Lithuanian Civil Code allows homeowners to request modifications for EV charging, but requires majority approval from the HOA. The Building Management Law outlines the decision-making process."
+          },
+          {
+            "q": "Can I install a charging station just for my parking spot?",
+            "a": "In most cases, yes, but you still need HOA approval even for a private installation. You'll typically need to: 1) Get electrical capacity assessment, 2) Present plans to HOA, 3) Get majority vote approval, 4) Hire certified electrician, 5) Cover all costs yourself. However, coordinating with neighbors (via ChargeVilnius) can lead to better, more cost-effective solutions for everyone."
+          }
+        ]
+      },
+      "community": {
+        "title": "Community & Process",
+        "questions": [
+          {
+            "q": "How many neighbors do I need to start an EV charging initiative?",
+            "a": "While one person can propose the idea, having 3-5 interested residents significantly increases your chances of success. This shows real demand and makes the cost-per-resident more attractive. ChargeVilnius helps you find these neighbors in your building."
+          },
+          {
+            "q": "What are the typical steps to get EV charging installed?",
+            "a": "1) Find interested neighbors (use ChargeVilnius!), 2) Get electrical capacity assessment, 3) Obtain quotes from installation companies, 4) Prepare proposal with costs and timeline, 5) Present to HOA meeting, 6) Get majority vote approval, 7) Sign contracts and begin installation, 8) Typically takes 3-12 months total."
+          },
+          {
+            "q": "How do I convince skeptical neighbors?",
+            "a": "Focus on: 1) Future-proofing the building (EV adoption is growing rapidly), 2) Increasing property values, 3) No cost to non-EV owners if users pay for installation and electricity, 4) Environmental benefits, 5) Share success stories from other buildings (found in ChargeVilnius forum)."
+          }
+        ]
+      }
+    }
+  },
+  "guidelines": {
+    "title": "Community Guidelines",
+    "subtitle": "Help us maintain a respectful, helpful, and productive community for all members.",
+    "intro": "ChargeVilnius is built on the principle of neighbors helping neighbors. These guidelines ensure our community remains welcoming, constructive, and focused on our shared goal of bringing EV charging infrastructure to Vilnius apartment buildings.",
+    "sections": {
+      "respect": {
+        "title": "Be Respectful and Constructive",
+        "items": [
+          "Treat all community members with respect, regardless of their EV ownership status or technical knowledge",
+          "Disagree politely and focus on ideas, not personal attacks",
+          "Remember that everyone is here to solve the same problem - making EV charging accessible",
+          "Use appropriate language and avoid inflammatory or offensive content"
+        ]
+      },
+      "helpful": {
+        "title": "Be Helpful and Share Knowledge",
+        "items": [
+          "Share your experiences, both successes and failures - others can learn from both",
+          "Provide specific details when discussing costs, timelines, and service providers",
+          "If you see a question you can answer, take a moment to help",
+          "Update your posts when situations change or are resolved",
+          "Credit others' ideas and contributions"
+        ]
+      },
+      "accurate": {
+        "title": "Keep Information Accurate",
+        "items": [
+          "Only post about buildings where you are a resident or have permission to represent",
+          "Provide accurate addresses and contact information",
+          "Clearly distinguish between facts, opinions, and speculation",
+          "Correct any mistakes in your posts if you discover errors",
+          "Don't spread misinformation about costs, regulations, or technical requirements"
+        ]
+      },
+      "privacy": {
+        "title": "Respect Privacy",
+        "items": [
+          "Don't share others' personal information (names, phone numbers, apartment numbers) without permission",
+          "Be aware that your posts are public and associated with your building address",
+          "Don't post photos of people without their consent",
+          "Respect the privacy of building management and service providers"
+        ]
+      },
+      "ontopic": {
+        "title": "Stay On Topic",
+        "items": [
+          "Keep discussions focused on EV charging infrastructure and related topics",
+          "Avoid general political debates, religious discussions, or off-topic conversations",
+          "If you want to discuss other building issues, do so in appropriate channels",
+          "Don't post spam, advertisements, or promotional content unless explicitly relevant"
+        ]
+      },
+      "legal": {
+        "title": "Follow Laws and Regulations",
+        "items": [
+          "Don't encourage or discuss illegal activities",
+          "Respect intellectual property and copyright",
+          "Don't share copyrighted documents without permission",
+          "Follow all applicable Lithuanian and EU laws",
+          "When in doubt about legal matters, recommend consulting a lawyer rather than providing legal advice"
+        ]
+      }
+    },
+    "reporting": {
+      "title": "Reporting Violations",
+      "description": "If you see content that violates these guidelines, please report it to our moderation team at: moderation@chargevilnius.lt. Include a link to the post and a brief description of the issue."
+    },
+    "consequences": {
+      "title": "Consequences of Violations",
+      "description": "Violations of these guidelines may result in: warnings, temporary suspension, or permanent account termination, depending on severity and frequency. We aim to educate first, but serious violations (harassment, hate speech, illegal content) will result in immediate removal."
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch with the ChargeVilnius team. We're here to help!",
+    "intro": "Have questions, suggestions, or need assistance? We'd love to hear from you.",
+    "methods": {
+      "email": {
+        "title": "Email",
+        "general": {
+          "label": "General Inquiries",
+          "value": "info@chargevilnius.lt",
+          "description": "For general questions about the platform, partnerships, or media inquiries"
+        },
+        "support": {
+          "label": "Technical Support",
+          "value": "support@chargevilnius.lt",
+          "description": "For help with your account, technical issues, or bug reports"
+        },
+        "privacy": {
+          "label": "Privacy & Data",
+          "value": "privacy@chargevilnius.lt",
+          "description": "For questions about privacy, data protection, or GDPR requests"
+        },
+        "moderation": {
+          "label": "Content Moderation",
+          "value": "moderation@chargevilnius.lt",
+          "description": "To report inappropriate content or guideline violations"
+        }
+      },
+      "social": {
+        "title": "Social Media",
+        "description": "Follow us for updates, success stories, and community highlights",
+        "platforms": {
+          "facebook": "Facebook: @ChargeVilnius",
+          "twitter": "Twitter: @ChargeVilnius",
+          "linkedin": "LinkedIn: ChargeVilnius"
+        }
+      },
+      "response": {
+        "title": "Response Time",
+        "description": "We aim to respond to all inquiries within 48 hours during business days (Monday-Friday). For urgent technical issues, please include \"URGENT\" in your email subject line."
+      }
+    },
+    "faq": {
+      "title": "Before You Contact Us",
+      "description": "Many common questions are answered in our FAQ section. Check there first - you might find your answer immediately!"
+    },
+    "feedback": {
+      "title": "Feedback & Suggestions",
+      "description": "We're constantly working to improve ChargeVilnius. If you have ideas for new features, improvements, or partnerships, we'd love to hear them. Email us at info@chargevilnius.lt with \"Feature Suggestion\" in the subject line."
     }
   }
 }

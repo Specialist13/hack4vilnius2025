@@ -143,6 +143,7 @@
   "map": {
     "title": "EV Įkrovimo Diskusijų Žemėlapis",
     "subtitle": "Tyrinėkite, kur Vilniaus gyventojai kovoja už EV įkrovimo infrastruktūrą.",
+    "description": "Šis žemėlapis rodo gyventojų tankį kvadratuose ir esamas EV įkrovimo stoteles Vilniuje. Naudokite jį, kad atrastumėte zonas, kuriose trūksta įkrovimo infrastruktūros, nepaisant didelio gyventojų tankio—tai puikios vietos bendruomenės inicijuotoms EV įkrovimo stotėlėms.",
     "stats": {
       "activeDiscussions": "Aktyvios Diskusijos",
       "activeChange": "+12 šį mėnesį",
@@ -383,6 +384,203 @@
         "title": "10. Susisiekite su Mumis",
         "content": "Jei turite klausimų dėl šios Privatumo Politikos, susisiekite su mumis: privacy@chargevilnius.lt"
       }
+    }
+  },
+  "faq": {
+    "title": "Dažniausiai Užduodami Klausimai",
+    "subtitle": "Raskite atsakymus į dažniausius klausimus apie ChargeVilnius ir EV įkrovimą daugiabučiuose.",
+    "categories": {
+      "general": {
+        "title": "Bendrieji Klausimai",
+        "questions": [
+          {
+            "q": "Kas yra ChargeVilnius?",
+            "a": "ChargeVilnius yra bendruomenės platforma, jungianti daugiabučių namų gyventojus Vilniuje, kurie nori kovoti už elektromobilių (EV) įkrovimo infrastruktūrą. Mes padedame kaimynams rasti vienas kitą, dalintis patirtimi ir koordinuoti pastangas, kad atneštų įkrovimo stoteles į savo pastatus."
+          },
+          {
+            "q": "Ar ChargeVilnius naudojimas nemokamas?",
+            "a": "Taip, ChargeVilnius naudojimas yra visiškai nemokamas. Mes tikime, kad prieiga prie tvarios transporto infrastruktūros turėtų būti prieinama visiems, ir mūsų platforma padeda tai įgyvendinti per bendruomenės koordinavimą."
+          },
+          {
+            "q": "Kas gali naudotis ChargeVilnius?",
+            "a": "Bet kas, gyvenantis daugiabučiame name Vilniuje, Lietuvoje, gali naudotis ChargeVilnius. Nesvarbu, ar jau turite elektromobilį, ar planuojate jį įsigyti, galite prisijungti prie bendruomenės ir pradėti bendrauti su savo kaimynais."
+          }
+        ]
+      },
+      "technical": {
+        "title": "Techniniai Klausimai",
+        "questions": [
+          {
+            "q": "Kokie EV įkrovimo stotelių tipai tinka daugiabučiams?",
+            "a": "Dauguma daugiabučių naudoja 2 lygio (AC) įkrovimo stoteles, kurios paprastai teikia 7-22 kW galią. Jos gali visiškai įkrauti daugumą elektromobilių per naktį. Konkretus tipas priklauso nuo pastato elektros pajėgumo, parkavimo vietos išdėstymo ir biudžeto. Įprastos sprendimai apima ant sienos montuojamus įkroviklius atskirose parkavimo vietose arba bendras įkrovimo stoteles bendrose erdvėse."
+          },
+          {
+            "q": "Kiek kainuoja EV įkrovimo įrengimas daugiabučiame?",
+            "a": "Kainos labai skiriasi priklausomai nuo kelių veiksnių: įkrovimo taškų skaičiaus, reikalingų elektros infrastruktūros patobulinimų, parkavimo išdėstymo ir pasirinktos įrangos. Vienas įkrovimo taškas gali kainuoti 1 500-5 000 €, o išsamūs viso pastato sprendimai gali kainuoti 20 000-100 000+ €. Daugelis pastatų pradeda nuo bandomojo projekto su 2-5 įkrovimo taškais. ES ir Lietuvos vyriausybės dotacijos gali padėti kompensuoti išlaidas."
+          },
+          {
+            "q": "Ar mūsų pastatui reikia elektros patobulinimų?",
+            "a": "Tai priklauso nuo jūsų pastato dabartinio elektros pajėgumo ir kiek įkrovimo stotelių planuojate įrengti. Rekomenduojamas profesionalus elektros vertinimas. Daugelis šiuolaikinių pastatų gali pritaikyti keletą įkrovimo taškų su minimaliais patobulinimais, o senesniems pastatams gali reikėti reikšmingų elektros darbų. Apkrovos valdymo sistemos gali padėti optimizuoti esamą pajėgumą."
+          }
+        ]
+      },
+      "legal": {
+        "title": "Teisiniai ir Administraciniai",
+        "questions": [
+          {
+            "q": "Ar man reikia leidimo iš pastato administracijos?",
+            "a": "Taip, daugumoje atvejų jums reikės patvirtinimo iš pastato savininkų bendruomenės (HOA) arba valdymo įmonės. Patvirtinimo procesas skiriasi, bet paprastai reikia pateikti pasiūlymą savininkų susirinkime. Keli suinteresuoti gyventojai (kuriuos ChargeVilnius padeda rasti) stipriai sustiprina jūsų poziciją."
+          },
+          {
+            "q": "Kokie yra teisiniai reikalavimai Lietuvoje?",
+            "a": "Lietuvos įstatymai (Statybos įstatymas, Statybos techninis reglamentas STR 1.01.03:2017) reikalauja, kad nauji gyvenamieji pastatai turėtų infrastruktūrą EV įkrovimui. Esamiems pastatams Lietuvos Civilinis kodeksas leidžia savininkams prašyti modifikacijų EV įkrovimui, bet reikalauja daugumos patvirtinimo iš HOA. Pastatų valdymo įstatymas apibrėžia sprendimų priėmimo procesą."
+          },
+          {
+            "q": "Ar galiu įrengti įkrovimo stotelę tik savo parkavimo vietoje?",
+            "a": "Daugumoje atvejų taip, bet vis tiek reikia HOA patvirtinimo net privačiam įrengimui. Paprastai reikės: 1) Gauti elektros pajėgumo vertinimą, 2) Pateikti planus HOA, 3) Gauti daugumos balsų patvirtinimą, 4) Samdyti sertifikuotą elektriką, 5) Padengti visas išlaidas patiems. Tačiau koordinavimas su kaimynais (per ChargeVilnius) gali lemti geresnius, ekonomiškesnius sprendimus visiems."
+          }
+        ]
+      },
+      "community": {
+        "title": "Bendruomenė ir Procesas",
+        "questions": [
+          {
+            "q": "Kiek kaimynų man reikia, kad pradėčiau EV įkrovimo iniciatyvą?",
+            "a": "Nors vienas asmuo gali pasiūlyti idėją, turėjimas 3-5 suinteresuotų gyventojų žymiai padidina jūsų sėkmės galimybes. Tai parodo tikrą paklausą ir daro kainą vienam gyventojui patrauklesnę. ChargeVilnius padeda rasti šiuos kaimynus jūsų pastate."
+          },
+          {
+            "q": "Kokie yra įprasti žingsniai EV įkrovimo įrengimui?",
+            "a": "1) Raskite suinteresuotus kaimynus (naudokite ChargeVilnius!), 2) Gaukite elektros pajėgumo vertinimą, 3) Gaukite pasiūlymus iš įrengimo įmonių, 4) Paruoškite pasiūlymą su išlaidomis ir grafiku, 5) Pristatykite HOA susirinkime, 6) Gaukite daugumos balsų patvirtinimą, 7) Pasirašykite sutartis ir pradėkite įrengimą, 8) Paprastai užtrunka 3-12 mėnesių iš viso."
+          },
+          {
+            "q": "Kaip įtikinti skeptiškus kaimynus?",
+            "a": "Sutelkite dėmesį į: 1) Pastato paruošimą ateičiai (EV naudojimas sparčiai auga), 2) Turto vertės didinimą, 3) Jokių išlaidų ne-EV savininkams, jei vartotojai moka už įrengimą ir elektrą, 4) Aplinkosaugos naudą, 5) Dalinkitės sėkmės istorijomis iš kitų pastatų (rasite ChargeVilnius forume)."
+          }
+        ]
+      }
+    }
+  },
+  "guidelines": {
+    "title": "Bendruomenės Gairės",
+    "subtitle": "Padėkite mums palaikyti pagarbią, naudingą ir produktyvią bendruomenę visiems nariams.",
+    "intro": "ChargeVilnius sukurtas remiantis principu, kad kaimynai padeda kaimynams. Šios gairės užtikrina, kad mūsų bendruomenė išliktų svetinga, konstruktyvi ir sutelkta į bendrą tikslą - atnešti EV įkrovimo infrastruktūrą į Vilniaus daugiabučius.",
+    "sections": {
+      "respect": {
+        "title": "Būkite Pagarbus ir Konstruktyvūs",
+        "items": [
+          "Gerbkite visus bendruomenės narius, nepriklausomai nuo jų EV nuosavybės statuso ar techninių žinių",
+          "Nesutikite mandagiai ir sutelkite dėmesį į idėjas, o ne asmeninius puolimus",
+          "Nepamirškite, kad visi čia yra spręsti tą pačią problemą - padaryti EV įkrovimą prieinamą",
+          "Naudokite tinkamą kalbą ir venkite uždegiančio ar įžeidžiančio turinio"
+        ]
+      },
+      "helpful": {
+        "title": "Būkite Naudingi ir Dalinkitės Žiniomis",
+        "items": [
+          "Dalinkitės savo patirtimi, tiek sėkmėmis, tiek nesėkmėmis - kiti gali mokytis iš abiejų",
+          "Pateikite konkrečias detales, kai diskutuojate apie išlaidas, terminus ir paslaugų teikėjus",
+          "Jei matote klausimą, į kurį galite atsakyti, skirkite minutę pagalbai",
+          "Atnaujinkite savo įrašus, kai situacijos keičiasi ar išsprendžiamos",
+          "Pripažinkite kitų idėjas ir įnašus"
+        ]
+      },
+      "accurate": {
+        "title": "Išlaikykite Informaciją Tikslią",
+        "items": [
+          "Skelbiankite tik apie pastatus, kuriuose esate gyventojas arba turite leidimą atstovauti",
+          "Pateikite tikslų adresą ir kontaktinę informaciją",
+          "Aiškiai atskirkite faktus, nuomones ir spekuliacijas",
+          "Ištaisykite bet kokias klaidas savo įrašuose, jei atradote klaidų",
+          "Neskleiskite klaidinančios informacijos apie išlaidas, taisykles ar techninius reikalavimus"
+        ]
+      },
+      "privacy": {
+        "title": "Gerbkite Privatumą",
+        "items": [
+          "Nedalinkitės kitų asmenine informacija (vardais, telefono numeriais, butų numeriais) be leidimo",
+          "Žinokite, kad jūsų įrašai yra vieši ir susieti su jūsų pastato adresu",
+          "Nedėkite žmonių nuotraukų be jų sutikimo",
+          "Gerbkite pastato administracijos ir paslaugų teikėjų privatumą"
+        ]
+      },
+      "ontopic": {
+        "title": "Laikykitės Temos",
+        "items": [
+          "Diskusijas palaikykite sutelktas į EV įkrovimo infrastruktūrą ir susijusias temas",
+          "Venkite bendrų politinių debatų, religinių diskusijų ar ne pagal temą pokalbių",
+          "Jei norite aptarti kitas pastato problemas, darykite tai tinkamose vietose",
+          "Neskelbiankite šlamšto, reklamų ar reklaminių pranešimų, nebent aiškiai susiję"
+        ]
+      },
+      "legal": {
+        "title": "Laikykitės Įstatymų ir Taisyklių",
+        "items": [
+          "Neraginkite ir nediskutuokite apie neteisėtą veiklą",
+          "Gerbkite intelektinę nuosavybę ir autorių teises",
+          "Nedalinkitės autorių teisėmis saugomais dokumentais be leidimo",
+          "Laikykitės visų taikomų Lietuvos ir ES įstatymų",
+          "Kai abejojate dėl teisinių klausimų, rekomenduokite konsultuotis su advokatu, o ne teikti teisinę pagalbą"
+        ]
+      }
+    },
+    "reporting": {
+      "title": "Pažeidimų Pranešimas",
+      "description": "Jei matote turinį, kuris pažeidžia šias gaires, prašome pranešti mūsų moderavimo komandai: moderation@chargevilnius.lt. Įtraukite nuorodą į įrašą ir trumpą problemos aprašymą."
+    },
+    "consequences": {
+      "title": "Pažeidimų Pasekmės",
+      "description": "Šių gairių pažeidimai gali lemti: įspėjimus, laikiną sustabdymą arba nuolatinį paskyros nutraukimą, priklausomai nuo rimtumo ir dažnio. Mes siekiame pirmiausia mokyti, bet rimti pažeidimai (priekabiavimas, neapykantos kalba, neteisėtas turinys) lems nedelsiantį pašalinimą."
+    }
+  },
+  "contact": {
+    "title": "Susisiekite su Mumis",
+    "subtitle": "Susisiekite su ChargeVilnius komanda. Mes čia, kad padėtume!",
+    "intro": "Turite klausimų, pasiūlymų ar reikia pagalbos? Norėtume išgirsti iš jūsų.",
+    "methods": {
+      "email": {
+        "title": "El. paštas",
+        "general": {
+          "label": "Bendrieji Klausimai",
+          "value": "info@chargevilnius.lt",
+          "description": "Bendriems klausimams apie platformą, partnerystes ar žiniasklaidos užklausoms"
+        },
+        "support": {
+          "label": "Techninė Parama",
+          "value": "support@chargevilnius.lt",
+          "description": "Pagalbai su jūsų paskyra, techninėmis problemomis ar klaidų pranešimams"
+        },
+        "privacy": {
+          "label": "Privatumas ir Duomenys",
+          "value": "privacy@chargevilnius.lt",
+          "description": "Klausimams apie privatumą, duomenų apsaugą ar BDAR užklausoms"
+        },
+        "moderation": {
+          "label": "Turinio Moderavimas",
+          "value": "moderation@chargevilnius.lt",
+          "description": "Pranešti apie netinkamą turinį ar gairių pažeidimus"
+        }
+      },
+      "social": {
+        "title": "Socialiniai Tinklai",
+        "description": "Sekite mus dėl naujienų, sėkmės istorijų ir bendruomenės akcentų",
+        "platforms": {
+          "facebook": "Facebook: @ChargeVilnius",
+          "twitter": "Twitter: @ChargeVilnius",
+          "linkedin": "LinkedIn: ChargeVilnius"
+        }
+      },
+      "response": {
+        "title": "Atsakymo Laikas",
+        "description": "Mes siekiame atsakyti į visas užklausas per 48 valandas darbo dienomis (pirmadienį-penktadienį). Skubių techninių problemų atveju, prašome įtraukti \"SKUBU\" į jūsų el. pašto temą."
+      }
+    },
+    "faq": {
+      "title": "Prieš Susisiekdami su Mumis",
+      "description": "Daugelis dažnų klausimų yra atsakyti mūsų DUK skyriuje. Pirmiausia patikrinkite ten - galite rasti savo atsakymą iš karto!"
+    },
+    "feedback": {
+      "title": "Atsiliepimai ir Pasiūlymai",
+      "description": "Mes nuolat dirbame, kad pagerintume ChargeVilnius. Jei turite idėjų dėl naujų funkcijų, patobulinimų ar partnerysčių, norėtume jas išgirsti. Rašykite mums info@chargevilnius.lt su \"Funkcijos Pasiūlymas\" temos eilutėje."
     }
   }
 }

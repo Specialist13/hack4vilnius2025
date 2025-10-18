@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { MapPin, Loader2 } from "lucide-react"
+import { loadGoogleMapsAPI } from "@/lib/google-maps-loader"
 
 interface AddressPickerProps {
   onAddressSelect: (address: string, coordinates?: { lat: number; lng: number }) => void
@@ -34,32 +35,13 @@ export function AddressPicker({ onAddressSelect, initialAddress = "" }: AddressP
       return
     }
 
-    // Load Google Maps script
-    const loadGoogleMaps = () => {
-      if (typeof window.google !== "undefined") {
-        initializeMap()
-        return
-      }
-
-      const script = document.createElement("script")
-      script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places&callback=initMap`
-      script.async = true
-      script.defer = true
-
-      window.initMap = initializeMap
-
-      script.onerror = () => {
-        setError("Failed to load Google Maps. Please check your API key and internet connection.")
-        setIsLoading(false)
-      }
-
-      document.head.appendChild(script)
-    }
-
-    const initializeMap = () => {
-      if (!mapRef.current) return
-
+    const initializeMap = async () => {
       try {
+        // Load Google Maps API using the global loader
+        await loadGoogleMapsAPI(apiKey)
+
+        if (!mapRef.current) return
+
         // Center on Vilnius, Lithuania
         const vilniusCenter = { lat: 54.6872, lng: 25.2797 }
 
@@ -142,12 +124,12 @@ export function AddressPicker({ onAddressSelect, initialAddress = "" }: AddressP
         setError(null)
       } catch (err) {
         console.error("[v0] Error initializing Google Maps:", err)
-        setError("Failed to initialize map. Please try again.")
+        setError("Failed to load Google Maps. Please check your API key and internet connection.")
         setIsLoading(false)
       }
     }
 
-    loadGoogleMaps()
+    initializeMap()
 
     return () => {
       // Cleanup

@@ -27,6 +27,9 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
+      <head>
+        <script type="module" src="https://js.arcgis.com/embeddable-components/4.33/arcgis-embeddable-components.esm.js"></script>
+      </head>
       <body className={`font-sans antialiased`}>
         <NextIntlClientProvider messages={messages}>
           <div className="flex min-h-screen flex-col">
