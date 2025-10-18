@@ -33,30 +33,22 @@ export default function CreatePostPage() {
     setIsSubmitting(true)
 
     try {
-      // Submit post to backend
-      const response = await forumAPI.createPost({
+      // Submit forum to backend - API only requires title and body
+      const response = await forumAPI.createForum({
         title: formData.title,
-        content: formData.content,
-        address: formData.address,
-        status: formData.status,
-        language: formData.language,
-        coordinates: formData.coordinates,
+        body: formData.content,
       })
 
-      console.log("[Create Post] Success:", response)
+      console.log("[Create Forum] Success:", response)
 
-      // Redirect to the newly created post or forum if no ID returned
-      if (response.postId || response.id) {
-        router.push(`/forum/post/${response.postId || response.id}`)
-      } else {
-        router.push("/forum")
-      }
+      // Redirect back to forum list
+      router.push("/forum")
     } catch (error) {
-      console.error("[Create Post] Error:", error)
+      console.error("[Create Forum] Error:", error)
       if (error instanceof APIError) {
-        alert(`Failed to create post: ${error.data?.error || error.statusText}`)
+        alert(`Failed to create forum post: ${error.data?.error || error.statusText}`)
       } else {
-        alert("Failed to create post. Please try again.")
+        alert("Failed to create forum post. Please try again.")
       }
     } finally {
       setIsSubmitting(false)

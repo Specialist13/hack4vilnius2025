@@ -11,7 +11,7 @@ import { ArrowLeft, MapPin, Calendar, ThumbsUp, Loader2 } from "lucide-react"
 import { ReplyCard, type Reply } from "@/components/forum/reply-card"
 import { ReplyForm } from "@/components/forum/reply-form"
 import type { ForumPost } from "@/components/forum/post-card"
-import { forumAPI, APIError } from "@/lib/api"
+import { extendedForumAPI, APIError } from "@/lib/api"
 
 const statusColors = {
   open: "bg-blue-100 text-blue-800 border-blue-200",
@@ -38,9 +38,9 @@ export default function PostDetailPage() {
     try {
       setIsLoading(true)
       
-      // Fetch post and replies from backend
-      const postData = await forumAPI.getPost(postId)
-      const repliesData = await forumAPI.getReplies(postId)
+      // Fetch post and replies from backend (using extended API - not in OpenAPI spec)
+      const postData = await extendedForumAPI.getPost(postId)
+      const repliesData = await extendedForumAPI.getReplies(postId)
 
       console.log("[Post Detail] Fetched data:", { postData, repliesData })
 

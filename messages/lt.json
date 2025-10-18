@@ -586,7 +586,7 @@
     }
   },
   "aiConsultant": {
-    "title": "AI Konsultantas",
+    "title": "AI konsultantas",
     "subtitle": "Gaukite pritaikytas rekomendacijas jūsų EV įkrovimo poreikiams",
     "description": "Mūsų AI asistentas analizuoja jūsų vietą ir netoliese esančias forumo diskusijas, kad pateiktų pritaikytas rekomendacijas, ar prisijungti prie esamų iniciatyvų, ar pradėti naują.",
     "welcome": "Sveiki! Esu jūsų Chargington AI konsultantas. Galiu padėti nustatyti geriausią veiksmų planą, kaip atnešti EV įkrovimą į jūsų pastatą.",
@@ -608,7 +608,7 @@
       "guidance": "Pasiūlyti gaires dėl kitų žingsnių ir geriausios praktikos"
     },
     "privacyNote": "Jūsų vietos duomenys naudojami tik rekomendacijoms pateikti ir nėra saugomi nuolat.",
-    "comingSoon": "AI Konsultantas Jau Greitai",
+    "comingSoon": "AI konsultantas Jau Greitai",
     "comingSoonDescription": "Ši funkcija šiuo metu kuriama. Mūsų AI konsultantas padės jums priimti pagrįstus sprendimus dėl EV įkrovimo iniciatyvų jūsų pastate."
   },
   "documents": {

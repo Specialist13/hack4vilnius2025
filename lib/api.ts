@@ -221,20 +221,94 @@ export const userAPI = {
 }
 
 /**
- * Forum API (based on common patterns, may need backend implementation)
+ * Forum API - Matches OpenAPI specification
  */
 export const forumAPI = {
   /**
-   * Get all posts
+   * Get paginated forums
+   * GET /api/forums?page=1&limit=10
    */
-  getPosts: async () => {
-    return apiRequest('/api/posts', {
+  getForums: async (page: number = 1, limit: number = 10) => {
+    return apiRequest<{
+      forums: Array<{
+        code: string
+        userCode: string
+        title: string
+        body: string
+        createdAt: string
+        approvalCount: number
+      }>
+      pagination: {
+        page: number
+        limit: number
+        totalItems: number
+        totalPages: number
+        hasNextPage: boolean
+        hasPreviousPage: boolean
+      }
+    }>(`/api/forums?page=${page}&limit=${limit}`, {
       method: 'GET',
     })
   },
 
   /**
+   * Create a new forum post
+   * POST /api/forums
+   */
+  createForum: async (data: {
+    title: string
+    body: string
+  }) => {
+    return apiRequest<{
+      code: string
+      userCode: string
+      title: string
+      body: string
+      createdAt: string
+    }>('/api/forums', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    })
+  },
+
+  /**
+   * Delete a forum post
+   * DELETE /api/forums/{code}
+   */
+  deleteForum: async (code: string) => {
+    return apiRequest<{
+      message: string
+    }>(`/api/forums/${code}`, {
+      method: 'DELETE',
+    })
+  },
+
+  /**
+   * Get current user's forums
+   * GET /api/users/forums
+   */
+  getUserForums: async () => {
+    return apiRequest<Array<{
+      code: string
+      userCode: string
+      title: string
+      body: string
+      createdAt: string
+    }>>('/api/users/forums', {
+      method: 'GET',
+    })
+  },
+}
+
+/**
+ * Extended Forum API - NOT IN OPENAPI SPEC
+ * These endpoints are used by the frontend but not defined in openapi.yml
+ * They may need to be added to the backend or replaced with alternative solutions
+ */
+export const extendedForumAPI = {
+  /**
    * Get a single post by ID
+   * NOTE: Not in OpenAPI spec - needs backend implementation
    */
   getPost: async (postId: string) => {
     return apiRequest(`/api/posts/${postId}`, {
@@ -243,24 +317,8 @@ export const forumAPI = {
   },
 
   /**
-   * Create a new post
-   */
-  createPost: async (data: {
-    title: string
-    content: string
-    address: string
-    status: string
-    language: string
-    coordinates: { lat: number; lng: number }
-  }) => {
-    return apiRequest('/api/posts', {
-      method: 'POST',
-      body: JSON.stringify(data),
-    })
-  },
-
-  /**
    * Get replies for a post
+   * NOTE: Not in OpenAPI spec - needs backend implementation
    */
   getReplies: async (postId: string) => {
     return apiRequest(`/api/posts/${postId}/replies`, {
@@ -270,6 +328,7 @@ export const forumAPI = {
 
   /**
    * Create a reply to a post
+   * NOTE: Not in OpenAPI spec - needs backend implementation
    */
   createReply: async (postId: string, data: { content: string }) => {
     return apiRequest(`/api/posts/${postId}/replies`, {
@@ -277,32 +336,16 @@ export const forumAPI = {
       body: JSON.stringify(data),
     })
   },
-
-  /**
-   * Like a post
-   */
-  likePost: async (postId: string) => {
-    return apiRequest(`/api/posts/${postId}/like`, {
-      method: 'POST',
-    })
-  },
-
-  /**
-   * Like a reply
-   */
-  likeReply: async (postId: string, replyId: string) => {
-    return apiRequest(`/api/posts/${postId}/replies/${replyId}/like`, {
-      method: 'POST',
-    })
-  },
 }
 
 /**
- * Map API (based on common patterns, may need backend implementation)
+ * Map API - NOT IN OPENAPI SPEC
+ * These endpoints are used by the frontend but not defined in openapi.yml
  */
 export const mapAPI = {
   /**
    * Get map statistics
+   * NOTE: Not in OpenAPI spec - needs backend implementation
    */
   getStats: async () => {
     return apiRequest('/api/map/stats', {
@@ -312,11 +355,13 @@ export const mapAPI = {
 }
 
 /**
- * AI Consultant API (based on common patterns, may need backend implementation)
+ * AI Consultant API - NOT IN OPENAPI SPEC
+ * These endpoints are used by the frontend but not defined in openapi.yml
  */
 export const aiAPI = {
   /**
    * Analyze user message and provide AI recommendations
+   * NOTE: Not in OpenAPI spec - needs backend implementation
    */
   analyze: async (data: {
     message: string

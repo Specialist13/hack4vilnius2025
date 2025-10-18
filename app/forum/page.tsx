@@ -8,6 +8,7 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Loader2, MapPin } from "lucide-react"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { useTranslations } from "next-intl"
+import { forumAPI, APIError } from "@/lib/api"
 
 export default function ForumPage() {
   const t = useTranslations()
@@ -17,14 +18,44 @@ export default function ForumPage() {
   const [activeTab, setActiveTab] = useState("all")
   const [searchQuery, setSearchQuery] = useState("")
   const [showNearestMessage, setShowNearestMessage] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(1)
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        console.log("[v0] Fetching forum posts")
+        setIsLoading(true)
+        setError(null)
 
-        await new Promise((resolve) => setTimeout(resolve, 1000))
+        // Fetch forums from API
+        const response = await forumAPI.getForums(currentPage, 10)
+        
+        // Transform API response to match ForumPost interface
+        const transformedPosts: ForumPost[] = response.forums.map(forum => ({
+          id: forum.code,
+          title: forum.title,
+          content: forum.body,
+          author: {
+            name: "Forum User", // API doesn't provide author details in list view
+            avatar: "/man.jpg",
+          },
+          address: "Vilnius", // API doesn't provide address
+          createdAt: forum.createdAt,
+          likes: forum.approvalCount,
+          replies: 0, // API doesn't provide reply count in list view
+          status: "open", // Default status
+          language: "en",
+        }))
 
+        setPosts(transformedPosts)
+        setFilteredPosts(transformedPosts)
+        setTotalPages(response.pagination.totalPages)
+      } catch (err) {
+        console.error("Error fetching forums:", err)
+        setError(err instanceof APIError ? `Failed to load forums: ${err.data?.error || err.statusText}` : "Failed to load forums. Please try again later.")
+        
+        // Fall back to mock data on error
         const mockPosts: ForumPost[] = [
           {
             id: "1",
@@ -110,15 +141,13 @@ export default function ForumPage() {
 
         setPosts(mockPosts)
         setFilteredPosts(mockPosts)
-      } catch (error) {
-        console.error("[v0] Error fetching posts:", error)
       } finally {
         setIsLoading(false)
       }
     }
 
     fetchPosts()
-  }, [])
+  }, [currentPage])
 
   const handleSearch = (query: string) => {
     console.log("[v0] Searching posts by address:", query)
@@ -187,6 +216,12 @@ export default function ForumPage() {
             </TabsTrigger>
           </TabsList>
         </Tabs>
+
+        {error && (
+          <Alert className="mb-6 border-destructive/50 bg-destructive/10">
+            <AlertDescription className="text-destructive">{error}</AlertDescription>
+          </Alert>
+        )}
 
         {showNearestMessage && searchQuery && (
           <Alert className="mb-6 border-primary/50 bg-primary/5">

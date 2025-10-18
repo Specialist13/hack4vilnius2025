@@ -428,6 +428,347 @@ paths:
                     type: string
                     example: Internal server error
 
+  /api/users/:
+    delete:
+      summary: Soft delete user
+      description: Soft delete the authenticated user's account (marks as deleted without permanently removing data)
+      tags:
+        - Users
+      security:
+        - BearerAuth: []
+      responses:
+        '204':
+          description: User soft deleted successfully
+        '400':
+          description: Bad request - User not found
+  /api/forums:
+    get:
+      summary: Get paginated forums
+      description: Retrieve a paginated list of forums with approval counts
+      tags:
+        - Forums
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: integer
+            default: 1
+            minimum: 1
+          description: Page number for pagination
+          example: 1
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            default: 10
+            minimum: 1
+            maximum: 100
+          description: Number of items per page (max 100)
+          example: 10
+      responses:
+        '200':
+          description: Forums retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  forums:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          format: uuid
+                          example: 770e8400-e29b-41d4-a716-446655440002
+                        userCode:
+                          type: string
+                          format: uuid
+                          example: 660e8400-e29b-41d4-a716-446655440001
+                        title:
+                          type: string
+                          example: My Forum Title
+                        body:
+                          type: string
+                          example: This is the forum content
+                        createdAt:
+                          type: string
+                          format: date-time
+                          example: 2025-10-18T10:30:00.000Z
+                        approvalCount:
+                          type: integer
+                          example: 5
+                  pagination:
+                    type: object
+                    properties:
+                      page:
+                        type: integer
+                        example: 1
+                      limit:
+                        type: integer
+                        example: 10
+                      totalItems:
+                        type: integer
+                        example: 25
+                      totalPages:
+                        type: integer
+                        example: 3
+                      hasNextPage:
+                        type: boolean
+                        example: true
+                      hasPreviousPage:
+                        type: boolean
+                        example: false
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Error retrieving forums
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Internal server error
+    post:
+      summary: Create new forum
+      description: Create a new forum post
+      tags:
+        - Forums
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - title
+                - body
+              properties:
+                title:
+                  type: string
+                  example: My Forum Title
+                body:
+                  type: string
+                  example: This is the forum content
+      responses:
+        '201':
+          description: Forum created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    format: uuid
+                    example: 770e8400-e29b-41d4-a716-446655440002
+                  userCode:
+                    type: string
+                    format: uuid
+                    example: 660e8400-e29b-41d4-a716-446655440001
+                  title:
+                    type: string
+                    example: My Forum Title
+                  body:
+                    type: string
+                    example: This is the forum content
+                  createdAt:
+                    type: string
+                    format: date-time
+                    example: 2025-10-18T10:30:00.000Z
+        '400':
+          description: Bad request - Missing required fields
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: User not found
+        '401':
+          description: Unauthorized - No token provided
+                    example: Missing required fields
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: No token provided
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Internal server error
+
+  /api/forums/{code}:
+    delete:
+      summary: Delete forum
+      description: Delete a forum post (only by owner)
+      tags:
+        - Forums
+      security:
+        - BearerAuth: []
+      parameters:
+        - in: path
+          name: code
+          required: true
+          schema:
+            type: string
+            format: uuid
+          description: The unique code of the forum to delete
+          example: 770e8400-e29b-41d4-a716-446655440002
+      responses:
+        '200':
+          description: Forum deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Forum deleted successfully
+        '400':
+          description: Bad request - Missing required parameter
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Missing required parameter: code
+        '401':
+          description: Unauthorized - No token provided
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Unauthorized
+        '403':
+          description: Forbidden - User can only delete their own forums
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: 'Unauthorized: You can only delete your own forums'
+        '404':
+          description: Not found - Forum does not exist
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Forum not found
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Internal server error
+
+  /api/users/forums:
+    get:
+      summary: Get current user's forums
+      description: Retrieve all forum posts created by the authenticated user
+      tags:
+        - Forums
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Forums retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    code:
+                      type: string
+                      format: uuid
+                      example: 770e8400-e29b-41d4-a716-446655440002
+                    userCode:
+                      type: string
+                      format: uuid
+                      example: 660e8400-e29b-41d4-a716-446655440001
+                    title:
+                      type: string
+                      example: My Forum Title
+                    body:
+                      type: string
+                      example: This is the forum content
+                    createdAt:
+                      type: string
+                      format: date-time
+                      example: 2025-10-18T10:30:00.000Z
+        '401':
+          description: Unauthorized - No token provided
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Unauthorized
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Error retrieving forums
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Internal server error
+
 tags:
   - name: System
     description: System health and status endpoints
@@ -435,4 +776,6 @@ tags:
     description: User authentication and registration endpoints
   - name: Users
     description: User management endpoints
+  - name: Forums
+    description: Forum management endpoints
 

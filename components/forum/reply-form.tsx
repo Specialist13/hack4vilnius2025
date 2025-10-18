@@ -6,7 +6,7 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { forumAPI, APIError } from "@/lib/api"
+import { extendedForumAPI, APIError } from "@/lib/api"
 
 interface ReplyFormProps {
   postId: string
@@ -22,8 +22,8 @@ export function ReplyForm({ postId, onReplySubmit }: ReplyFormProps) {
     setIsSubmitting(true)
 
     try {
-      // Submit reply to backend
-      const response = await forumAPI.createReply(postId, { content })
+      // Submit reply to backend (using extended API - not in OpenAPI spec)
+      const response = await extendedForumAPI.createReply(postId, { content })
 
       console.log("[Reply Form] Reply submitted:", response)
 
