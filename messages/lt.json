@@ -1,0 +1,388 @@
+{
+  "common": {
+    "appName": "ChargeVilnius",
+    "tagline": "Bendruomenės Forumas",
+    "loading": "Kraunama...",
+    "error": "Klaida",
+    "submit": "Pateikti",
+    "cancel": "Atšaukti",
+    "save": "Išsaugoti",
+    "delete": "Ištrinti",
+    "edit": "Redaguoti",
+    "back": "Atgal",
+    "next": "Kitas",
+    "previous": "Ankstesnis",
+    "search": "Ieškoti",
+    "filter": "Filtruoti",
+    "close": "Uždaryti"
+  },
+  "nav": {
+    "home": "Pradžia",
+    "forum": "Forumas",
+    "map": "Žemėlapis",
+    "about": "Apie",
+    "login": "Prisijungti",
+    "signup": "Registruotis",
+    "logout": "Atsijungti"
+  },
+  "home": {
+    "hero": {
+      "title": "Suvienykit Bendruomenę EV Įkrovimui",
+      "subtitle": "Susisiekite su kaimynais Vilniaus daugiabučiuose, kad kartu kovotumėte už elektromobilių įkrovimo infrastruktūrą.",
+      "getStarted": "Pradėti",
+      "viewMap": "Žiūrėti Žemėlapį"
+    },
+    "howItWorks": {
+      "title": "Kaip Tai Veikia",
+      "subtitle": "Prisijunkite prie judėjimo, kad atneštumėte EV įkrovimą į savo pastatą trimis paprastais žingsniais.",
+      "step1": {
+        "title": "Raskite Savo Vietą",
+        "description": "Ieškokite savo daugiabučio adreso Vilniuje ir sužinokite, ar kiti jau diskutuoja apie EV įkrovimą."
+      },
+      "step2": {
+        "title": "Susisiekite su Kaimynais",
+        "description": "Prisijunkite prie esamų diskusijų arba pradėkite naują forumo įrašą, kad susisiektumėte su gyventojais, kurie dalijasi jūsų susidomėjimu EV įkrovimu."
+      },
+      "step3": {
+        "title": "Veikite Kartu",
+        "description": "Bendradarbiaukite su kaimynais, kad pateiktumėte vieningą pasiūlymą pastato administracijai ar vietos valdžiai."
+      }
+    },
+    "cta": {
+      "title": "Pasiruošę Judėti Pirmyn?",
+      "subtitle": "Prisijunkite prie šimtų Vilniaus gyventojų, kurie dirba kartu, kad atneštų EV įkrovimo infrastruktūrą į savo pastatus.",
+      "button": "Prisijungti prie Bendruomenės"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Sveiki Sugrįžę",
+      "subtitle": "Prisijunkite prie savo paskyros",
+      "description": "Prisijunkite prie savo paskyros, kad tęstumėte kovą už EV įkrovimą savo pastate.",
+      "email": "El. paštas",
+      "emailPlaceholder": "jusu.pastas@pavyzdys.lt",
+      "password": "Slaptažodis",
+      "passwordPlaceholder": "Įveskite slaptažodį",
+      "forgotPassword": "Pamiršote slaptažodį?",
+      "submit": "Prisijungti",
+      "noAccount": "Neturite paskyros?",
+      "signupLink": "Registruotis"
+    },
+    "register": {
+      "title": "Sukurti Paskyrą",
+      "subtitle": "Prisijunkite prie bendruomenės",
+      "description": "Sukurkite paskyrą, kad pradėtumėte bendrauti su kaimynais ir kovoti už EV įkrovimą.",
+      "name": "Vardas Pavardė",
+      "namePlaceholder": "Jonas Jonaitis",
+      "email": "El. paštas",
+      "emailPlaceholder": "jonas@pavyzdys.lt",
+      "address": "Pastato Adresas",
+      "addressPlaceholder": "Gedimino pr. 1, Vilnius",
+      "password": "Slaptažodis",
+      "passwordPlaceholder": "Sukurkite stiprų slaptažodį",
+      "confirmPassword": "Patvirtinti Slaptažodį",
+      "confirmPasswordPlaceholder": "Pakartokite slaptažodį",
+      "terms": "Sutinku su",
+      "termsLink": "Paslaugų Teikimo Sąlygomis",
+      "and": "ir",
+      "privacyLink": "Privatumo Politika",
+      "submit": "Sukurti Paskyrą",
+      "hasAccount": "Jau turite paskyrą?",
+      "loginLink": "Prisijungti"
+    }
+  },
+  "forum": {
+    "title": "Bendruomenės Forumas",
+    "searchPlaceholder": "Ieškoti pagal adresą...",
+    "searchButton": "Ieškoti",
+    "createPost": "Sukurti Įrašą",
+    "tabs": {
+      "all": "Visi Įrašai",
+      "active": "Aktyvūs",
+      "planning": "Planuojami",
+      "completed": "Užbaigti"
+    },
+    "noExactMatch": "Nerasta įrašų šiuo tiksliuoju adresu. Rodomos artimiausios diskusijos:",
+    "status": {
+      "active": "Aktyvus",
+      "planning": "Planuojamas",
+      "completed": "Užbaigtas"
+    },
+    "replies": "atsakymai",
+    "supporters": "rėmėjai",
+    "views": "peržiūros",
+    "post": {
+      "backToForum": "Atgal į Forumą",
+      "notFound": "Įrašas nerastas",
+      "repliesCount": "Atsakymai",
+      "reply": "Atsakyti",
+      "support": "Palaikyti"
+    },
+    "create": {
+      "title": "Sukurti Naują Įrašą",
+      "postTitle": "Įrašo Pavadinimas",
+      "postTitlePlaceholder": "pvz., Reikalingas EV įkrovimas Gedimino pr. 15",
+      "address": "Pastato Adresas",
+      "addressPlaceholder": "Įveskite savo pastato adresą",
+      "selectOnMap": "Arba pasirinkite vietą žemėlapyje",
+      "clickMap": "Spustelėkite žemėlapyje, kad pasirinktumėte savo pastato vietą",
+      "selectedLocation": "Pasirinkta vieta",
+      "language": "Įrašo Kalba",
+      "languageHelp": "Pasirinkite šio įrašo kalbą",
+      "content": "Įrašo Turinys",
+      "contentPlaceholder": "Aprašykite savo situaciją, kiek gyventojų domisi ir kokius žingsnius jau ėmėte...",
+      "submit": "Sukurti Įrašą",
+      "submitting": "Kuriama..."
+    },
+    "reply": {
+      "placeholder": "Pasidalinkite savo mintimis, patirtimi ar patarimais...",
+      "submit": "Paskelbti Atsakymą",
+      "submitting": "Skelbiama..."
+    }
+  },
+  "map": {
+    "title": "EV Įkrovimo Diskusijų Žemėlapis",
+    "subtitle": "Tyrinėkite, kur Vilniaus gyventojai kovoja už EV įkrovimo infrastruktūrą.",
+    "stats": {
+      "activeDiscussions": "Aktyvios Diskusijos",
+      "activeChange": "+12 šį mėnesį",
+      "buildings": "Įtraukti Pastatai",
+      "buildingsChange": "+8 šį mėnesį",
+      "residents": "Įsitraukę Gyventojai",
+      "residentsChange": "+45 šį mėnesį"
+    },
+    "legend": {
+      "title": "Žemėlapio Legenda",
+      "activeLocation": "Aktyvi diskusijos vieta",
+      "buildingWithPosts": "Pastatas su forumo įrašais",
+      "multipleResidents": "Keli gyventojai domisi",
+      "clickMarker": "Spustelėkite žymeklį, kad pamatytumėte įrašus"
+    },
+    "howToUse": {
+      "title": "Kaip Naudoti Šį Žemėlapį",
+      "step1": "Spustelėkite bet kurį žymeklį, kad pamatytumėte to pastato forumo diskusijas",
+      "step2": "Naudokite paieškos juostą, kad rastumėte savo adresą ar netoliese esančius pastatus",
+      "step3": "Priartinkite ir atitolinkite, kad tyrinėtumėte skirtingas Vilniaus apylinkes",
+      "step4": "Prisijunkite prie esamų diskusijų arba sukurkite naują įrašą savo pastatui"
+    },
+    "loading": "Kraunamas žemėlapis...",
+    "error": "Nepavyko įkelti žemėlapio",
+    "reload": "Perkrauti",
+    "placeholder": {
+      "title": "ArcGIS Žemėlapio Vieta",
+      "description": "Čia bus integruotas interaktyvus ArcGIS žemėlapis. Žemėlapis rodys visus Vilniaus pastatus su aktyviomis EV įkrovimo diskusijomis."
+    }
+  },
+  "about": {
+    "title": "Apie ChargeVilnius",
+    "subtitle": "Įgaliname Vilniaus gyventojus atnešti elektromobilių įkrovimo infrastruktūrą į savo daugiabučius.",
+    "mission": {
+      "title": "Mūsų Misija",
+      "description": "ChargeVilnius buvo sukurtas spręsti bendrą problemą: atskiriems daugiabučių gyventojams sunku įtikinti pastato administraciją įrengti EV įkrovimo stoteles. Sujungdami kaimynus ir suteikdami platformą kolektyviniam veikimui, mes palengviname paklausos demonstravimą ir pastangų koordinavimą."
+    },
+    "values": {
+      "title": "Mūsų Vertybės",
+      "description": "Mes tikime bendruomenės galia, tvariu transportu ir Vilniaus pavertimu žalesniu miestu. Kiekvienas balsas svarbus, ir kartu galime paspartinti perėjimą prie elektrinės mobilumo mūsų mieste."
+    },
+    "howItWorks": {
+      "title": "Kaip Tai Veikia",
+      "share": {
+        "title": "Dalinkitės ir Bendraujate",
+        "description": "Kurkite įrašus apie savo pastato EV įkrovimo poreikius ir susisiekite su kaimynais, kurie dalijasi jūsų tikslais."
+      },
+      "discover": {
+        "title": "Atraskite Netoliese",
+        "description": "Naudokite mūsų interaktyvų žemėlapį, kad rastumėte kitus pastatus jūsų rajone, dirbančius su panašiomis iniciatyvomis."
+      },
+      "action": {
+        "title": "Imkitės Veiksmų",
+        "description": "Koordinuokite su savo bendruomene, kad pateiktumėte vieningą pasiūlymą pastato administracijai ar vietos valdžiai."
+      }
+    },
+    "cta": {
+      "title": "Prisijunkite prie Judėjimo",
+      "description": "Nesvarbu, ar jau turite EV, ar planuojate pereiti, ChargeVilnius padeda žengti pirmąjį žingsnį link įkrovimo infrastruktūros jūsų pastate.",
+      "getStarted": "Pradėti",
+      "viewForum": "Žiūrėti Forumą"
+    },
+    "contact": "Klausimai ar pasiūlymai? Susisiekite su mumis"
+  },
+  "footer": {
+    "description": "Sujungiame Vilniaus gyventojus, kad kovotų už EV įkrovimo infrastruktūrą daugiabučiuose.",
+    "community": {
+      "title": "Bendruomenė",
+      "forum": "Forumas",
+      "map": "Žemėlapis",
+      "guidelines": "Gairės"
+    },
+    "resources": {
+      "title": "Ištekliai",
+      "about": "Apie",
+      "faq": "DUK",
+      "contact": "Kontaktai"
+    },
+    "legal": {
+      "title": "Teisinė Informacija",
+      "privacy": "Privatumo Politika",
+      "terms": "Paslaugų Teikimo Sąlygos"
+    },
+    "copyright": "Visos teisės saugomos."
+  },
+  "terms": {
+    "title": "Paslaugų Teikimo Sąlygos",
+    "lastUpdated": "Paskutinį kartą atnaujinta: 2025 m. sausio 18 d.",
+    "sections": {
+      "acceptance": {
+        "title": "1. Sąlygų Priėmimas",
+        "content": "Prisijungdami ir naudodamiesi ChargeVilnius (\"Paslauga\"), jūs sutinkate ir įsipareigojate laikytis šio susitarimo sąlygų ir nuostatų. Jei nesutinkate su šiomis sąlygomis, prašome nenaudoti Paslaugos."
+      },
+      "description": {
+        "title": "2. Paslaugos Aprašymas",
+        "content": "ChargeVilnius teikia bendruomenės forumo platformą daugiabučių namų gyventojams Vilniuje, Lietuvoje, diskutuoti, organizuoti ir kovoti už elektromobilių (EV) įkrovimo infrastruktūrą. Paslauga apima forumo diskusijas, interaktyvius žemėlapius ir bendruomenės koordinavimo įrankius."
+      },
+      "accounts": {
+        "title": "3. Vartotojo Paskyros ir Registracija",
+        "intro": "Norėdami pasiekti tam tikras Paslaugos funkcijas, turite užsiregistruoti paskyrą. Registruodamiesi sutinkate:",
+        "items": [
+          "Pateikti tikslią, dabartinę ir išsamią informaciją",
+          "Prižiūrėti ir nedelsiant atnaujinti savo paskyros informaciją",
+          "Užtikrinti savo slaptažodžio ir paskyros saugumą",
+          "Prisiimti atsakomybę už visą veiklą jūsų paskyroje",
+          "Nedelsiant pranešti mums apie bet kokį neteisėtą jūsų paskyros naudojimą"
+        ]
+      },
+      "conduct": {
+        "title": "4. Vartotojo Turinys ir Elgesys",
+        "intro": "Jūs esate atsakingi už visą turinį, kurį skelbiате Paslaugoje. Sutinkate neskelbti turinio, kuris:",
+        "items": [
+          "Yra klaidingas, apgaulingas ar sukčiavimo",
+          "Pažeidžia intelektinės nuosavybės teises",
+          "Turi neapykantos kalbą, priekabiavimą ar grėsmes",
+          "Pažeidžia privatumo teises ar dalijasi asmenine informacija be sutikimo",
+          "Turi šlamštą, reklamą ar reklaminį turinį be leidimo",
+          "Pažeidžia bet kokius taikomus įstatymus ar taisykles"
+        ]
+      },
+      "address": {
+        "title": "5. Adreso Informacija",
+        "content": "Pateikdami savo pastato adresą, pripažįstate, kad ši informacija gali būti rodoma viešuose žemėlapiuose ir forumo įrašuose. Turėtumėte pateikti tik adresus, kuriuose esate teisėtas gyventojas arba turite leidimą atstovauti. Klaidinga adreso informacija gali lemti paskyros nutraukimą."
+      },
+      "ip": {
+        "title": "6. Intelektinė Nuosavybė",
+        "content": "Paslauga ir jos originalus turinys, funkcijos ir funkcionalumas priklauso ChargeVilnius ir yra saugomi tarptautinių autorių teisių, prekių ženklų ir kitų intelektinės nuosavybės įstatymų. Vartotojų sukurtas turinys lieka atitinkamų vartotojų nuosavybė, tačiau skelbdami suteikiate ChargeVilnius licenciją naudoti, rodyti ir platinti tą turinį Paslaugoje."
+      },
+      "warranty": {
+        "title": "7. Garantijų Atsisakymas",
+        "content": "Paslauga teikiama \"kaip yra\" ir \"kaip prieinama\" be jokių garantijų, nei aiškių, nei numanomų. ChargeVilnius negarantuoja, kad Paslauga bus nepertraukiama, saugi ar be klaidų. Mes negarantuojame vartotojų pateiktos informacijos tikslumo ar išsamumo."
+      },
+      "liability": {
+        "title": "8. Atsakomybės Apribojimas",
+        "content": "ChargeVilnius nebus atsakingas už jokias netiesiogines, atsitiktines, specialias, pasekmes ar baudžiamąsias žalas, atsiradusias dėl jūsų naudojimosi ar negalėjimo naudotis Paslauga. Tai apima žalą dėl pelno, duomenų ar kitų nematerialių nuostolių praradimo."
+      },
+      "modifications": {
+        "title": "9. Paslaugos Pakeitimai",
+        "content": "Mes pasiliekame teisę bet kada keisti ar nutraukti Paslaugą, su pranešimu ar be jo. Mes neprivalome jums ar bet kuriai trečiajai šaliai už bet kokį Paslaugos pakeitimą, sustabdymą ar nutraukimą."
+      },
+      "law": {
+        "title": "10. Taikoma Teisė",
+        "content": "Šios Sąlygos reglamentuojamos ir aiškinamos pagal Lietuvos Respublikos įstatymus, neatsižvelgiant į jos teisės konfliktų nuostatas. Bet kokie ginčai, kylantys iš šių Sąlygų ar Paslaugos, bus sprendžiami išimtinėje Vilniaus, Lietuva, teismų jurisdikcijoje."
+      },
+      "contact": {
+        "title": "11. Kontaktinė Informacija",
+        "content": "Jei turite klausimų dėl šių Sąlygų, susisiekite su mumis: info@chargevilnius.lt"
+      }
+    }
+  },
+  "privacy": {
+    "title": "Privatumo Politika",
+    "lastUpdated": "Paskutinį kartą atnaujinta: 2025 m. sausio 18 d.",
+    "sections": {
+      "intro": {
+        "title": "1. Įvadas",
+        "content": "ChargeVilnius (\"mes\", \"mūsų\" arba \"mus\") įsipareigoja saugoti jūsų privatumą. Ši Privatumo Politika paaiškina, kaip renkame, naudojame, atskleidžiame ir saugome jūsų informaciją, kai naudojatės mūsų bendruomenės forumo platforma. Ši politika atitinka Bendrąjį duomenų apsaugos reglamentą (BDAR) ir Lietuvos duomenų apsaugos įstatymus."
+      },
+      "collection": {
+        "title": "2. Informacija, Kurią Renkame",
+        "personal": {
+          "title": "2.1 Asmeninė Informacija",
+          "intro": "Kai registruojatės paskyrą, renkame:",
+          "items": ["Vardą ir pavardę", "El. pašto adresą", "Pastato adresą Vilniuje", "Slaptažodį (užšifruotą)"]
+        },
+        "content": {
+          "title": "2.2 Turinio Informacija",
+          "intro": "Kai naudojatės Paslauga, renkame:",
+          "items": [
+            "Forumo įrašus ir atsakymus",
+            "Komentarus ir sąveikas",
+            "Vietos duomenis, kai pasirenkate adresus žemėlapiuose"
+          ]
+        },
+        "technical": {
+          "title": "2.3 Techninė Informacija",
+          "intro": "Automatiškai renkame:",
+          "items": [
+            "IP adresą",
+            "Naršyklės tipą ir versiją",
+            "Įrenginio informaciją",
+            "Naudojimo duomenis ir analitiką"
+          ]
+        }
+      },
+      "use": {
+        "title": "3. Kaip Naudojame Jūsų Informaciją",
+        "intro": "Naudojame jūsų informaciją, kad:",
+        "items": [
+          "Teiktume ir prižiūrėtume Paslaugą",
+          "Rodytume jūsų įrašus ir profilio informaciją kitiems vartotojams",
+          "Rodytume pastatų vietas viešuose žemėlapiuose",
+          "Siųstume su paslauga susijusius pranešimus",
+          "Tobulintume ir optimizuotume Paslaugą",
+          "Aptiktume ir užkirstume kelią sukčiavimui ar piktnaudžiavimui"
+        ]
+      },
+      "sharing": {
+        "title": "4. Informacijos Dalijimasis ir Atskleidimas",
+        "intro": "Galime dalintis jūsų informacija:",
+        "items": [
+          "Viešai: Jūsų vardas, pastato adresas ir forumo įrašai matomi visiems vartotojams",
+          "Su paslaugų teikėjais: Galime naudoti trečiųjų šalių paslaugas prieglobai, analitikai ir el. pašto pristatymui",
+          "Dėl teisinių priežasčių: Galime atskleisti informaciją, jei to reikalauja įstatymas arba saugoti mūsų teises"
+        ],
+        "note": "Mes neparduodame jūsų asmeninės informacijos trečiosioms šalims."
+      },
+      "rights": {
+        "title": "5. Jūsų Teisės (BDAR)",
+        "intro": "Pagal BDAR turite teisę:",
+        "items": [
+          "Pasiekti savo asmeninius duomenis",
+          "Ištaisyti netikslus duomenis",
+          "Prašyti ištrinti savo duomenis (\"teisė būti pamirštam\")",
+          "Prieštarauti duomenų tvarkymui",
+          "Duomenų perkeliamumui",
+          "Bet kada atšaukti sutikimą"
+        ],
+        "contact": "Norėdami pasinaudoti šiomis teisėmis, susisiekite su mumis: privacy@chargevilnius.lt"
+      },
+      "security": {
+        "title": "6. Duomenų Saugumas",
+        "content": "Įgyvendiname tinkamas technines ir organizacines priemones jūsų asmeninių duomenų apsaugai. Tačiau joks perdavimo per internetą metodas nėra 100% saugus, ir mes negalime garantuoti absoliutaus saugumo."
+      },
+      "retention": {
+        "title": "7. Duomenų Saugojimas",
+        "content": "Saugome jūsų asmeninę informaciją tol, kol jūsų paskyra aktyvi arba kol reikia teikti Paslaugą. Galite bet kada paprašyti ištrinti savo paskyrą, po to ištrinsime arba anoniminizuosime jūsų duomenis per 30 dienų, išskyrus atvejus, kai saugojimas reikalingas pagal įstatymą."
+      },
+      "children": {
+        "title": "8. Vaikų Privatumas",
+        "content": "Paslauga nėra skirta vartotojams jaunesniems nei 16 metų. Mes sąmoningai nerenkame asmeninės informacijos iš vaikų jaunesnių nei 16 metų."
+      },
+      "changes": {
+        "title": "9. Šios Politikos Pakeitimai",
+        "content": "Galime kartais atnaujinti šią Privatumo Politiką. Pranešime jums apie bet kokius pakeitimus paskelbdami naują politiką šiame puslapyje ir atnaujindami \"Paskutinį kartą atnaujinta\" datą."
+      },
+      "contact": {
+        "title": "10. Susisiekite su Mumis",
+        "content": "Jei turite klausimų dėl šios Privatumo Politikos, susisiekite su mumis: privacy@chargevilnius.lt"
+      }
+    }
+  }
+}

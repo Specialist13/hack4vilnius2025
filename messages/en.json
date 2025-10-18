@@ -1,0 +1,383 @@
+{
+  "common": {
+    "appName": "ChargeVilnius",
+    "tagline": "Community Forum",
+    "loading": "Loading...",
+    "error": "Error",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "search": "Search",
+    "filter": "Filter",
+    "close": "Close"
+  },
+  "nav": {
+    "home": "Home",
+    "forum": "Forum",
+    "map": "Map",
+    "about": "About",
+    "login": "Log In",
+    "signup": "Sign Up",
+    "logout": "Log Out"
+  },
+  "home": {
+    "hero": {
+      "title": "Unite Your Community for EV Charging",
+      "subtitle": "Connect with neighbors in Vilnius apartment buildings to advocate for electric vehicle charging infrastructure together.",
+      "getStarted": "Get Started",
+      "viewMap": "View Map"
+    },
+    "howItWorks": {
+      "title": "How It Works",
+      "subtitle": "Join the movement to bring EV charging to your building in three simple steps.",
+      "step1": {
+        "title": "Find Your Location",
+        "description": "Search for your apartment building address in Vilnius and see if others are already discussing EV charging."
+      },
+      "step2": {
+        "title": "Connect with Neighbors",
+        "description": "Join existing discussions or start a new forum post to connect with residents who share your interest in EV charging."
+      },
+      "step3": {
+        "title": "Take Action Together",
+        "description": "Collaborate with your neighbors to present a unified case to building management or local authorities."
+      }
+    },
+    "cta": {
+      "title": "Ready to Charge Forward?",
+      "subtitle": "Join hundreds of Vilnius residents working together to bring EV charging infrastructure to their buildings.",
+      "button": "Join the Community"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Welcome Back",
+      "subtitle": "Sign in to your account",
+      "description": "Access your account to continue advocating for EV charging in your building.",
+      "email": "Email",
+      "emailPlaceholder": "your.email@example.com",
+      "password": "Password",
+      "passwordPlaceholder": "Enter your password",
+      "forgotPassword": "Forgot password?",
+      "submit": "Sign In",
+      "noAccount": "Don't have an account?",
+      "signupLink": "Sign up"
+    },
+    "register": {
+      "title": "Create Account",
+      "subtitle": "Join the community",
+      "description": "Create an account to start connecting with neighbors and advocating for EV charging.",
+      "name": "Full Name",
+      "namePlaceholder": "Jonas Jonaitis",
+      "email": "Email",
+      "emailPlaceholder": "jonas@example.com",
+      "address": "Building Address",
+      "addressPlaceholder": "Gedimino pr. 1, Vilnius",
+      "password": "Password",
+      "passwordPlaceholder": "Create a strong password",
+      "confirmPassword": "Confirm Password",
+      "confirmPasswordPlaceholder": "Re-enter your password",
+      "terms": "I agree to the",
+      "termsLink": "Terms of Service",
+      "and": "and",
+      "privacyLink": "Privacy Policy",
+      "submit": "Create Account",
+      "hasAccount": "Already have an account?",
+      "loginLink": "Sign in"
+    }
+  },
+  "forum": {
+    "title": "Community Forum",
+    "searchPlaceholder": "Search by address...",
+    "searchButton": "Search",
+    "createPost": "Create Post",
+    "tabs": {
+      "all": "All Posts",
+      "active": "Active",
+      "planning": "Planning",
+      "completed": "Completed"
+    },
+    "noExactMatch": "No posts found for this exact address. Showing nearest discussions:",
+    "status": {
+      "active": "Active",
+      "planning": "Planning",
+      "completed": "Completed"
+    },
+    "replies": "replies",
+    "supporters": "supporters",
+    "views": "views",
+    "post": {
+      "backToForum": "Back to Forum",
+      "notFound": "Post not found",
+      "repliesCount": "Replies",
+      "reply": "Reply",
+      "support": "Support"
+    },
+    "create": {
+      "title": "Create New Post",
+      "postTitle": "Post Title",
+      "postTitlePlaceholder": "e.g., Need EV charging at Gedimino pr. 15",
+      "address": "Building Address",
+      "addressPlaceholder": "Enter your building address",
+      "selectOnMap": "Or select location on map",
+      "clickMap": "Click on the map to select your building location",
+      "selectedLocation": "Selected location",
+      "language": "Post Language",
+      "languageHelp": "Select the language for this post",
+      "content": "Post Content",
+      "contentPlaceholder": "Describe your situation, how many residents are interested, and what steps you've taken so far...",
+      "submit": "Create Post",
+      "submitting": "Creating..."
+    },
+    "reply": {
+      "placeholder": "Share your thoughts, experiences, or advice...",
+      "submit": "Post Reply",
+      "submitting": "Posting..."
+    }
+  },
+  "map": {
+    "title": "EV Charging Discussion Map",
+    "subtitle": "Explore where Vilnius residents are advocating for EV charging infrastructure.",
+    "stats": {
+      "activeDiscussions": "Active Discussions",
+      "activeChange": "+12 this month",
+      "buildings": "Buildings Involved",
+      "buildingsChange": "+8 this month",
+      "residents": "Residents Engaged",
+      "residentsChange": "+45 this month"
+    },
+    "legend": {
+      "title": "Map Legend",
+      "activeLocation": "Active discussion location",
+      "buildingWithPosts": "Building with forum posts",
+      "multipleResidents": "Multiple residents interested",
+      "clickMarker": "Click marker to view posts"
+    },
+    "howToUse": {
+      "title": "How to Use This Map",
+      "step1": "Click on any marker to see forum discussions for that building",
+      "step2": "Use the search bar to find your address or nearby buildings",
+      "step3": "Zoom in and out to explore different neighborhoods in Vilnius",
+      "step4": "Join existing discussions or create a new post for your building"
+    },
+    "loading": "Loading map...",
+    "error": "Failed to load map",
+    "reload": "Reload",
+    "placeholder": {
+      "title": "ArcGIS Map Placeholder",
+      "description": "This is where the interactive ArcGIS map will be integrated. The map will show all buildings in Vilnius with active EV charging discussions."
+    }
+  },
+  "about": {
+    "title": "About ChargeVilnius",
+    "subtitle": "Empowering Vilnius residents to bring electric vehicle charging infrastructure to their apartment buildings.",
+    "mission": {
+      "title": "Our Mission",
+      "description": "ChargeVilnius was created to solve a common problem: individual apartment residents struggle to convince building management to install EV charging stations. By connecting neighbors and providing a platform for collective action, we make it easier to demonstrate demand and coordinate efforts."
+    },
+    "values": {
+      "title": "Our Values",
+      "description": "We believe in the power of community, sustainable transportation, and making Vilnius a greener city. Every voice matters, and together we can accelerate the transition to electric mobility in our city."
+    },
+    "howItWorks": {
+      "title": "How It Works",
+      "share": {
+        "title": "Share & Connect",
+        "description": "Create posts about your building's EV charging needs and connect with neighbors who share your goals."
+      },
+      "discover": {
+        "title": "Discover Nearby",
+        "description": "Use our interactive map to find other buildings in your area working on similar initiatives."
+      },
+      "action": {
+        "title": "Take Action",
+        "description": "Coordinate with your community to present a unified proposal to building management or local authorities."
+      }
+    },
+    "cta": {
+      "title": "Join the Movement",
+      "description": "Whether you already own an EV or are planning to make the switch, ChargeVilnius helps you take the first step toward charging infrastructure in your building.",
+      "getStarted": "Get Started",
+      "viewForum": "View Forum"
+    },
+    "contact": "Questions or suggestions? Contact us at"
+  },
+  "footer": {
+    "description": "Connecting Vilnius residents to advocate for EV charging infrastructure in apartment buildings.",
+    "community": {
+      "title": "Community",
+      "forum": "Forum",
+      "map": "Map",
+      "guidelines": "Guidelines"
+    },
+    "resources": {
+      "title": "Resources",
+      "about": "About",
+      "faq": "FAQ",
+      "contact": "Contact"
+    },
+    "legal": {
+      "title": "Legal",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
+    },
+    "copyright": "All rights reserved."
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "lastUpdated": "Last updated: January 18, 2025",
+    "sections": {
+      "acceptance": {
+        "title": "1. Acceptance of Terms",
+        "content": "By accessing and using ChargeVilnius (\"the Service\"), you accept and agree to be bound by the terms and provisions of this agreement. If you do not agree to these terms, please do not use the Service."
+      },
+      "description": {
+        "title": "2. Description of Service",
+        "content": "ChargeVilnius provides a community forum platform for residents of apartment buildings in Vilnius, Lithuania to discuss, organize, and advocate for electric vehicle (EV) charging infrastructure. The Service includes forum discussions, interactive maps, and community coordination tools."
+      },
+      "accounts": {
+        "title": "3. User Accounts and Registration",
+        "intro": "To access certain features of the Service, you must register for an account. When registering, you agree to:",
+        "items": [
+          "Provide accurate, current, and complete information",
+          "Maintain and promptly update your account information",
+          "Maintain the security of your password and account",
+          "Accept responsibility for all activities under your account",
+          "Notify us immediately of any unauthorized use of your account"
+        ]
+      },
+      "conduct": {
+        "title": "4. User Content and Conduct",
+        "intro": "You are responsible for all content you post on the Service. You agree not to post content that:",
+        "items": [
+          "Is false, misleading, or fraudulent",
+          "Infringes on intellectual property rights",
+          "Contains hate speech, harassment, or threats",
+          "Violates privacy rights or shares personal information without consent",
+          "Contains spam, advertising, or promotional content without authorization",
+          "Violates any applicable laws or regulations"
+        ]
+      },
+      "address": {
+        "title": "5. Address Information",
+        "content": "By providing your building address, you acknowledge that this information may be displayed on public maps and forum posts. You should only provide addresses where you are a legitimate resident or have permission to represent. False address information may result in account termination."
+      },
+      "ip": {
+        "title": "6. Intellectual Property",
+        "content": "The Service and its original content, features, and functionality are owned by ChargeVilnius and are protected by international copyright, trademark, and other intellectual property laws. User-generated content remains the property of the respective users, but by posting, you grant ChargeVilnius a license to use, display, and distribute that content within the Service."
+      },
+      "warranty": {
+        "title": "7. Disclaimer of Warranties",
+        "content": "The Service is provided \"as is\" and \"as available\" without warranties of any kind, either express or implied. ChargeVilnius does not guarantee that the Service will be uninterrupted, secure, or error-free. We do not warrant the accuracy or completeness of information provided by users."
+      },
+      "liability": {
+        "title": "8. Limitation of Liability",
+        "content": "ChargeVilnius shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of or inability to use the Service. This includes damages for loss of profits, data, or other intangible losses."
+      },
+      "modifications": {
+        "title": "9. Modifications to Service",
+        "content": "We reserve the right to modify or discontinue the Service at any time, with or without notice. We shall not be liable to you or any third party for any modification, suspension, or discontinuance of the Service."
+      },
+      "law": {
+        "title": "10. Governing Law",
+        "content": "These Terms shall be governed by and construed in accordance with the laws of the Republic of Lithuania, without regard to its conflict of law provisions. Any disputes arising from these Terms or the Service shall be subject to the exclusive jurisdiction of the courts of Vilnius, Lithuania."
+      },
+      "contact": {
+        "title": "11. Contact Information",
+        "content": "If you have any questions about these Terms, please contact us at: info@chargevilnius.lt"
+      }
+    }
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: January 18, 2025",
+    "sections": {
+      "intro": {
+        "title": "1. Introduction",
+        "content": "ChargeVilnius (\"we\", \"our\", or \"us\") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our community forum platform. This policy complies with the General Data Protection Regulation (GDPR) and Lithuanian data protection laws."
+      },
+      "collection": {
+        "title": "2. Information We Collect",
+        "personal": {
+          "title": "2.1 Personal Information",
+          "intro": "When you register for an account, we collect:",
+          "items": ["Full name", "Email address", "Building address in Vilnius", "Password (encrypted)"]
+        },
+        "content": {
+          "title": "2.2 Content Information",
+          "intro": "When you use the Service, we collect:",
+          "items": [
+            "Forum posts and replies",
+            "Comments and interactions",
+            "Location data when you select addresses on maps"
+          ]
+        },
+        "technical": {
+          "title": "2.3 Technical Information",
+          "intro": "We automatically collect:",
+          "items": ["IP address", "Browser type and version", "Device information", "Usage data and analytics"]
+        }
+      },
+      "use": {
+        "title": "3. How We Use Your Information",
+        "intro": "We use your information to:",
+        "items": [
+          "Provide and maintain the Service",
+          "Display your posts and profile information to other users",
+          "Show building locations on public maps",
+          "Send you service-related notifications",
+          "Improve and optimize the Service",
+          "Detect and prevent fraud or abuse"
+        ]
+      },
+      "sharing": {
+        "title": "4. Information Sharing and Disclosure",
+        "intro": "We may share your information:",
+        "items": [
+          "Publicly: Your name, building address, and forum posts are visible to all users",
+          "With service providers: We may use third-party services for hosting, analytics, and email delivery",
+          "For legal reasons: We may disclose information if required by law or to protect our rights"
+        ],
+        "note": "We do not sell your personal information to third parties."
+      },
+      "rights": {
+        "title": "5. Your Rights (GDPR)",
+        "intro": "Under GDPR, you have the right to:",
+        "items": [
+          "Access your personal data",
+          "Rectify inaccurate data",
+          "Request deletion of your data (\"right to be forgotten\")",
+          "Object to processing of your data",
+          "Data portability",
+          "Withdraw consent at any time"
+        ],
+        "contact": "To exercise these rights, contact us at: privacy@chargevilnius.lt"
+      },
+      "security": {
+        "title": "6. Data Security",
+        "content": "We implement appropriate technical and organizational measures to protect your personal data. However, no method of transmission over the Internet is 100% secure, and we cannot guarantee absolute security."
+      },
+      "retention": {
+        "title": "7. Data Retention",
+        "content": "We retain your personal information for as long as your account is active or as needed to provide the Service. You may request deletion of your account at any time, after which we will delete or anonymize your data within 30 days, except where retention is required by law."
+      },
+      "children": {
+        "title": "8. Children's Privacy",
+        "content": "The Service is not intended for users under 16 years of age. We do not knowingly collect personal information from children under 16."
+      },
+      "changes": {
+        "title": "9. Changes to This Policy",
+        "content": "We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new policy on this page and updating the \"Last updated\" date."
+      },
+      "contact": {
+        "title": "10. Contact Us",
+        "content": "If you have questions about this Privacy Policy, please contact us at: privacy@chargevilnius.lt"
+      }
+    }
+  }
+}
