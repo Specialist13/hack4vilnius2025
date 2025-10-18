@@ -103,8 +103,8 @@ export default function AboutPage() {
         <div className="mt-12 text-center text-sm text-muted-foreground">
           <p>
             {t("about.contact")}{" "}
-            <a href="mailto:info@chargevilnius.lt" className="text-primary hover:underline">
-              info@chargevilnius.lt
+            <a href="mailto:info@Chargington.lt" className="text-primary hover:underline">
+              info@Chargington.lt
             </a>
           </p>
         </div>

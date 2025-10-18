@@ -1,4 +1,4 @@
-# ChargeVilnius Forum - Local Setup Instructions
+# Chargington Forum - Local Setup Instructions
 
 ## Project Structure
 

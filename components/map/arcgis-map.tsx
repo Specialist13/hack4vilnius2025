@@ -12,7 +12,7 @@ export function ArcGISMap() {
     // Wait for the ArcGIS embeddable components to load
     const initializeMap = async () => {
       try {
-        console.log("[ChargeVilnius] Initializing ArcGIS embedded map")
+        console.log("[Chargington] Initializing ArcGIS embedded map")
 
         // Wait a bit for the script to load
         await new Promise((resolve) => setTimeout(resolve, 1500))
@@ -36,7 +36,7 @@ export function ArcGISMap() {
         setIsLoading(false)
         setError(null)
       } catch (err) {
-        console.error("[ChargeVilnius] Error initializing map:", err)
+        console.error("[Chargington] Error initializing map:", err)
         setError("Failed to load map. Please try again later.")
         setIsLoading(false)
       }

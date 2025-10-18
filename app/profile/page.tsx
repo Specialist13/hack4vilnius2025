@@ -114,8 +114,12 @@ export default function ProfilePage() {
   }
 
   const handleLogout = () => {
+    // Trigger storage event for other tabs/components
+    window.dispatchEvent(new Event('storage'))
+    
+    // Force page refresh to update UI state everywhere
     removeAuthToken()
-    router.push("/auth/login")
+    window.location.href = "/"
   }
 
   const handleAddressSelect = (address: string, coordinates?: { lat: number; lng: number }) => {

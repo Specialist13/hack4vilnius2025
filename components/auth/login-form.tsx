@@ -32,8 +32,11 @@ export function LoginForm() {
       // Store auth token in localStorage
       setAuthToken(response.accessToken)
 
-      // Redirect to forum feed after successful login
-      router.push("/forum")
+      // Trigger storage event for other tabs/components
+      window.dispatchEvent(new Event('storage'))
+      
+      // Force page refresh to update UI state everywhere
+      window.location.href = "/forum"
     } catch (err) {
       if (err instanceof APIError) {
         if (err.status === 401) {
@@ -106,3 +109,4 @@ export function LoginForm() {
     </Card>
   )
 }
+

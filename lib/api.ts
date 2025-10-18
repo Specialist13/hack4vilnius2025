@@ -68,9 +68,11 @@ export class APIError extends Error {
   constructor(
     public status: number,
     public statusText: string,
-    public data?: any
+    public data?: any,
+    // add optional endpoint so errors include which request failed
+    public endpoint?: string
   ) {
-    super(`API Error ${status}: ${statusText}`)
+    super(`API Error ${status}${endpoint ? ` (${endpoint})` : ''}: ${statusText}`)
     this.name = 'APIError'
   }
 }
@@ -121,7 +123,8 @@ export async function apiRequest<T = any>(
 
   // Handle errors
   if (!response.ok) {
-    throw new APIError(response.status, response.statusText, data)
+    // include the full request URL to make 404s easier to trace
+    throw new APIError(response.status, response.statusText, data, url)
   }
 
   return data

@@ -1,14 +1,119 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Zap, MapPin, Users, MessageSquare } from "lucide-react"
+import { Zap, MapPin, Users, MessageSquare, Bot, FileText } from "lucide-react"
 import { useTranslations } from "next-intl"
+import { isAuthenticated } from "@/lib/api"
 
 export default function HomePage() {
   const t = useTranslations()
+  const [isAuth, setIsAuth] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
+  useEffect(() => {
+    setIsAuth(isAuthenticated())
+    setIsLoading(false)
+  }, [])
+
+  if (isLoading) {
+    return null // Prevent flash of wrong content
+  }
+
+  if (isAuth) {
+    // Logged in user view - Quick access to main features
+    return (
+      <>
+        {/* Hero Section for Logged In Users */}
+        <section className="border-b border-border bg-gradient-to-b from-muted/50 to-background">
+          <div className="container mx-auto px-4 py-16 sm:py-20">
+            <div className="mx-auto max-w-3xl text-center">
+              <h1 className="mb-4 sm:mb-6 text-3xl sm:text-4xl font-bold tracking-tight text-balance md:text-5xl">
+                Welcome Back!
+              </h1>
+              <p className="mb-6 sm:mb-8 text-base sm:text-lg text-muted-foreground leading-relaxed text-pretty px-4">
+                Continue your journey to bring EV charging to your community
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Quick Access Section */}
+        <section className="py-16 sm:py-20">
+          <div className="container mx-auto px-4">
+            <div className="mb-12 text-center px-4">
+              <h2 className="mb-4 text-2xl sm:text-3xl font-bold tracking-tight">Quick Access</h2>
+              <p className="text-muted-foreground leading-relaxed">Jump right into what you need</p>
+            </div>
+
+            <div className="grid gap-6 sm:gap-8 md:grid-cols-3 max-w-6xl mx-auto">
+              <Card className="hover:shadow-lg transition-shadow cursor-pointer">
+                <Link href="/forum">
+                  <CardContent className="pt-6">
+                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+                      <MessageSquare className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="mb-2 text-lg sm:text-xl font-semibold">Community Forum</h3>
+                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                      Connect with neighbors and discuss EV charging solutions
+                    </p>
+                  </CardContent>
+                </Link>
+              </Card>
+
+              <Card className="hover:shadow-lg transition-shadow cursor-pointer">
+                <Link href="/map">
+                  <CardContent className="pt-6">
+                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-accent/10">
+                      <MapPin className="h-6 w-6 text-accent" />
+                    </div>
+                    <h3 className="mb-2 text-lg sm:text-xl font-semibold">Interactive Map</h3>
+                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                      Explore charging stations and community discussions by location
+                    </p>
+                  </CardContent>
+                </Link>
+              </Card>
+
+              <Card className="hover:shadow-lg transition-shadow cursor-pointer">
+                <Link href="/ai-consultant">
+                  <CardContent className="pt-6">
+                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-chart-2/10">
+                      <Bot className="h-6 w-6 text-chart-2" />
+                    </div>
+                    <h3 className="mb-2 text-lg sm:text-xl font-semibold">AI Consultant</h3>
+                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                      Get personalized recommendations for your EV charging needs
+                    </p>
+                  </CardContent>
+                </Link>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Additional Resources */}
+        <section className="border-t border-border py-16 sm:py-20 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <div className="mx-auto max-w-2xl text-center px-4">
+              <FileText className="mx-auto mb-6 h-10 w-10 sm:h-12 sm:w-12 text-primary" />
+              <h2 className="mb-4 text-2xl sm:text-3xl font-bold tracking-tight text-balance">Need Documentation?</h2>
+              <p className="mb-6 sm:mb-8 text-sm sm:text-base text-muted-foreground leading-relaxed">
+                Generate professional documents for your building management or authorities
+              </p>
+              <Button size="lg" asChild className="w-full sm:w-auto">
+                <Link href="/documents">Generate Documents</Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+      </>
+    )
+  }
+
+  // Not logged in user view - Original marketing page
   return (
     <>
       {/* Hero Section */}
@@ -99,3 +204,4 @@ export default function HomePage() {
     </>
   )
 }
+
