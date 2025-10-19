@@ -11,7 +11,6 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'
  */
 export const AUTH_TOKEN_KEY = 'authToken'
 export const USER_DATA_KEY = 'userData'
-
 /**
  * Get authentication token from localStorage
  */
@@ -62,31 +61,27 @@ export function setUserData(user: any): void {
 }
 
 /**
- * API Error class
+ * Custom API Error class
  */
 export class APIError extends Error {
   constructor(
     public status: number,
     public statusText: string,
-    public data?: any,
-    // add optional endpoint so errors include which request failed
-    public endpoint?: string
+    public data: any,
+    public url?: string
   ) {
-    super(`API Error ${status}${endpoint ? ` (${endpoint})` : ''}: ${statusText}`)
+    super(`API Error ${status}: ${statusText}`)
     this.name = 'APIError'
   }
 }
 
 /**
- * Make an authenticated API request
+ * Make an API request with authentication
  */
-export async function apiRequest<T = any>(
-  endpoint: string,
-  options: RequestInit = {}
-): Promise<T> {
+async function apiRequest<T = any>(endpoint: string, options: RequestInit = {}): Promise<T> {
   const url = `${API_BASE_URL}${endpoint}`
-  
-  // Prepare headers
+
+  // Default headers
   const headers: Record<string, string> = {
     'Content-Type': 'application/json',
   }
@@ -236,8 +231,12 @@ export const forumAPI = {
       forums: Array<{
         code: string
         userCode: string
+        userName: string
+        userImage?: string
         title: string
         body: string
+        address?: string
+        language: 'EN' | 'LT'
         createdAt: string
         approvalCount: number
       }>
@@ -255,21 +254,72 @@ export const forumAPI = {
   },
 
   /**
+   * Get a single forum by code
+   * GET /api/forums/{code}
+   */
+  getForum: async (code: string) => {
+    return apiRequest<{
+      code: string
+      userCode: string
+      userName: string
+      userImage?: string
+      title: string
+      body: string
+      address?: string
+      language: 'EN' | 'LT'
+      approvalCount: number
+      createdAt: string
+      updatedAt: string
+    }>(`/api/forums/${code}`, {
+      method: 'GET',
+    })
+  },
+
+  /**
    * Create a new forum post
    * POST /api/forums
    */
   createForum: async (data: {
     title: string
     body: string
+    address?: string
+    language?: 'EN' | 'LT'
   }) => {
     return apiRequest<{
       code: string
       userCode: string
       title: string
       body: string
+      address?: string
+      language: 'EN' | 'LT'
       createdAt: string
     }>('/api/forums', {
       method: 'POST',
+      body: JSON.stringify(data),
+    })
+  },
+
+  /**
+   * Update a forum post
+   * PATCH /api/forums/{forumCode}
+   */
+  updateForum: async (forumCode: string, data: {
+    title?: string
+    body?: string
+    address?: string
+    language?: 'EN' | 'LT'
+  }) => {
+    return apiRequest<{
+      code: string
+      userCode: string
+      title: string
+      body: string
+      address?: string
+      language: 'EN' | 'LT'
+      createdAt: string
+      updatedAt: string
+    }>(`/api/forums/${forumCode}`, {
+      method: 'PATCH',
       body: JSON.stringify(data),
     })
   },
@@ -294,65 +344,114 @@ export const forumAPI = {
     return apiRequest<Array<{
       code: string
       userCode: string
+      userName: string
+      userImage?: string
       title: string
       body: string
+      address?: string
+      language: 'EN' | 'LT'
+      approvalCount: number
       createdAt: string
     }>>('/api/users/forums', {
       method: 'GET',
     })
   },
+
+  /**
+   * Approve a forum post (like)
+   * POST /api/forums/{forumCode}/approvals
+   * Returns 201 on success
+   * Returns 400 if user tries to approve their own forum
+   * Returns 409 if forum already approved by this user
+   */
+  approveForum: async (forumCode: string) => {
+    return apiRequest<{
+      userCode: string
+      forumCode: string
+      createdAt: string
+    }>(`/api/forums/${forumCode}/approvals`, {
+      method: 'POST',
+    })
+  },
+
+  /**
+   * Remove approval from a forum post (unlike)
+   * DELETE /api/forums/{forumCode}/approvals
+   * Returns 204 (no content) on success
+   */
+  removeApproval: async (forumCode: string) => {
+    // Returns 204 with no body
+    return apiRequest<void>(`/api/forums/${forumCode}/approvals`, {
+      method: 'DELETE',
+    })
+  },
 }
 
 /**
- * Extended Forum API - NOT IN OPENAPI SPEC
- * These endpoints are used by the frontend but not defined in openapi.yml
- * They may need to be added to the backend or replaced with alternative solutions
+ * Comments API - Matches OpenAPI specification
  */
-export const extendedForumAPI = {
+export const commentsAPI = {
   /**
-   * Get a single post by ID
-   * NOTE: Not in OpenAPI spec - needs backend implementation
+   * Get comments for a forum
+   * GET /api/forums/{forumCode}/comments
+   * Returns all comments for a specific forum post
    */
-  getPost: async (postId: string) => {
-    return apiRequest(`/api/posts/${postId}`, {
+  getComments: async (forumCode: string) => {
+    return apiRequest<Array<{
+      code: string
+      userCode: string
+      userName: string
+      userImage?: string
+      commentText: string
+      createdAt: string
+      updatedAt?: string
+    }>>(`/api/forums/${forumCode}/comments`, {
       method: 'GET',
     })
   },
 
   /**
-   * Get replies for a post
-   * NOTE: Not in OpenAPI spec - needs backend implementation
+   * Create a comment on a forum
+   * POST /api/forums/{forumCode}/comments
    */
-  getReplies: async (postId: string) => {
-    return apiRequest(`/api/posts/${postId}/replies`, {
-      method: 'GET',
-    })
-  },
-
-  /**
-   * Create a reply to a post
-   * NOTE: Not in OpenAPI spec - needs backend implementation
-   */
-  createReply: async (postId: string, data: { content: string }) => {
-    return apiRequest(`/api/posts/${postId}/replies`, {
+  createComment: async (forumCode: string, data: { commentText: string }) => {
+    return apiRequest<{
+      code: string
+      userCode: string
+      forumCode: string
+      commentText: string
+      createdAt: string
+    }>(`/api/forums/${forumCode}/comments`, {
       method: 'POST',
       body: JSON.stringify(data),
     })
   },
-}
 
-/**
- * Map API - NOT IN OPENAPI SPEC
- * These endpoints are used by the frontend but not defined in openapi.yml
- */
-export const mapAPI = {
   /**
-   * Get map statistics
-   * NOTE: Not in OpenAPI spec - needs backend implementation
+   * Update a comment
+   * PATCH /api/comments/{commentCode}
    */
-  getStats: async () => {
-    return apiRequest('/api/map/stats', {
-      method: 'GET',
+  updateComment: async (commentCode: string, data: { commentText: string }) => {
+    return apiRequest<{
+      code: string
+      userCode: string
+      commentText: string
+      createdAt: string
+      updatedAt: string
+    }>(`/api/comments/${commentCode}`, {
+      method: 'PATCH',
+      body: JSON.stringify(data),
+    })
+  },
+
+  /**
+   * Delete a comment
+   * DELETE /api/comments/{commentCode}
+   * Returns 204 (no content) on success
+   */
+  deleteComment: async (commentCode: string) => {
+    return apiRequest<void>(`/api/comments/${commentCode}`, {
+      method: 'DELETE',
     })
   },
 }
@@ -374,5 +473,73 @@ export const aiAPI = {
       method: 'POST',
       body: JSON.stringify(data),
     })
+  },
+}
+
+/**
+ * Forum API - Additional functions
+ */
+import type { ForumPost, CreatePostData, CreateReplyData, ForumSearchParams, Reply } from "@/types/forum"
+
+const FORUM_API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "/api"
+
+// Forum API functions
+export const forumApi = {
+  // Get all posts with optional filters
+  async getPosts(params?: ForumSearchParams): Promise<ForumPost[]> {
+    const queryParams = new URLSearchParams()
+    if (params?.query) queryParams.append("query", params.query)
+    if (params?.status) queryParams.append("status", params.status)
+    if (params?.page) queryParams.append("page", params.page.toString())
+    if (params?.limit) queryParams.append("limit", params.limit.toString())
+
+    const response = await fetch(`${FORUM_API_BASE_URL}/forum/posts?${queryParams}`)
+    if (!response.ok) throw new Error("Failed to fetch posts")
+    return response.json()
+  },
+
+  // Get a single post by ID
+  async getPost(id: string): Promise<ForumPost> {
+    const response = await fetch(`${FORUM_API_BASE_URL}/forum/posts/${id}`)
+    if (!response.ok) throw new Error("Failed to fetch post")
+    return response.json()
+  },
+
+  // Create a new post
+  async createPost(data: CreatePostData): Promise<ForumPost> {
+    const response = await fetch(`${FORUM_API_BASE_URL}/forum/posts`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    })
+    if (!response.ok) throw new Error("Failed to create post")
+    return response.json()
+  },
+
+  // Add a reply to a post
+  async addReply(postId: string, data: CreateReplyData): Promise<Reply> {
+    const response = await fetch(`${FORUM_API_BASE_URL}/forum/posts/${postId}/replies`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    })
+    if (!response.ok) throw new Error("Failed to add reply")
+    return response.json()
+  },
+
+  // Support a post
+  async supportPost(postId: string): Promise<void> {
+    const response = await fetch(`${FORUM_API_BASE_URL}/forum/posts/${postId}/support`, {
+      method: "POST",
+    })
+    if (!response.ok) throw new Error("Failed to support post")
+  },
+
+  // Increment view count
+  async incrementViewCount(postId: string): Promise<void> {
+    const response = await fetch(`${FORUM_API_BASE_URL}/forum/posts/${postId}/view`, {
+      method: "POST",
+    })
+    if (!response.ok) throw new Error("Failed to increment view count")
   },
 }

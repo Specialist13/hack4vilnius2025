@@ -1,154 +1,300 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { useParams, useRouter } from "next/navigation"
-import { Card, CardContent, CardHeader } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { useRouter } from "next/navigation"
+import { formatDistanceToNow } from "date-fns"
+import { ArrowLeft, ThumbsUp, Loader2, AlertCircle, User, Send } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader } from "@/components/ui/card"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
-import { ArrowLeft, MapPin, Calendar, ThumbsUp, Loader2 } from "lucide-react"
-import { ReplyCard, type Reply } from "@/components/forum/reply-card"
-import { ReplyForm } from "@/components/forum/reply-form"
-import type { ForumPost } from "@/components/forum/post-card"
-import { extendedForumAPI, APIError } from "@/lib/api"
+import { Alert, AlertDescription } from "@/components/ui/alert"
+import { Textarea } from "@/components/ui/textarea"
+import { useTranslations } from "next-intl"
+import { useToast } from "@/hooks/use-toast"
+import { forumAPI, commentsAPI } from "@/lib/api"
 
-const statusColors = {
-  open: "bg-blue-100 text-blue-800 border-blue-200",
-  "in-progress": "bg-yellow-100 text-yellow-800 border-yellow-200",
-  resolved: "bg-green-100 text-green-800 border-green-200",
+interface Comment {
+  code: string
+  userCode: string
+  userName: string
+  userImage?: string
+  commentText: string
+  createdAt: string
+  updatedAt?: string
 }
 
-const statusLabels = {
-  open: "Open",
-  "in-progress": "In Progress",
-  resolved: "Resolved",
+function formatDate(dateString: string): string {
+  try {
+    const date = new Date(dateString)
+    if (isNaN(date.getTime())) {
+      return "recently"
+    }
+    return formatDistanceToNow(date, { addSuffix: true })
+  } catch (error) {
+    return "recently"
+  }
 }
 
-export default function PostDetailPage() {
-  const params = useParams()
+export default function PostDetailPage({ params }: { params: { id: string } }) {
+  const t = useTranslations("forum.post")
   const router = useRouter()
-  const postId = params.id as string
+  const { toast } = useToast()
 
-  const [post, setPost] = useState<ForumPost | null>(null)
-  const [replies, setReplies] = useState<Reply[]>([])
+  const [post, setPost] = useState<any>(null)
+  const [comments, setComments] = useState<Comment[]>([])
   const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+  const [hasSupported, setHasSupported] = useState(false)
+  const [isSupportLoading, setIsSupportLoading] = useState(false)
+  const [commentText, setCommentText] = useState("")
+  const [isSubmittingComment, setIsSubmittingComment] = useState(false)
 
-  const fetchPostData = async () => {
+  useEffect(() => {
+    fetchPost()
+    fetchComments()
+  }, [params.id])
+
+  const fetchPost = async () => {
+    setIsLoading(true)
+    setError(null)
+
     try {
-      setIsLoading(true)
-      
-      // Fetch post and replies from backend (using extended API - not in OpenAPI spec)
-      const postData = await extendedForumAPI.getPost(postId)
-      const repliesData = await extendedForumAPI.getReplies(postId)
-
-      console.log("[Post Detail] Fetched data:", { postData, repliesData })
-
-      setPost(postData)
-      setReplies(repliesData)
-    } catch (error) {
-      console.error("[Post Detail] Error fetching post:", error)
-      if (error instanceof APIError) {
-        // Post not found or other error
-        setPost(null)
-        setReplies([])
-      }
+      const data = await forumAPI.getForum(params.id)
+      setPost(data)
+    } catch (err: any) {
+      setError(err?.data?.error || "Failed to load post")
+      console.error("Error fetching post:", err)
     } finally {
       setIsLoading(false)
     }
   }
 
-  useEffect(() => {
-    fetchPostData()
-  }, [postId])
+  const fetchComments = async () => {
+    try {
+      const data = await commentsAPI.getComments(params.id)
+      setComments(data)
+    } catch (err) {
+      console.error("Error fetching comments:", err)
+    }
+  }
+
+  const handleSupport = async () => {
+    if (!post) return
+
+    setIsSupportLoading(true)
+    try {
+      if (hasSupported) {
+        await forumAPI.removeApproval(post.code)
+        setHasSupported(false)
+        setPost({ ...post, approvalCount: post.approvalCount - 1 })
+        toast({ title: "Support removed" })
+      } else {
+        await forumAPI.approveForum(post.code)
+        setHasSupported(true)
+        setPost({ ...post, approvalCount: post.approvalCount + 1 })
+        toast({ title: "Post supported!" })
+      }
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error?.data?.error || "Failed to update support",
+        variant: "destructive",
+      })
+    } finally {
+      setIsSupportLoading(false)
+    }
+  }
+
+  const handleSubmitComment = async (e: React.FormEvent) => {
+    e.preventDefault()
+
+    if (!commentText.trim()) return
+
+    setIsSubmittingComment(true)
+    try {
+      await commentsAPI.createComment(params.id, { commentText: commentText.trim() })
+      setCommentText("")
+      await fetchComments()
+      toast({ title: "Comment posted!" })
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error?.data?.error || "Failed to post comment",
+        variant: "destructive",
+      })
+    } finally {
+      setIsSubmittingComment(false)
+    }
+  }
 
   if (isLoading) {
     return (
-      <div className="min-h-[calc(100vh-8rem)] bg-background flex items-center justify-center">
-        <Loader2 className="w-8 h-8 animate-spin text-primary" />
-      </div>
-    )
-  }
-
-  if (!post) {
-    return (
-      <div className="min-h-[calc(100vh-8rem)] bg-background flex items-center justify-center">
-        <div className="text-center">
-          <h2 className="text-2xl font-bold mb-2">Post not found</h2>
-          <Button onClick={() => router.push("/forum")}>Back to Forum</Button>
+      <div className="min-h-screen bg-gradient-to-b from-background to-muted/20">
+        <div className="container mx-auto px-4 py-12 max-w-4xl">
+          <div className="flex items-center justify-center py-20">
+            <div className="text-center space-y-4">
+              <Loader2 className="h-12 w-12 animate-spin text-primary mx-auto" />
+              <p className="text-muted-foreground">Loading post...</p>
+            </div>
+          </div>
         </div>
       </div>
     )
   }
 
-  const initials = post.author.name
-    .split(" ")
-    .map((n) => n[0])
-    .join("")
-    .toUpperCase()
+  if (error || !post) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-background to-muted/20">
+        <div className="container mx-auto px-4 py-12 max-w-4xl">
+          <Button variant="ghost" onClick={() => router.back()} className="mb-4">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            {t("backToForum")}
+          </Button>
+          <Alert variant="destructive">
+            <AlertCircle className="h-4 w-4" />
+            <AlertDescription>{error || t("notFound")}</AlertDescription>
+          </Alert>
+        </div>
+      </div>
+    )
+  }
 
   return (
-    <div className="bg-background">
-      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-4xl">
-        <Button variant="ghost" onClick={() => router.push("/forum")} className="mb-4 sm:mb-6 gap-2">
-          <ArrowLeft className="w-4 h-4" />
-          <span className="hidden sm:inline">Back to Forum</span>
-          <span className="sm:hidden">Back</span>
-        </Button>
+    <div className="min-h-screen bg-gradient-to-b from-background to-muted/20">
+      <div className="container mx-auto px-4 py-12 max-w-4xl">
+        <div className="space-y-6">
+          <Button variant="ghost" onClick={() => router.back()} className="group">
+            <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
+            {t("backToForum")}
+          </Button>
 
-        <Card className="mb-6">
-          <CardHeader>
-            <div className="flex items-start justify-between gap-4 mb-4">
-              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-balance flex-1">{post.title}</h1>
-              <Badge className={statusColors[post.status]} variant="outline">
-                {statusLabels[post.status]}
-              </Badge>
-            </div>
-            <div className="flex items-start gap-3">
-              <Avatar className="w-10 h-10 sm:w-12 sm:h-12">
-                <AvatarImage src={post.author.avatar || "/placeholder.svg"} alt={post.author.name} />
-                <AvatarFallback>{initials}</AvatarFallback>
-              </Avatar>
-              <div className="flex-1 min-w-0">
-                <p className="font-medium text-sm sm:text-base">{post.author.name}</p>
-                <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-1 sm:gap-4 mt-1 text-xs sm:text-sm text-muted-foreground">
-                  <div className="flex items-center gap-1">
-                    <MapPin className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
-                    <span className="truncate">{post.address}</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Calendar className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
-                    <span>{new Date(post.createdAt).toLocaleString("lt-LT")}</span>
+          {/* Main Post Card */}
+          <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
+            <CardHeader className="space-y-4">
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex items-center gap-3 min-w-0 flex-1">
+                  <Avatar className="h-12 w-12 ring-2 ring-background flex-shrink-0">
+                    <AvatarImage src={post.userImage} alt={post.userName} />
+                    <AvatarFallback className="bg-primary/10 text-primary">
+                      <User className="h-5 w-5" />
+                    </AvatarFallback>
+                  </Avatar>
+                  <div className="min-w-0 flex-1">
+                    <p className="font-semibold">{post.userName}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {formatDate(post.createdAt)}
+                    </p>
                   </div>
                 </div>
+                <Badge variant="secondary" className="text-xs">
+                  {post.language === "EN" ? "🇬🇧 EN" : "🇱🇹 LT"}
+                </Badge>
               </div>
-            </div>
-          </CardHeader>
-          <CardContent>
-            <p className="text-sm sm:text-base text-foreground leading-relaxed whitespace-pre-line mb-6">
-              {post.content}
-            </p>
-            <Separator className="my-4" />
-            <div className="flex items-center gap-4">
-              <Button variant="outline" size="sm" className="gap-1.5 bg-transparent">
-                <ThumbsUp className="w-4 h-4" />
-                <span>{post.likes}</span>
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
 
-        <div className="space-y-6">
-          <div>
-            <h2 className="text-xl sm:text-2xl font-bold mb-4">Replies ({replies.length})</h2>
-            <div className="space-y-4">
-              {replies.map((reply) => (
-                <ReplyCard key={reply.id} reply={reply} />
-              ))}
-            </div>
+              <div className="space-y-3">
+                <h1 className="text-3xl font-bold">{post.title}</h1>
+                {post.address && (
+                  <p className="text-muted-foreground">{post.address}</p>
+                )}
+              </div>
+            </CardHeader>
+
+            <CardContent className="space-y-6">
+              <p className="whitespace-pre-wrap text-base leading-relaxed">{post.body}</p>
+
+              <Separator />
+
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2 text-muted-foreground">
+                  <div className="p-1.5 rounded-full bg-primary/10">
+                    <ThumbsUp className="h-4 w-4 text-primary" />
+                  </div>
+                  <span className="font-medium">{post.approvalCount} supporters</span>
+                </div>
+
+                <Button
+                  variant={hasSupported ? "default" : "outline"}
+                  onClick={handleSupport}
+                  disabled={isSupportLoading}
+                >
+                  <ThumbsUp className="mr-2 h-4 w-4" />
+                  {hasSupported ? "Supported" : t("support")}
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Comments Section */}
+          <div className="space-y-4">
+            <h2 className="text-2xl font-bold">
+              Comments ({comments.length})
+            </h2>
+
+            {/* Comment Form */}
+            <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
+              <CardContent className="pt-6">
+                <form onSubmit={handleSubmitComment} className="space-y-4">
+                  <Textarea
+                    placeholder="Share your thoughts or advice..."
+                    value={commentText}
+                    onChange={(e) => setCommentText(e.target.value)}
+                    rows={4}
+                    className="resize-none"
+                    disabled={isSubmittingComment}
+                  />
+                  <div className="flex justify-end">
+                    <Button
+                      type="submit"
+                      disabled={isSubmittingComment || !commentText.trim()}
+                    >
+                      {isSubmittingComment ? (
+                        <>
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                          Posting...
+                        </>
+                      ) : (
+                        <>
+                          <Send className="mr-2 h-4 w-4" />
+                          Post Comment
+                        </>
+                      )}
+                    </Button>
+                  </div>
+                </form>
+              </CardContent>
+            </Card>
+
+            {/* Comments List */}
+            {comments.length > 0 && (
+              <div className="space-y-3">
+                {comments.map((comment) => (
+                  <Card key={comment.code} className="border-border/50 bg-card/50 backdrop-blur-sm">
+                    <CardHeader>
+                      <div className="flex items-center gap-3">
+                        <Avatar className="h-10 w-10 ring-2 ring-background">
+                          <AvatarImage src={comment.userImage} alt={comment.userName} />
+                          <AvatarFallback className="bg-primary/10 text-primary">
+                            <User className="h-4 w-4" />
+                          </AvatarFallback>
+                        </Avatar>
+                        <div className="flex-1">
+                          <p className="font-semibold text-sm">{comment.userName}</p>
+                          <p className="text-xs text-muted-foreground">
+                            {formatDate(comment.createdAt)}
+                          </p>
+                        </div>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm whitespace-pre-wrap">{comment.commentText}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            )}
           </div>
-
-          <ReplyForm postId={postId} onReplySubmit={fetchPostData} />
         </div>
       </div>
     </div>

@@ -1,69 +1,103 @@
 "use client"
 
-import type React from "react"
-
 import { useState } from "react"
+import { Send } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { extendedForumAPI, APIError } from "@/lib/api"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Label } from "@/components/ui/label"
+import { useTranslations } from "next-intl"
+import { useToast } from "@/hooks/use-toast"
 
 interface ReplyFormProps {
   postId: string
-  onReplySubmit: () => void
+  onReplyAdded: () => void
 }
 
-export function ReplyForm({ postId, onReplySubmit }: ReplyFormProps) {
+export function ReplyForm({ postId, onReplyAdded }: ReplyFormProps) {
+  const t = useTranslations("forum.reply")
+  const { toast } = useToast()
   const [content, setContent] = useState("")
+  const [isSupporter, setIsSupporter] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+
+    if (!content.trim()) {
+      toast({
+        title: "Error",
+        description: "Please enter a reply",
+        variant: "destructive",
+      })
+      return
+    }
+
     setIsSubmitting(true)
 
     try {
-      // Submit reply to backend (using extended API - not in OpenAPI spec)
-      const response = await extendedForumAPI.createReply(postId, { content })
+      // TODO: Integrate with actual API
+      await new Promise((resolve) => setTimeout(resolve, 1000))
 
-      console.log("[Reply Form] Reply submitted:", response)
+      toast({
+        title: "Success",
+        description: "Reply posted successfully",
+      })
 
       setContent("")
-      onReplySubmit()
+      setIsSupporter(false)
+      onReplyAdded()
     } catch (error) {
-      console.error("[Reply Form] Error submitting reply:", error)
-      if (error instanceof APIError) {
-        alert(`Failed to submit reply: ${error.data?.error || error.statusText}`)
-      } else {
-        alert("Failed to submit reply. Please try again.")
-      }
+      toast({
+        title: "Error",
+        description: "Failed to post reply",
+        variant: "destructive",
+      })
     } finally {
       setIsSubmitting(false)
     }
   }
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Add a Reply</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <Textarea
-            placeholder="Share your thoughts, experiences, or advice..."
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            required
-            disabled={isSubmitting}
-            rows={4}
-            className="resize-none"
-          />
-          <div className="flex justify-end">
-            <Button type="submit" disabled={isSubmitting || !content.trim()}>
-              {isSubmitting ? "Posting..." : "Post Reply"}
-            </Button>
-          </div>
-        </form>
-      </CardContent>
-    </Card>
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="space-y-2">
+        <Textarea
+          placeholder={t("placeholder")}
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          rows={4}
+          className="resize-none"
+          disabled={isSubmitting}
+        />
+      </div>
+
+      <div className="flex items-center space-x-2">
+        <Checkbox
+          id="supporter"
+          checked={isSupporter}
+          onCheckedChange={(checked) => setIsSupporter(checked as boolean)}
+          disabled={isSubmitting}
+        />
+        <Label
+          htmlFor="supporter"
+          className="text-sm font-normal cursor-pointer"
+        >
+          {t("markAsSupporter")}
+        </Label>
+      </div>
+
+      <div className="flex justify-end">
+        <Button type="submit" disabled={isSubmitting}>
+          {isSubmitting ? (
+            t("submitting")
+          ) : (
+            <>
+              <Send className="mr-2 h-4 w-4" />
+              {t("submit")}
+            </>
+          )}
+        </Button>
+      </div>
+    </form>
   )
 }

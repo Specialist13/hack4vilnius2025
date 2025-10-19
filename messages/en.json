@@ -34,6 +34,31 @@
       "getStarted": "Get Started",
       "viewMap": "View Map"
     },
+    "welcomeBack": {
+      "title": "Welcome Back!",
+      "subtitle": "Continue your journey to bring EV charging to your community"
+    },
+    "quickAccess": {
+      "title": "Quick Access",
+      "subtitle": "Jump right into what you need",
+      "forum": {
+        "title": "Community Forum",
+        "description": "Connect with neighbors and discuss EV charging solutions"
+      },
+      "map": {
+        "title": "Interactive Map",
+        "description": "Explore charging stations and community discussions by location"
+      },
+      "ai": {
+        "title": "AI Consultant",
+        "description": "Get personalized recommendations for your EV charging needs"
+      }
+    },
+    "documents": {
+      "title": "Need Documentation?",
+      "description": "Generate professional documents for your building management or authorities",
+      "button": "Generate Documents"
+    },
     "howItWorks": {
       "title": "How It Works",
       "subtitle": "Join the movement to bring EV charging to your building in three simple steps.",
@@ -95,9 +120,17 @@
   },
   "forum": {
     "title": "Community Forum",
+    "subtitle": "Connect with residents organizing EV charging solutions across Vilnius",
     "searchPlaceholder": "Search by address...",
     "searchButton": "Search",
     "createPost": "Create Post",
+    "loading": "Loading discussions...",
+    "noDiscussions": "No discussions yet",
+    "noDiscussionsDesc": "Be the first to start a discussion about EV charging in your building!",
+    "noSearchResults": "No posts found matching your search. Try different keywords.",
+    "previous": "Previous",
+    "next": "Next",
+    "pageOf": "Page {current} of {total}",
     "tabs": {
       "all": "All Posts",
       "active": "Active",
@@ -122,10 +155,15 @@
     },
     "create": {
       "title": "Create New Post",
+      "subtitle": "Share your EV charging initiative with the community",
+      "postDetailsTitle": "Post Details",
+      "postDetailsDesc": "Tell the community about your building and charging needs",
       "postTitle": "Post Title",
       "postTitlePlaceholder": "e.g., Need EV charging at Gedimino pr. 15",
       "address": "Building Address",
       "addressPlaceholder": "Enter your building address",
+      "mapTip": "🗺️ Start typing to see address suggestions from Google Maps",
+      "addressSelected": "Address selected: {address}",
       "selectOnMap": "Or select location on map",
       "clickMap": "Click on the map to select your building location",
       "selectedLocation": "Selected location",
@@ -133,13 +171,21 @@
       "languageHelp": "Select the language for this post",
       "content": "Post Content",
       "contentPlaceholder": "Describe your situation, how many residents are interested, and what steps you've taken so far...",
+      "charactersCount": "{count}/{max} characters",
       "submit": "Create Post",
-      "submitting": "Creating..."
+      "submitting": "Creating...",
+      "cancel": "Cancel",
+      "errorTitle": "Error",
+      "errorFillFields": "Please fill in title and content",
+      "errorCreate": "Failed to create post. Please try again.",
+      "successTitle": "Success!",
+      "successCreate": "Your post has been created successfully"
     },
     "reply": {
       "placeholder": "Share your thoughts, experiences, or advice...",
       "submit": "Post Reply",
-      "submitting": "Posting..."
+      "submitting": "Posting...",
+      "markAsSupporter": "I want to support this initiative"
     }
   },
   "map": {
@@ -386,6 +432,11 @@
   "faq": {
     "title": "Frequently Asked Questions",
     "subtitle": "Find answers to common questions about Chargington and EV charging in apartment buildings.",
+    "stillHaveQuestions": {
+      "title": "Still have questions?",
+      "description": "Can't find what you're looking for? Check our",
+      "contactLink": "Contact page"
+    },
     "categories": {
       "general": {
         "title": "General Questions",

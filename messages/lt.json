@@ -34,6 +34,31 @@
       "getStarted": "Pradėti",
       "viewMap": "Žiūrėti žemėlapį"
     },
+    "welcomeBack": {
+      "title": "Sveiki sugrįžę!",
+      "subtitle": "Tęskite savo kelionę atnešant EV įkrovimą į savo bendruomenę"
+    },
+    "quickAccess": {
+      "title": "Greita prieiga",
+      "subtitle": "Pereikite tiesiai į tai, ko jums reikia",
+      "forum": {
+        "title": "Bendruomenės forumas",
+        "description": "Susisiekite su kaimynais ir aptarkite EV įkrovimo sprendimus"
+      },
+      "map": {
+        "title": "Interaktyvus žemėlapis",
+        "description": "Tyrinėkite įkrovimo stoteles ir bendruomenės diskusijas pagal vietą"
+      },
+      "ai": {
+        "title": "AI konsultantas",
+        "description": "Gaukite pritaikytas rekomendacijas jūsų EV įkrovimo poreikiams"
+      }
+    },
+    "documents": {
+      "title": "Reikia dokumentų?",
+      "description": "Sugeneruokite profesinius dokumentus savo pastato administracijai ar institucijoms",
+      "button": "Generuoti dokumentus"
+    },
     "howItWorks": {
       "title": "Kaip tai veikia",
       "subtitle": "Įsirenkite krovimo stotelę savo kieme trimis paprastais žingsniais.",
@@ -95,9 +120,17 @@
   },
   "forum": {
     "title": "Bendruomenės forumas",
+    "subtitle": "Susisiekite su gyventojais, organizuojančiais EV įkrovimo sprendimus visame Vilniuje",
     "searchPlaceholder": "Ieškoti pagal adresą...",
     "searchButton": "Ieškoti",
     "createPost": "Sukurti įrašą",
+    "loading": "Kraunamos diskusijos...",
+    "noDiscussions": "Diskusijų dar nėra",
+    "noDiscussionsDesc": "Būkite pirmas, kuris pradeda diskusiją apie EV įkrovimą savo pastate!",
+    "noSearchResults": "Nerasta įrašų atitinkančių jūsų paiešką. Bandykite kitus raktažodžius.",
+    "previous": "Ankstesnis",
+    "next": "Kitas",
+    "pageOf": "Puslapis {current} iš {total}",
     "tabs": {
       "all": "Visi įrašai",
       "active": "Aktyvūs",
@@ -122,10 +155,15 @@
     },
     "create": {
       "title": "Sukurti naują įrašą",
+      "subtitle": "Pasidalinkite savo EV įkrovimo iniciatyva su bendruomene",
+      "postDetailsTitle": "Įrašo informacija",
+      "postDetailsDesc": "Papasakokite bendruomenei apie savo pastatą ir įkrovimo poreikius",
       "postTitle": "Įrašo pavadinimas",
       "postTitlePlaceholder": "pvz., Reikalingas EV įkrovimas Gedimino pr. 15",
       "address": "Pastato adresas",
       "addressPlaceholder": "Įveskite savo pastato adresą",
+      "mapTip": "🗺️ Pradėkite rašyti, kad pamatytumėte adresų pasiūlymus iš Google Maps",
+      "addressSelected": "Adresas pasirinktas: {address}",
       "selectOnMap": "Arba pasirinkite vietą žemėlapyje",
       "clickMap": "Spustelėkite žemėlapyje, kad pasirinktumėte savo pastato vietą",
       "selectedLocation": "Pasirinkta vieta",
@@ -133,13 +171,21 @@
       "languageHelp": "Pasirinkite šio įrašo kalbą",
       "content": "Įrašo turinys",
       "contentPlaceholder": "Aprašykite savo situaciją, kiek gyventojų domisi ir kokius žingsnius jau ėmėte...",
+      "charactersCount": "{count}/{max} simbolių",
       "submit": "Sukurti įrašą",
-      "submitting": "Kuriama..."
+      "submitting": "Kuriama...",
+      "cancel": "Atšaukti",
+      "errorTitle": "Klaida",
+      "errorFillFields": "Užpildykite pavadinimą ir turinį",
+      "errorCreate": "Nepavyko sukurti įrašo. Bandykite dar kartą.",
+      "successTitle": "Pavyko!",
+      "successCreate": "Jūsų įrašas sėkmingai sukurtas"
     },
     "reply": {
       "placeholder": "Pasidalinkite savo mintimis, patirtimi ar patarimais...",
       "submit": "Paskelbti atsakymą",
-      "submitting": "Skelbiama..."
+      "submitting": "Skelbiama...",
+      "markAsSupporter": "Noriu palaikyti šią iniciatyvą"
     }
   },
   "map": {
@@ -391,6 +437,11 @@
   "faq": {
     "title": "Privatumo politika",
     "subtitle": "Raskite atsakymus į dažniausius klausimus apie Chargington ir EV įkrovimą daugiabučiuose.",
+    "stillHaveQuestions": {
+      "title": "Vis dar turite klausimų?",
+      "description": "Nerandate ko ieškote? Apsilankykite mūsų",
+      "contactLink": "Kontaktų puslapyje"
+    },
     "categories": {
       "general": {
         "title": "Bendrieji klausimai",

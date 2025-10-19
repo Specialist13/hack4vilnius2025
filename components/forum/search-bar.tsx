@@ -10,35 +10,33 @@ import { useTranslations } from "next-intl"
 
 interface SearchBarProps {
   onSearch: (query: string) => void
+  initialValue?: string
 }
 
-export function SearchBar({ onSearch }: SearchBarProps) {
-  const t = useTranslations()
-  const [query, setQuery] = useState("")
+export function SearchBar({ onSearch, initialValue = "" }: SearchBarProps) {
+  const t = useTranslations("forum")
+  const [searchQuery, setSearchQuery] = useState(initialValue)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    onSearch(query)
+    onSearch(searchQuery)
   }
 
   return (
-    <form onSubmit={handleSubmit} className="w-full">
-      <div className="flex flex-col sm:flex-row gap-2">
-        <div className="relative flex-1">
-          <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground" />
-          <Input
-            type="text"
-            placeholder={t("forum.searchPlaceholder")}
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            className="pl-9 sm:pl-10 text-sm sm:text-base"
-          />
-        </div>
-        <Button type="submit" size="default" className="w-full sm:w-auto">
-          <Search className="w-4 h-4 sm:mr-2" />
-          <span className="hidden sm:inline">{t("forum.searchButton")}</span>
-        </Button>
+    <form onSubmit={handleSubmit} className="flex gap-2">
+      <div className="relative flex-1">
+        <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground" />
+        <Input
+          type="text"
+          placeholder={t("searchPlaceholder")}
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="pl-10"
+        />
       </div>
+      <Button type="submit">
+        {t("searchButton")}
+      </Button>
     </form>
   )
 }

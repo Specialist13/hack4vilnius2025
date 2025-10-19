@@ -31,10 +31,10 @@ export default function HomePage() {
           <div className="container mx-auto px-4 py-16 sm:py-20">
             <div className="mx-auto max-w-3xl text-center">
               <h1 className="mb-4 sm:mb-6 text-3xl sm:text-4xl font-bold tracking-tight text-balance md:text-5xl">
-                Welcome Back!
+                {t("home.welcomeBack.title")}
               </h1>
               <p className="mb-6 sm:mb-8 text-base sm:text-lg text-muted-foreground leading-relaxed text-pretty px-4">
-                Continue your journey to bring EV charging to your community
+                {t("home.welcomeBack.subtitle")}
               </p>
             </div>
           </div>
@@ -44,8 +44,8 @@ export default function HomePage() {
         <section className="py-16 sm:py-20">
           <div className="container mx-auto px-4">
             <div className="mb-12 text-center px-4">
-              <h2 className="mb-4 text-2xl sm:text-3xl font-bold tracking-tight">Quick Access</h2>
-              <p className="text-muted-foreground leading-relaxed">Jump right into what you need</p>
+              <h2 className="mb-4 text-2xl sm:text-3xl font-bold tracking-tight">{t("home.quickAccess.title")}</h2>
+              <p className="text-muted-foreground leading-relaxed">{t("home.quickAccess.subtitle")}</p>
             </div>
 
             <div className="grid gap-6 sm:gap-8 md:grid-cols-3 max-w-6xl mx-auto">
@@ -55,9 +55,9 @@ export default function HomePage() {
                     <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
                       <MessageSquare className="h-6 w-6 text-primary" />
                     </div>
-                    <h3 className="mb-2 text-lg sm:text-xl font-semibold">Community Forum</h3>
+                    <h3 className="mb-2 text-lg sm:text-xl font-semibold">{t("home.quickAccess.forum.title")}</h3>
                     <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                      Connect with neighbors and discuss EV charging solutions
+                      {t("home.quickAccess.forum.description")}
                     </p>
                   </CardContent>
                 </Link>
@@ -69,9 +69,9 @@ export default function HomePage() {
                     <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-accent/10">
                       <MapPin className="h-6 w-6 text-accent" />
                     </div>
-                    <h3 className="mb-2 text-lg sm:text-xl font-semibold">Interactive Map</h3>
+                    <h3 className="mb-2 text-lg sm:text-xl font-semibold">{t("home.quickAccess.map.title")}</h3>
                     <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                      Explore charging stations and community discussions by location
+                      {t("home.quickAccess.map.description")}
                     </p>
                   </CardContent>
                 </Link>
@@ -83,9 +83,9 @@ export default function HomePage() {
                     <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-chart-2/10">
                       <Bot className="h-6 w-6 text-chart-2" />
                     </div>
-                    <h3 className="mb-2 text-lg sm:text-xl font-semibold">AI Consultant</h3>
+                    <h3 className="mb-2 text-lg sm:text-xl font-semibold">{t("home.quickAccess.ai.title")}</h3>
                     <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                      Get personalized recommendations for your EV charging needs
+                      {t("home.quickAccess.ai.description")}
                     </p>
                   </CardContent>
                 </Link>
@@ -99,12 +99,12 @@ export default function HomePage() {
           <div className="container mx-auto px-4">
             <div className="mx-auto max-w-2xl text-center px-4">
               <FileText className="mx-auto mb-6 h-10 w-10 sm:h-12 sm:w-12 text-primary" />
-              <h2 className="mb-4 text-2xl sm:text-3xl font-bold tracking-tight text-balance">Need Documentation?</h2>
+              <h2 className="mb-4 text-2xl sm:text-3xl font-bold tracking-tight text-balance">{t("home.documents.title")}</h2>
               <p className="mb-6 sm:mb-8 text-sm sm:text-base text-muted-foreground leading-relaxed">
-                Generate professional documents for your building management or authorities
+                {t("home.documents.description")}
               </p>
               <Button size="lg" asChild className="w-full sm:w-auto">
-                <Link href="/documents">Generate Documents</Link>
+                <Link href="/documents">{t("home.documents.button")}</Link>
               </Button>
             </div>
           </div>
@@ -204,4 +204,3 @@ export default function HomePage() {
     </>
   )
 }
-

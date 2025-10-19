@@ -10,9 +10,10 @@ import { loadGoogleMapsAPI } from "@/lib/google-maps-loader"
 interface AddressPickerProps {
   onAddressSelect: (address: string, coordinates?: { lat: number; lng: number }) => void
   initialAddress?: string
+  placeholder?: string
 }
 
-export function AddressPicker({ onAddressSelect, initialAddress = "" }: AddressPickerProps) {
+export function AddressPicker({ onAddressSelect, initialAddress = "", placeholder }: AddressPickerProps) {
   const mapRef = useRef<HTMLDivElement>(null)
   const mapInstanceRef = useRef<any | null>(null)
   const markerRef = useRef<any | null>(null)
@@ -23,13 +24,7 @@ export function AddressPicker({ onAddressSelect, initialAddress = "" }: AddressP
   const [selectedAddress, setSelectedAddress] = useState(initialAddress)
   const [error, setError] = useState<string | null>(null)
 
-  // Sync internal state with prop changes
   useEffect(() => {
-    setSelectedAddress(initialAddress)
-  }, [initialAddress])
-
-  useEffect(() => {
-    // Check if Google Maps API key is available
     const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
 
     if (!apiKey) {
@@ -42,15 +37,12 @@ export function AddressPicker({ onAddressSelect, initialAddress = "" }: AddressP
 
     const initializeMap = async () => {
       try {
-        // Load Google Maps API using the global loader
         await loadGoogleMapsAPI(apiKey)
 
         if (!mapRef.current) return
 
-        // Center on Vilnius, Lithuania
         const vilniusCenter = { lat: 54.6872, lng: 25.2797 }
 
-        // Initialize map
         const map = new window.google.maps.Map(mapRef.current, {
           center: vilniusCenter,
           zoom: 13,
@@ -61,7 +53,6 @@ export function AddressPicker({ onAddressSelect, initialAddress = "" }: AddressP
 
         mapInstanceRef.current = map
 
-        // Initialize marker
         const marker = new window.google.maps.Marker({
           map,
           draggable: true,
@@ -70,14 +61,12 @@ export function AddressPicker({ onAddressSelect, initialAddress = "" }: AddressP
 
         markerRef.current = marker
 
-        // Add click listener to map
         map.addListener("click", (event: any) => {
           if (event.latLng) {
             handleLocationSelect(event.latLng)
           }
         })
 
-        // Add drag listener to marker
         marker.addListener("dragend", () => {
           const position = marker.getPosition()
           if (position) {
@@ -85,10 +74,9 @@ export function AddressPicker({ onAddressSelect, initialAddress = "" }: AddressP
           }
         })
 
-        // Initialize autocomplete on input
         if (inputRef.current) {
           const autocomplete = new window.google.maps.places.Autocomplete(inputRef.current, {
-            componentRestrictions: { country: "lt" }, // Restrict to Lithuania
+            componentRestrictions: { country: "lt" },
             fields: ["formatted_address", "geometry", "name"],
           })
 
@@ -112,7 +100,6 @@ export function AddressPicker({ onAddressSelect, initialAddress = "" }: AddressP
               lng: location.lng(),
             })
 
-            // Update map and marker
             map.setCenter(location)
             map.setZoom(17)
             marker.setPosition(location)
@@ -120,7 +107,6 @@ export function AddressPicker({ onAddressSelect, initialAddress = "" }: AddressP
           })
         }
 
-        // Set initial address if provided
         if (initialAddress) {
           geocodeAddress(initialAddress)
         }
@@ -128,7 +114,7 @@ export function AddressPicker({ onAddressSelect, initialAddress = "" }: AddressP
         setIsLoading(false)
         setError(null)
       } catch (err) {
-        console.error("[v0] Error initializing Google Maps:", err)
+        console.error("Error initializing Google Maps:", err)
         setError("Failed to load Google Maps. Please check your API key and internet connection.")
         setIsLoading(false)
       }
@@ -137,7 +123,6 @@ export function AddressPicker({ onAddressSelect, initialAddress = "" }: AddressP
     initializeMap()
 
     return () => {
-      // Cleanup
       if (markerRef.current) {
         markerRef.current.setMap(null)
       }
@@ -148,13 +133,11 @@ export function AddressPicker({ onAddressSelect, initialAddress = "" }: AddressP
     const lat = location.lat()
     const lng = location.lng()
 
-    // Update marker position
     if (markerRef.current) {
       markerRef.current.setPosition(location)
       markerRef.current.setVisible(true)
     }
 
-    // Reverse geocode to get address
     const geocoder = new window.google.maps.Geocoder()
     geocoder.geocode({ location }, (results: any, status: any) => {
       if (status === "OK" && results && results[0]) {
@@ -162,7 +145,7 @@ export function AddressPicker({ onAddressSelect, initialAddress = "" }: AddressP
         setSelectedAddress(address)
         onAddressSelect(address, { lat, lng })
       } else {
-        console.error("[v0] Geocoding failed:", status)
+        console.error("Geocoding failed:", status)
         setSelectedAddress(`${lat.toFixed(6)}, ${lng.toFixed(6)}`)
         onAddressSelect(`${lat.toFixed(6)}, ${lng.toFixed(6)}`, { lat, lng })
       }
@@ -193,7 +176,7 @@ export function AddressPicker({ onAddressSelect, initialAddress = "" }: AddressP
             id="address-input"
             value={selectedAddress}
             onChange={(e) => setSelectedAddress(e.target.value)}
-            placeholder="Search for your address or click on the map..."
+            placeholder={placeholder || "Search for your address or click on the map..."}
             className="pl-10"
           />
         </div>
@@ -242,7 +225,6 @@ export function AddressPicker({ onAddressSelect, initialAddress = "" }: AddressP
   )
 }
 
-// Extend Window interface for initMap callback
 declare global {
   interface Window {
     initMap: () => void
