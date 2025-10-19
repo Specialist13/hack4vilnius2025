@@ -645,6 +645,10 @@
     "inputPlaceholder": "Įveskite savo žinutę čia...",
     "send": "Siųsti",
     "thinking": "Analizuoju...",
+    "userAddress": {
+      "title": "Jūsų adresas",
+      "description": "Jūsų adresas automatiškai įtraukiamas į visus užklausimus geresnėms rekomendacijoms."
+    },
     "exampleQuestions": {
       "title": "Pavyzdiniai klausimai:",
       "q1": "Ar turėčiau sukurti naują įrašą, ar prisijungti prie esamos diskusijos?",

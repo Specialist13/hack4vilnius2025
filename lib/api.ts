@@ -457,19 +457,19 @@ export const commentsAPI = {
 }
 
 /**
- * AI Consultant API - NOT IN OPENAPI SPEC
- * These endpoints are used by the frontend but not defined in openapi.yml
+ * AI Agent API - Matches OpenAPI specification
+ * POST /api/agent/generate
  */
 export const aiAPI = {
   /**
-   * Analyze user message and provide AI recommendations
-   * NOTE: Not in OpenAPI spec - needs backend implementation
+   * Generate AI response using Gemini models
+   * POST /api/agent/generate
    */
-  analyze: async (data: {
-    message: string
-    userLocation?: { address: string; coordinates: { lat: number; lng: number } }
-  }) => {
-    return apiRequest('/api/ai-consultant/analyze', {
+  generate: async (data: { prompt: string }) => {
+    return apiRequest<{
+      response: string
+      timestamp: string
+    }>('/api/agent/generate', {
       method: 'POST',
       body: JSON.stringify(data),
     })

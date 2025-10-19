@@ -1241,7 +1241,7 @@ paths:
                     type: string
                     example: Internal server error
 
-  /api/comments/{commentCode}:
+  /api/forums/comments/{commentCode}:
     patch:
       summary: Update comment
       description: Update a comment text (only by the creator)
@@ -1517,6 +1517,115 @@ paths:
                     example: Internal server error
 
   /api/petitions:
+    get:
+      summary: Get paginated petitions
+      description: Retrieve a paginated list of petitions with approval counts
+      tags:
+        - Petitions
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: integer
+            default: 1
+            minimum: 1
+          description: Page number for pagination
+          example: 1
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            default: 10
+            minimum: 1
+            maximum: 100
+          description: Number of items per page (max 100)
+          example: 10
+      responses:
+        '200':
+          description: Petitions retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  petitions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          format: uuid
+                          example: 880e8400-e29b-41d4-a716-446655440004
+                        userCode:
+                          type: string
+                          format: uuid
+                          example: 660e8400-e29b-41d4-a716-446655440001
+                        userName:
+                          type: string
+                          example: John Doe
+                        userImage:
+                          type: string
+                          nullable: true
+                          example: https://example.com/avatar.jpg
+                        name:
+                          type: string
+                          example: Fix Neighborhood Park
+                        description:
+                          type: string
+                          example: We need to repair the playground equipment
+                        address:
+                          type: string
+                          nullable: true
+                          example: Park Street 15, Vilnius
+                        createdAt:
+                          type: string
+                          format: date-time
+                          example: 2025-10-18T10:30:00.000Z
+                        approvalCount:
+                          type: integer
+                          example: 5
+                  pagination:
+                    type: object
+                    properties:
+                      page:
+                        type: integer
+                        example: 1
+                      limit:
+                        type: integer
+                        example: 10
+                      totalItems:
+                        type: integer
+                        example: 25
+                      totalPages:
+                        type: integer
+                        example: 3
+                      hasNextPage:
+                        type: boolean
+                        example: true
+                      hasPreviousPage:
+                        type: boolean
+                        example: false
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Error retrieving petitions
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Internal server error
     post:
       summary: Create new petition
       description: Create a new petition
@@ -1794,6 +1903,72 @@ paths:
                     type: string
                     example: Internal server error
 
+  /api/agent/generate:
+    post:
+      summary: Generate LLM response
+      description: Generate AI response using latest Gemini models (2.5 Flash, 2.0 Flash, etc.) with backend-configured context
+      tags:
+        - Agent
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - prompt
+              properties:
+                prompt:
+                  type: string
+                  example: What are the benefits of renewable energy?
+      responses:
+        '200':
+          description: LLM response generated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  response:
+                    type: string
+                    example: Renewable energy offers numerous benefits including reduced carbon emissions, energy independence, and long-term cost savings...
+                  timestamp:
+                    type: string
+                    format: date-time
+                    example: 2025-10-19T12:00:00.000Z
+        '400':
+          description: Bad request - Missing required fields
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Missing required field: prompt
+        '401':
+          description: Unauthorized - No token provided
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Unauthorized
+        '500':
+          description: Internal server error or AI service not configured
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: AI service not configured
+
   /api/petitions/{petitionCode}/approvals:
     post:
       summary: Create petition approval
@@ -1969,4 +2144,6 @@ tags:
     description: Petition management endpoints
   - name: Petition Approvals
     description: Petition approval management endpoints
+  - name: Agent
+    description: AI agent endpoints for LLM responses
 
