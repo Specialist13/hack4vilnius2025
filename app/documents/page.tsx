@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
@@ -8,10 +8,12 @@ import { PersonalInfoStep } from "@/components/documents/personal-info-step"
 import { PropertyInfoStep } from "@/components/documents/property-info-step"
 import { ParkingInfoStep } from "@/components/documents/parking-info-step"
 import { ChargerInfoStep } from "@/components/documents/charger-info-step"
+import { InstallerSelectionStep } from "@/components/documents/installer-selection-step"
 import { DocumentsUploadStep } from "@/components/documents/documents-upload-step"
 import { DocumentResult } from "@/components/documents/document-result"
 import { ChevronLeft, ChevronRight, FileText, Zap } from "lucide-react"
 import { useTranslations } from "next-intl"
+import { userAPI, isAuthenticated } from "@/lib/api"
 
 export type FormData = {
   fullName: string
@@ -28,6 +30,7 @@ export type FormData = {
   power: string
   connectors: string
   chargerModel: string
+  selectedInstaller: string
   hasCoOwnerConsent: "yes" | "no" | ""
 }
 
@@ -52,15 +55,38 @@ export default function DocumentsPage() {
     power: "",
     connectors: "1",
     chargerModel: "",
+    selectedInstaller: "",
     hasCoOwnerConsent: "",
   })
   const [errors, setErrors] = useState<FormErrors>({})
+
+  // Load user profile data if authenticated
+  useEffect(() => {
+    const loadProfileData = async () => {
+      if (isAuthenticated()) {
+        try {
+          const profile = await userAPI.getProfile()
+          setFormData((prev) => ({
+            ...prev,
+            fullName: profile.name || prev.fullName,
+            email: profile.email || prev.email,
+            address: profile.address || prev.address,
+          }))
+        } catch (error) {
+          console.error("Error loading profile:", error)
+          // Continue without profile data
+        }
+      }
+    }
+    loadProfileData()
+  }, [])
 
   const steps = [
     { title: t("steps.personal.title"), component: PersonalInfoStep },
     { title: t("steps.property.title"), component: PropertyInfoStep },
     { title: t("steps.parking.title"), component: ParkingInfoStep },
     { title: t("steps.charger.title"), component: ChargerInfoStep },
+    { title: t("steps.installer.title"), component: InstallerSelectionStep },
     { title: t("steps.documents.title"), component: DocumentsUploadStep },
   ]
 
@@ -99,6 +125,8 @@ export default function DocumentsPage() {
       if (!formData.chargerType) newErrors.chargerType = t("errors.required")
       if (!formData.power) newErrors.power = t("errors.required")
     } else if (step === 4) {
+      if (!formData.selectedInstaller) newErrors.selectedInstaller = t("errors.required")
+    } else if (step === 5) {
       if (formData.propertyType === "apartment" && !formData.hasCoOwnerConsent)
         newErrors.hasCoOwnerConsent = t("errors.required")
     }
@@ -141,6 +169,7 @@ export default function DocumentsPage() {
       power: "",
       connectors: "1",
       chargerModel: "",
+      selectedInstaller: "",
       hasCoOwnerConsent: "",
     })
     setErrors({})
@@ -208,7 +237,7 @@ export default function DocumentsPage() {
               <Zap className="w-5 h-5 text-primary" />
               {steps[step].title}
             </CardTitle>
-            <CardDescription>{t(`steps.${["personal", "property", "parking", "charger", "documents"][step]}.description`)}</CardDescription>
+            <CardDescription>{t(`steps.${["personal", "property", "parking", "charger", "installer", "documents"][step]}.description`)}</CardDescription>
           </CardHeader>
           <CardContent>
             <CurrentStepComponent formData={formData} updateFormData={updateFormData} errors={errors} />
