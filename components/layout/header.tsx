@@ -69,7 +69,7 @@ export function Header() {
             href="/petitions"
             className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
           >
-            Petitions
+            Peticijos
           </Link>
           <Link href="/map" className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground">
             {t("nav.map")}
