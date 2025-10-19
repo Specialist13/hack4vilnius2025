@@ -73,13 +73,12 @@ export default function FAQPage() {
 
         <Card className="mt-8 bg-primary/5 border-primary/20">
           <CardHeader>
-            <CardTitle className="text-lg">Still have questions?</CardTitle>
+m kaip del t            <CardTitle className="text-lg">{t("faq.stillHaveQuestions.title")}</CardTitle>
             <CardDescription>
-              Can't find what you're looking for? Check our{" "}
+              {t("faq.stillHaveQuestions.description")}{" "}
               <a href="/contact" className="text-primary hover:underline font-medium">
-                Contact page
-              </a>{" "}
-              to get in touch with our team.
+                {t("faq.stillHaveQuestions.contactLink")}
+              </a>
             </CardDescription>
           </CardHeader>
         </Card>
@@ -87,4 +86,3 @@ export default function FAQPage() {
     </div>
   )
 }
-

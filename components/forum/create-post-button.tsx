@@ -6,13 +6,13 @@ import { useRouter } from "next/navigation"
 import { useTranslations } from "next-intl"
 
 export function CreatePostButton() {
-  const t = useTranslations()
+  const t = useTranslations("forum")
   const router = useRouter()
 
   return (
     <Button onClick={() => router.push("/forum/create")} size="lg">
-      <Plus className="w-5 h-5 mr-2" />
-      {t("forum.createPost")}
+      <Plus className="mr-2 h-4 w-4" />
+      {t("createPost")}
     </Button>
   )
 }
