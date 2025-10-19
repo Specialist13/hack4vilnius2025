@@ -63,8 +63,8 @@ export default function PostDetailPage({ params }: { params: Promise<{ id: strin
   const [comments, setComments] = useState<Comment[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [hasSupported, setHasSupported] = useState(false)
-  const [isSupportLoading, setIsSupportLoading] = useState(false)
+  const [isSigning, setIsSigning] = useState(false)
+  const [isUnsigning, setIsUnsigning] = useState(false)
   const [commentText, setCommentText] = useState("")
   const [isSubmittingComment, setIsSubmittingComment] = useState(false)
   const [showDeleteDialog, setShowDeleteDialog] = useState(false)
@@ -112,30 +112,57 @@ export default function PostDetailPage({ params }: { params: Promise<{ id: strin
     }
   }
 
-  const handleSupport = async () => {
+  const handleSign = async () => {
     if (!post) return
 
-    setIsSupportLoading(true)
+    setIsSigning(true)
     try {
-      if (hasSupported) {
-        await forumAPI.removeApproval(post.code)
-        setHasSupported(false)
-        setPost({ ...post, approvalCount: post.approvalCount - 1 })
-        toast({ title: "Support removed" })
-      } else {
-        await forumAPI.approveForum(post.code)
-        setHasSupported(true)
-        setPost({ ...post, approvalCount: post.approvalCount + 1 })
-        toast({ title: "Post supported!" })
-      }
+      await forumAPI.approveForum(post.code)
+      toast({ title: "Post supported successfully!" })
+      await fetchPost() // Refresh to get updated approval count
     } catch (error: any) {
+      let errorMessage = "Failed to support post"
+      if (error?.status === 409) {
+        errorMessage = "You have already supported this post"
+      } else if (error?.status === 403) {
+        errorMessage = "You cannot support your own post"
+      } else if (error?.data?.error) {
+        errorMessage = error.data.error
+      }
+      
       toast({
         title: "Error",
-        description: error?.data?.error || "Failed to update support",
+        description: errorMessage,
         variant: "destructive",
       })
     } finally {
-      setIsSupportLoading(false)
+      setIsSigning(false)
+    }
+  }
+
+  const handleRemove = async () => {
+    if (!post) return
+
+    setIsUnsigning(true)
+    try {
+      await forumAPI.removeApproval(post.code)
+      toast({ title: "Support removed successfully!" })
+      await fetchPost() // Refresh to get updated approval count
+    } catch (error: any) {
+      let errorMessage = "Failed to remove support"
+      if (error?.status === 404) {
+        errorMessage = "You haven't supported this post yet"
+      } else if (error?.data?.error) {
+        errorMessage = error.data.error
+      }
+      
+      toast({
+        title: "Error",
+        description: errorMessage,
+        variant: "destructive",
+      })
+    } finally {
+      setIsUnsigning(false)
     }
   }
 
@@ -301,14 +328,30 @@ export default function PostDetailPage({ params }: { params: Promise<{ id: strin
                   <span className="font-medium">{post.approvalCount} supporters</span>
                 </div>
 
-                <Button
-                  variant={hasSupported ? "default" : "outline"}
-                  onClick={handleSupport}
-                  disabled={isSupportLoading}
-                >
-                  <ThumbsUp className="mr-2 h-4 w-4" />
-                  {hasSupported ? "Supported" : t("support")}
-                </Button>
+                <div className="flex gap-2">
+                  <Button
+                    variant="outline"
+                    onClick={handleSign}
+                    disabled={isSigning || isUnsigning}
+                  >
+                    {isSigning ? (
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    ) : (
+                      <ThumbsUp className="mr-2 h-4 w-4" />
+                    )}
+                    Support
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    onClick={handleRemove}
+                    disabled={isSigning || isUnsigning}
+                  >
+                    {isUnsigning ? (
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    ) : null}
+                    Remove
+                  </Button>
+                </div>
               </div>
             </CardContent>
           </Card>
