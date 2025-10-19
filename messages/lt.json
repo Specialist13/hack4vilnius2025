@@ -191,7 +191,7 @@
   "map": {
     "title": "EV įkrovimo diskusijų žemėlapis",
     "subtitle": "Tyrinėkite, kur Vilniaus gyventojai kovoja už EV įkrovimo infrastruktūrą.",
-    "description": "Šis žemėlapis rodo gyventojų tankį kvadratuose ir esamas EV įkrovimo stoteles Vilniuje. Naudokite jį, kad atrastumėte zonas, kuriose trūksta įkrovimo infrastruktūros, nepaisant didelio gyventojų tankio—tai puikios vietos bendruomenės inicijuotoms EV įkrovimo stotėlėms.",
+    "description": "Naudokite šį žemėlapį, kad atrastumėte zonas, kuriose trūksta įkrovimo infrastruktūros, nepaisant didelio gyventojų tankio—tai puikios vietos bendruomenės inicijuotoms EV įkrovimo stotėlėms.",
     "stats": {
       "activeDiscussions": "Aktyvios diskusijos",
       "activeChange": "+12 šį mėnesį",

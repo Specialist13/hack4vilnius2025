@@ -191,7 +191,7 @@
   "map": {
     "title": "EV Charging Discussion Map",
     "subtitle": "Explore where Vilnius residents are advocating for EV charging infrastructure.",
-    "description": "This map displays population density in squares and existing EV charging stations across Vilnius. Use it to discover areas that lack charging infrastructure despite having high population density—these are prime locations for community-driven EV charging initiatives.",
+    "description": "Use this map to discover areas that lack charging infrastructure despite having high population density—these are prime locations for community-driven EV charging initiatives.",
     "stats": {
       "activeDiscussions": "Active Discussions",
       "activeChange": "+12 this month",
