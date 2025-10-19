@@ -76,6 +76,24 @@ export class APIError extends Error {
 }
 
 /**
+ * System API
+ */
+export const systemAPI = {
+  /**
+   * Health check
+   * GET /health
+   */
+  health: async () => {
+    return apiRequest<{
+      status: string
+      message: string
+    }>('/health', {
+      method: 'GET',
+    })
+  },
+}
+
+/**
  * Make an API request with authentication
  */
 async function apiRequest<T = any>(endpoint: string, options: RequestInit = {}): Promise<T> {
@@ -214,6 +232,17 @@ export const userAPI = {
     return apiRequest('/api/users', {
       method: 'PATCH',
       body: JSON.stringify(data),
+    })
+  },
+
+  /**
+   * Soft delete user
+   * DELETE /api/users
+   * Returns 204 (no content) on success
+   */
+  deleteUser: async () => {
+    return apiRequest<void>('/api/users', {
+      method: 'DELETE',
     })
   },
 }
@@ -429,7 +458,7 @@ export const commentsAPI = {
 
   /**
    * Update a comment
-   * PATCH /api/comments/{commentCode}
+   * PATCH /api/forums/comments/{commentCode}
    */
   updateComment: async (commentCode: string, data: { commentText: string }) => {
     return apiRequest<{
@@ -438,7 +467,7 @@ export const commentsAPI = {
       commentText: string
       createdAt: string
       updatedAt: string
-    }>(`/api/comments/${commentCode}`, {
+    }>(`/api/forums/comments/${commentCode}`, {
       method: 'PATCH',
       body: JSON.stringify(data),
     })
@@ -446,11 +475,11 @@ export const commentsAPI = {
 
   /**
    * Delete a comment
-   * DELETE /api/comments/{commentCode}
+   * DELETE /api/forums/comments/{commentCode}
    * Returns 204 (no content) on success
    */
   deleteComment: async (commentCode: string) => {
-    return apiRequest<void>(`/api/comments/${commentCode}`, {
+    return apiRequest<void>(`/api/forums/comments/${commentCode}`, {
       method: 'DELETE',
     })
   },
@@ -477,69 +506,120 @@ export const aiAPI = {
 }
 
 /**
- * Forum API - Additional functions
+ * Petitions API - Matches OpenAPI specification
  */
-import type { ForumPost, CreatePostData, CreateReplyData, ForumSearchParams, Reply } from "@/types/forum"
-
-const FORUM_API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "/api"
-
-// Forum API functions
-export const forumApi = {
-  // Get all posts with optional filters
-  async getPosts(params?: ForumSearchParams): Promise<ForumPost[]> {
-    const queryParams = new URLSearchParams()
-    if (params?.query) queryParams.append("query", params.query)
-    if (params?.status) queryParams.append("status", params.status)
-    if (params?.page) queryParams.append("page", params.page.toString())
-    if (params?.limit) queryParams.append("limit", params.limit.toString())
-
-    const response = await fetch(`${FORUM_API_BASE_URL}/forum/posts?${queryParams}`)
-    if (!response.ok) throw new Error("Failed to fetch posts")
-    return response.json()
+export const petitionsAPI = {
+  /**
+   * Get paginated petitions
+   * GET /api/petitions?page=1&limit=10
+   */
+  getPetitions: async (page: number = 1, limit: number = 10) => {
+    return apiRequest<{
+      petitions: Array<{
+        code: string
+        userCode: string
+        userName: string
+        userImage?: string
+        name: string
+        description: string
+        address?: string
+        createdAt: string
+        approvalCount: number
+      }>
+      pagination: {
+        page: number
+        limit: number
+        totalItems: number
+        totalPages: number
+        hasNextPage: boolean
+        hasPreviousPage: boolean
+      }
+    }>(`/api/petitions?page=${page}&limit=${limit}`, {
+      method: 'GET',
+    })
   },
 
-  // Get a single post by ID
-  async getPost(id: string): Promise<ForumPost> {
-    const response = await fetch(`${FORUM_API_BASE_URL}/forum/posts/${id}`)
-    if (!response.ok) throw new Error("Failed to fetch post")
-    return response.json()
-  },
-
-  // Create a new post
-  async createPost(data: CreatePostData): Promise<ForumPost> {
-    const response = await fetch(`${FORUM_API_BASE_URL}/forum/posts`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+  /**
+   * Create a new petition
+   * POST /api/petitions
+   */
+  createPetition: async (data: {
+    name: string
+    description: string
+    address?: string
+  }) => {
+    return apiRequest<{
+      code: string
+      userCode: string
+      name: string
+      description: string
+      address?: string
+      createdAt: string
+    }>('/api/petitions', {
+      method: 'POST',
       body: JSON.stringify(data),
     })
-    if (!response.ok) throw new Error("Failed to create post")
-    return response.json()
   },
 
-  // Add a reply to a post
-  async addReply(postId: string, data: CreateReplyData): Promise<Reply> {
-    const response = await fetch(`${FORUM_API_BASE_URL}/forum/posts/${postId}/replies`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+  /**
+   * Update a petition
+   * PATCH /api/petitions/{code}
+   */
+  updatePetition: async (code: string, data: {
+    name?: string
+    description?: string
+    address?: string
+  }) => {
+    return apiRequest<{
+      code: string
+      userCode: string
+      name: string
+      description: string
+      address?: string
+      createdAt: string
+      updatedAt: string
+    }>(`/api/petitions/${code}`, {
+      method: 'PATCH',
       body: JSON.stringify(data),
     })
-    if (!response.ok) throw new Error("Failed to add reply")
-    return response.json()
   },
 
-  // Support a post
-  async supportPost(postId: string): Promise<void> {
-    const response = await fetch(`${FORUM_API_BASE_URL}/forum/posts/${postId}/support`, {
-      method: "POST",
+  /**
+   * Delete a petition
+   * DELETE /api/petitions/{code}
+   * Returns 204 (no content) on success
+   */
+  deletePetition: async (code: string) => {
+    return apiRequest<void>(`/api/petitions/${code}`, {
+      method: 'DELETE',
     })
-    if (!response.ok) throw new Error("Failed to support post")
   },
 
-  // Increment view count
-  async incrementViewCount(postId: string): Promise<void> {
-    const response = await fetch(`${FORUM_API_BASE_URL}/forum/posts/${postId}/view`, {
-      method: "POST",
+  /**
+   * Approve a petition (sign)
+   * POST /api/petitions/{petitionCode}/approvals
+   * Returns 201 on success
+   * Returns 400 if user tries to approve their own petition
+   * Returns 409 if petition already approved by this user
+   */
+  approvePetition: async (petitionCode: string) => {
+    return apiRequest<{
+      userCode: string
+      petitionCode: string
+      createdAt: string
+    }>(`/api/petitions/${petitionCode}/approvals`, {
+      method: 'POST',
     })
-    if (!response.ok) throw new Error("Failed to increment view count")
+  },
+
+  /**
+   * Remove approval from a petition (unsign)
+   * DELETE /api/petitions/{petitionCode}/approvals
+   * Returns 204 (no content) on success
+   */
+  removeApproval: async (petitionCode: string) => {
+    return apiRequest<void>(`/api/petitions/${petitionCode}/approvals`, {
+      method: 'DELETE',
+    })
   },
 }

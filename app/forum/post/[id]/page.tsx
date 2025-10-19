@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { formatDistanceToNow } from "date-fns"
-import { ArrowLeft, ThumbsUp, Loader2, AlertCircle, User, Send } from "lucide-react"
+import { ArrowLeft, ThumbsUp, Loader2, AlertCircle, User, Send, Edit, Trash2, MoreVertical } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -14,6 +14,23 @@ import { Textarea } from "@/components/ui/textarea"
 import { useTranslations } from "next-intl"
 import { useToast } from "@/hooks/use-toast"
 import { forumAPI, commentsAPI } from "@/lib/api"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog"
 
 interface Comment {
   code: string
@@ -37,7 +54,7 @@ function formatDate(dateString: string): string {
   }
 }
 
-export default function PostDetailPage({ params }: { params: { id: string } }) {
+export default function PostDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const t = useTranslations("forum.post")
   const router = useRouter()
   const { toast } = useToast()
@@ -50,18 +67,32 @@ export default function PostDetailPage({ params }: { params: { id: string } }) {
   const [isSupportLoading, setIsSupportLoading] = useState(false)
   const [commentText, setCommentText] = useState("")
   const [isSubmittingComment, setIsSubmittingComment] = useState(false)
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false)
+  const [isDeleting, setIsDeleting] = useState(false)
+  const [postId, setPostId] = useState<string | null>(null)
 
   useEffect(() => {
-    fetchPost()
-    fetchComments()
-  }, [params.id])
+    const loadParams = async () => {
+      const resolvedParams = await params
+      setPostId(resolvedParams.id)
+    }
+    loadParams()
+  }, [params])
+
+  useEffect(() => {
+    if (postId) {
+      fetchPost()
+      fetchComments()
+    }
+  }, [postId])
 
   const fetchPost = async () => {
+    if (!postId) return
     setIsLoading(true)
     setError(null)
 
     try {
-      const data = await forumAPI.getForum(params.id)
+      const data = await forumAPI.getForum(postId)
       setPost(data)
     } catch (err: any) {
       setError(err?.data?.error || "Failed to load post")
@@ -72,8 +103,9 @@ export default function PostDetailPage({ params }: { params: { id: string } }) {
   }
 
   const fetchComments = async () => {
+    if (!postId) return
     try {
-      const data = await commentsAPI.getComments(params.id)
+      const data = await commentsAPI.getComments(postId)
       setComments(data)
     } catch (err) {
       console.error("Error fetching comments:", err)
@@ -110,11 +142,11 @@ export default function PostDetailPage({ params }: { params: { id: string } }) {
   const handleSubmitComment = async (e: React.FormEvent) => {
     e.preventDefault()
 
-    if (!commentText.trim()) return
+    if (!commentText.trim() || !postId) return
 
     setIsSubmittingComment(true)
     try {
-      await commentsAPI.createComment(params.id, { commentText: commentText.trim() })
+      await commentsAPI.createComment(postId, { commentText: commentText.trim() })
       setCommentText("")
       await fetchComments()
       toast({ title: "Comment posted!" })
@@ -126,6 +158,37 @@ export default function PostDetailPage({ params }: { params: { id: string } }) {
       })
     } finally {
       setIsSubmittingComment(false)
+    }
+  }
+
+  const handleEdit = () => {
+    router.push(`/forum/edit/${post.code}`)
+  }
+
+  const handleDelete = async () => {
+    setIsDeleting(true)
+    try {
+      await forumAPI.deleteForum(post.code)
+      toast({ 
+        title: "Post deleted",
+        description: "Your forum post has been deleted successfully"
+      })
+      router.push("/forum")
+    } catch (error: any) {
+      let errorMessage = "Failed to delete post"
+      if (error?.status === 403) {
+        errorMessage = "You don't have permission to delete this post"
+      } else if (error?.data?.error) {
+        errorMessage = error.data.error
+      }
+      
+      toast({
+        title: "Error",
+        description: errorMessage,
+        variant: "destructive",
+      })
+      setIsDeleting(false)
+      setShowDeleteDialog(false)
     }
   }
 
@@ -188,9 +251,33 @@ export default function PostDetailPage({ params }: { params: { id: string } }) {
                     </p>
                   </div>
                 </div>
-                <Badge variant="secondary" className="text-xs">
-                  {post.language === "EN" ? "🇬🇧 EN" : "🇱🇹 LT"}
-                </Badge>
+                <div className="flex items-center gap-2">
+                  <Badge variant="secondary" className="text-xs">
+                    {post.language === "EN" ? "🇬🇧 EN" : "🇱🇹 LT"}
+                  </Badge>
+                  
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="ghost" size="icon" className="h-8 w-8">
+                        <MoreVertical className="h-4 w-4" />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end">
+                      <DropdownMenuItem onClick={handleEdit}>
+                        <Edit className="mr-2 h-4 w-4" />
+                        Edit Post
+                      </DropdownMenuItem>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem 
+                        onClick={() => setShowDeleteDialog(true)}
+                        className="text-destructive focus:text-destructive"
+                      >
+                        <Trash2 className="mr-2 h-4 w-4" />
+                        Delete Post
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </div>
               </div>
 
               <div className="space-y-3">
@@ -296,6 +383,35 @@ export default function PostDetailPage({ params }: { params: { id: string } }) {
             )}
           </div>
         </div>
+
+        {/* Delete Confirmation Dialog */}
+        <AlertDialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Delete Forum Post</AlertDialogTitle>
+              <AlertDialogDescription>
+                Are you sure you want to delete this post? This action cannot be undone and will also delete all comments.
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel disabled={isDeleting}>Cancel</AlertDialogCancel>
+              <AlertDialogAction
+                onClick={handleDelete}
+                disabled={isDeleting}
+                className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+              >
+                {isDeleting ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Deleting...
+                  </>
+                ) : (
+                  "Delete"
+                )}
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
       </div>
     </div>
   )

@@ -65,6 +65,12 @@ export function Header() {
           >
             {t("nav.forum")}
           </Link>
+          <Link
+            href="/petitions"
+            className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
+          >
+            Petitions
+          </Link>
           <Link href="/map" className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground">
             {t("nav.map")}
           </Link>
@@ -128,6 +134,9 @@ export function Header() {
             <DropdownMenuContent align="end" className="w-48">
               <DropdownMenuItem asChild>
                 <Link href="/forum">{t("nav.forum")}</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/petitions">Petitions</Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <Link href="/map">{t("nav.map")}</Link>
