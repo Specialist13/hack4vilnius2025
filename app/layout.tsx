@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   title: "Chargington - Community Forum for EV Charging",
   description: "Forum for Vilnius apartment residents advocating for electric vehicle charging stations",
   generator: "v0.app",
+  icons: {
+    icon: "/icon.svg",
+  },
 }
 
 export default async function RootLayout({
@@ -28,6 +31,8 @@ export default async function RootLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
+        <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <script type="module" src="https://js.arcgis.com/embeddable-components/4.33/arcgis-embeddable-components.esm.js"></script>
       </head>
       <body className={`font-sans antialiased`} suppressHydrationWarning>
