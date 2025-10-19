@@ -55,9 +55,9 @@ export default function PetitionsPage() {
         <div className="space-y-8">
           {/* Header */}
           <div className="text-center space-y-4">
-            <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">Petitions</h1>
+            <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">Peticijos</h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Sign and create petitions to advocate for change in your community
+              Pasirašykite ir kurkite peticijas, kad skatintumėte pokyčius savo bendruomenėje
             </p>
           </div>
 
