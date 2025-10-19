@@ -102,9 +102,6 @@ export function Header() {
                 <DropdownMenuItem asChild>
                   <Link href="/profile">Profile</Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/my-posts">My Posts</Link>
-                </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={handleLogout}>
                   {t("nav.logout")}
@@ -159,4 +156,3 @@ export function Header() {
     </header>
   )
 }
-

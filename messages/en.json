@@ -640,6 +640,10 @@
     "inputPlaceholder": "Type your message here...",
     "send": "Send",
     "thinking": "Analyzing...",
+    "userAddress": {
+      "title": "Your address",
+      "description": "Your address is automatically included in all queries for better recommendations."
+    },
     "exampleQuestions": {
       "title": "Example questions:",
       "q1": "Should I create a new post or join an existing discussion?",

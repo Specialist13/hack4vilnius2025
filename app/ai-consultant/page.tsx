@@ -1,14 +1,14 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
-import { Badge } from "@/components/ui/badge"
 import { Loader2, Bot, Send, MapPin, BarChart3, Lightbulb, TrendingUp } from "lucide-react"
 import { useTranslations } from "next-intl"
-import { aiAPI, APIError } from "@/lib/api"
+import { aiAPI, userAPI, APIError, isAuthenticated } from "@/lib/api"
+import { Markdown } from "@/components/ui/markdown"
 
 interface Message {
   id: string
@@ -29,6 +29,29 @@ export default function AIConsultantPage() {
   ])
   const [input, setInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
+  const [userAddress, setUserAddress] = useState<string | null>(null)
+
+  // Fetch user profile on mount to get address
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      if (!isAuthenticated()) {
+        console.log("[AI Consultant] User not authenticated")
+        return
+      }
+
+      try {
+        const profile = await userAPI.getProfile()
+        if (profile.address) {
+          setUserAddress(profile.address)
+          console.log("[AI Consultant] User address loaded:", profile.address)
+        }
+      } catch (error) {
+        console.error("[AI Consultant] Failed to fetch user profile:", error)
+      }
+    }
+
+    fetchUserProfile()
+  }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -46,11 +69,15 @@ export default function AIConsultantPage() {
     setIsLoading(true)
 
     try {
-      // Call AI Consultant API
-      const response = await aiAPI.analyze({
-        message: input,
-        // TODO: Get user location from context or map selection
-        // userLocation: { address: "...", coordinates: { lat: 0, lng: 0 } }
+      // Build the prompt with user address if available
+      let fullPrompt = input
+      if (userAddress) {
+        fullPrompt = `User's address: ${userAddress}\n\nUser's question: ${input}`
+      }
+
+      // Call AI Agent API - matches OpenAPI spec
+      const response = await aiAPI.generate({
+        prompt: fullPrompt,
       })
 
       console.log("[AI Consultant] Response:", response)
@@ -59,7 +86,7 @@ export default function AIConsultantPage() {
       const assistantMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: "assistant",
-        content: response.response || response.message || "I received your message. How can I help you further?",
+        content: response.response || "I received your message. How can I help you further?",
         timestamp: new Date(),
       }
 
@@ -70,12 +97,33 @@ export default function AIConsultantPage() {
       let errorContent = "Sorry, I encountered an error. Please try again later."
       
       if (error instanceof APIError) {
+        console.error("[AI Consultant] API Error Details:", {
+          status: error.status,
+          statusText: error.statusText,
+          data: error.data,
+          url: error.url
+        })
+
         if (error.status === 404) {
           // API endpoint not implemented yet - show coming soon message
           errorContent = `${t("comingSoonDescription")}\n\n${t("promptToStart")}`
+        } else if (error.status === 401) {
+          errorContent = "Please log in to use the AI consultant."
+        } else if (error.status === 500) {
+          // Check if the error data contains a message
+          const errorMessage = error.data?.error || error.data?.message
+          if (errorMessage) {
+            errorContent = `AI service error: ${errorMessage}\n\nThis usually means the AI service is not properly configured on the backend.`
+          } else {
+            errorContent = "AI service is not configured. Please contact support or try again later."
+          }
         } else {
-          errorContent = error.data?.error || "An error occurred while processing your request."
+          const errorMessage = error.data?.error || error.data?.message
+          errorContent = errorMessage || "An error occurred while processing your request."
         }
+      } else if (error instanceof Error) {
+        console.error("[AI Consultant] General Error:", error.message)
+        errorContent = `Error: ${error.message}`
       }
       
       const errorMessage: Message = {
@@ -107,7 +155,7 @@ export default function AIConsultantPage() {
         <div className="grid gap-6 lg:grid-cols-3">
           {/* Chat Interface */}
           <div className="lg:col-span-2">
-            <Card className="flex flex-col h-[600px]">
+            <Card className="flex flex-col h-[700px]">
               <CardHeader className="border-b">
                 <CardTitle className="flex items-center gap-2">
                   <Bot className="w-5 h-5" />
@@ -137,7 +185,13 @@ export default function AIConsultantPage() {
                           : "bg-muted"
                       }`}
                     >
-                      <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                      {message.role === "assistant" ? (
+                        <div className="text-sm">
+                          <Markdown content={message.content} />
+                        </div>
+                      ) : (
+                        <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                      )}
                       <p className="text-xs opacity-70 mt-1">
                         {message.timestamp.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
                       </p>
@@ -194,6 +248,24 @@ export default function AIConsultantPage() {
 
           {/* Info Sidebar */}
           <div className="space-y-6">
+            {/* User Address Info */}
+            {userAddress && (
+              <Card className="border-green-500/20 bg-green-500/5">
+                <CardContent className="pt-6">
+                  <div className="flex items-start gap-2">
+                    <MapPin className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <p className="text-xs font-medium text-green-700 mb-1">{t("userAddress.title")}</p>
+                      <p className="text-xs text-muted-foreground">{userAddress}</p>
+                      <p className="text-xs text-muted-foreground mt-2 italic">
+                        {t("userAddress.description")}
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+
             {/* Features */}
             <Card>
               <CardHeader>
@@ -257,28 +329,6 @@ export default function AIConsultantPage() {
                 >
                   <span className="text-sm break-words">{t("exampleQuestions.q3")}</span>
                 </Button>
-              </CardContent>
-            </Card>
-
-            {/* Privacy Note */}
-            <Card className="border-primary/20 bg-primary/5">
-              <CardContent className="pt-6">
-                <div className="flex items-start gap-2">
-                  <Badge variant="outline" className="mt-0.5">
-                    🔒
-                  </Badge>
-                  <p className="text-xs text-muted-foreground">{t("privacyNote")}</p>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Coming Soon Badge */}
-            <Card className="border-amber-500/20 bg-amber-500/5">
-              <CardContent className="pt-6 text-center">
-                <Badge variant="outline" className="border-amber-500 text-amber-700 mb-2">
-                  {t("comingSoon")}
-                </Badge>
-                <p className="text-xs text-muted-foreground">{t("comingSoonDescription")}</p>
               </CardContent>
             </Card>
           </div>
