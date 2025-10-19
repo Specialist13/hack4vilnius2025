@@ -10,6 +10,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { useToast } from "@/hooks/use-toast"
 import { petitionsAPI } from "@/lib/api"
 import { AddressPicker } from "@/components/map/address-picker"
+import { useEffect } from "react"
 
 export default function CreatePetitionPage() {
   const router = useRouter()
@@ -21,9 +22,32 @@ export default function CreatePetitionPage() {
     description: "",
     address: "",
   })
+  const [coordinates, setCoordinates] = useState<{ lat: number; lng: number } | null>(null)
+  const [nearbyChargers, setNearbyChargers] = useState<any | null>(null)
 
   const handleAddressSelect = (address: string, coordinates?: { lat: number; lng: number }) => {
     setFormData(prev => ({ ...prev, address }))
+    if (!coordinates) return
+
+    setCoordinates(coordinates)
+    // Fetch ML-suggested optimal locations for EV charging stations (GeoJSON)
+    ;(async () => {
+      try {
+        const url = `https://web-production-46395.up.railway.app/predict/geojson?lat=${coordinates.lat}&lon=${coordinates.lng}&radius=0.2&top_n=5`
+        const res = await fetch(url)
+        if (res.ok) {
+          const data = await res.json()
+          setNearbyChargers(data)
+          console.log('ML suggested GeoJSON (petitions):', data)
+        } else {
+          console.error('ML API returned', res.status, res.statusText)
+          setNearbyChargers(null)
+        }
+      } catch (err) {
+        console.error('Error fetching ML suggestions:', err)
+        setNearbyChargers(null)
+      }
+    })()
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -113,6 +137,7 @@ export default function CreatePetitionPage() {
                     onAddressSelect={handleAddressSelect}
                     initialAddress={formData.address}
                     placeholder="Enter location relevant to this petition"
+                    geoJsonData={nearbyChargers}
                   />
                 </div>
                 <div className="space-y-2">

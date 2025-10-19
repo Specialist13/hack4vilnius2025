@@ -23,15 +23,36 @@ export default function CreatePostPage() {
   const defaultLanguage = locale === 'lt' ? 'LT' : 'EN'
 
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [coordinates, setCoordinates] = useState<{ lat: number; lng: number } | null>(null)
+  const [nearbyChargers, setNearbyChargers] = useState<any | null>(null)
   const [formData, setFormData] = useState({
     title: "",
     body: "",
     address: "",
     language: defaultLanguage as "EN" | "LT",
   })
-  const handleAddressSelect = (address: string, coordinates?: { lat: number; lng: number }) => {
+  const handleAddressSelect = async (address: string, coords?: { lat: number; lng: number }) => {
     setFormData(prev => ({ ...prev, address }))
-    console.log("Selected address:", address, "Coordinates:", coordinates)
+
+    if (!coords) return
+
+    setCoordinates(coords)
+    // Fetch ML-suggested optimal locations for EV charging stations (GeoJSON)
+    try {
+      const url = `https://web-production-46395.up.railway.app/predict/geojson?lat=${coords.lat}&lon=${coords.lng}&radius=0.2&top_n=5`
+      const res = await fetch(url)
+      if (res.ok) {
+        const data = await res.json()
+        setNearbyChargers(data)
+        console.log('ML suggested GeoJSON:', data)
+      } else {
+        console.error('ML API returned', res.status, res.statusText)
+        setNearbyChargers(null)
+      }
+    } catch (err) {
+      console.error('Error fetching ML suggestions:', err)
+      setNearbyChargers(null)
+    }
   }
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -139,6 +160,7 @@ export default function CreatePostPage() {
                     onAddressSelect={handleAddressSelect}
                     initialAddress={formData.address}
                     placeholder={t("addressPlaceholder")}
+                    geoJsonData={nearbyChargers}
                   />
                 </div>
                 <div className="space-y-2">

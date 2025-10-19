@@ -11,14 +11,16 @@ interface AddressPickerProps {
   onAddressSelect: (address: string, coordinates?: { lat: number; lng: number }) => void
   initialAddress?: string
   placeholder?: string
+  geoJsonData?: any
 }
 
-export function AddressPicker({ onAddressSelect, initialAddress = "", placeholder }: AddressPickerProps) {
+export function AddressPicker({ onAddressSelect, initialAddress = "", placeholder, geoJsonData }: AddressPickerProps) {
   const mapRef = useRef<HTMLDivElement>(null)
   const mapInstanceRef = useRef<any | null>(null)
   const markerRef = useRef<any | null>(null)
   const autocompleteRef = useRef<any | null>(null)
   const inputRef = useRef<HTMLInputElement>(null)
+  const geoJsonLayerRef = useRef<any | null>(null)
 
   const [isLoading, setIsLoading] = useState(true)
   const [selectedAddress, setSelectedAddress] = useState(initialAddress)
@@ -128,6 +130,105 @@ export function AddressPicker({ onAddressSelect, initialAddress = "", placeholde
       }
     }
   }, [initialAddress])
+
+  // Render GeoJSON suggestions returned from ML API
+  useEffect(() => {
+    if (!mapInstanceRef.current) return
+
+    const map = mapInstanceRef.current as any
+
+    // remove existing features if no data
+    if (!geoJsonData) {
+      if (geoJsonLayerRef.current) {
+        geoJsonLayerRef.current.forEach((f: any) => map.data.remove(f))
+        geoJsonLayerRef.current = null
+      }
+      return
+    }
+
+    // clear previous features
+    if (geoJsonLayerRef.current) {
+      geoJsonLayerRef.current.forEach((f: any) => map.data.remove(f))
+      geoJsonLayerRef.current = null
+    }
+
+    // helper to generate SVG icon with white bolt
+    const makeIconUrl = (color: string, size: number) => {
+      const svg = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="11" fill="${color}" />
+          <path d="M13 3L4 14h7l-1 7 9-11h-7l1-7z" fill="#ffffff"/>
+        </svg>`
+      return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg)
+    }
+
+    // style helper
+    const getStyle = (isHovered: boolean, isSelected: boolean) => {
+      const size = isSelected ? 64 : isHovered ? 52 : 44
+      const color = isSelected ? '#1e3a8a' : isHovered ? '#3b82f6' : '#2563eb'
+      return {
+        icon: {
+          url: makeIconUrl(color, size),
+          scaledSize: new window.google.maps.Size(size, size),
+          anchor: new window.google.maps.Point(size / 2, size / 2),
+        },
+        cursor: 'pointer',
+      }
+    }
+
+    let selectedFeature: any = null
+    const listeners: any[] = []
+
+    try {
+      const features = map.data.addGeoJson(geoJsonData)
+      geoJsonLayerRef.current = features
+
+      // set base style
+      map.data.setStyle(() => getStyle(false, false))
+
+      // mouseover/mouseout to give hover effect
+      listeners.push(map.data.addListener('mouseover', (event: any) => {
+        if (event.feature !== selectedFeature) {
+          map.data.overrideStyle(event.feature, getStyle(true, false))
+        }
+      }))
+      listeners.push(map.data.addListener('mouseout', (event: any) => {
+        if (event.feature !== selectedFeature) {
+          map.data.overrideStyle(event.feature, getStyle(false, false))
+        }
+      }))
+
+      // click on feature: select and enlarge
+      listeners.push(map.data.addListener('click', (event: any) => {
+        if (event.stop) event.stop()
+        if (selectedFeature && selectedFeature !== event.feature) {
+          map.data.overrideStyle(selectedFeature, getStyle(false, false))
+        }
+        selectedFeature = event.feature
+        map.data.overrideStyle(event.feature, getStyle(false, true))
+      }))
+
+      // clicking the map (outside features) should deselect
+      const mapClickListener = map.addListener('click', (ev: any) => {
+        if (selectedFeature) {
+          map.data.overrideStyle(selectedFeature, getStyle(false, false))
+          selectedFeature = null
+        }
+      })
+
+      // cleanup on unmount
+      return () => {
+        if (geoJsonLayerRef.current) {
+          geoJsonLayerRef.current.forEach((f: any) => map.data.remove(f))
+          geoJsonLayerRef.current = null
+        }
+        listeners.forEach(l => window.google.maps.event.removeListener(l))
+        if (mapClickListener) window.google.maps.event.removeListener(mapClickListener)
+      }
+    } catch (err) {
+      console.error('Failed to render geojson', err)
+    }
+  }, [geoJsonData])
 
   const handleLocationSelect = (location: any) => {
     const lat = location.lat()
