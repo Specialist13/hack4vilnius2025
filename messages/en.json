@@ -732,6 +732,20 @@
         "modelPlaceholder": "e.g., Tesla Wall Connector",
         "modelOptional": "You can specify this later"
       },
+      "installer": {
+        "title": "Installer Selection",
+        "description": "Choose a certified installer for your charging station",
+        "selectInstaller": "Select an installer",
+        "selected": "Selected",
+        "reviews": "reviews",
+        "priceRange": "Estimated price",
+        "priceCalculation": "Price calculated dynamically",
+        "priceNote": "The price is automatically calculated based on your selected parameters: station power, number of connectors, property type, and installation method.",
+        "noteTitle": "How does this work?",
+        "noteDescription": "Once we receive your documents, we will contact the selected installer and provide them with your contact information and project details.",
+        "contactNote": "We will contact the company",
+        "contactDescription": "After receiving your documents, we will forward your information to the selected installer, who will contact you regarding installation details and exact pricing."
+      },
       "documents": {
         "title": "Co-Owner Consent",
         "description": "Information about co-owner consent requirements",
@@ -754,6 +768,12 @@
       "property": "Property",
       "apartment": "Apartment",
       "charger": "Charger",
+      "installerTitle": "Selected Installer",
+      "installerDescription": "We will contact this company regarding installation",
+      "reviews": "reviews",
+      "priceRange": "Estimated price",
+      "contactNote": "We will contact them for you",
+      "contactNoteDescription": "Once we receive your documents, we will forward your information to the installer, who will contact you regarding installation details.",
       "documentsTitle": "Generated Documents",
       "documentsDescription": "Your complete document package is ready to download",
       "applicationDocument": "Application for Installation",
